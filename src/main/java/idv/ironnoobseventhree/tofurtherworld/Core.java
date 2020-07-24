@@ -1,9 +1,11 @@
 package idv.ironnoobseventhree.tofurtherworld;
 
 import idv.ironnoobseventhree.tofurtherworld.block.DrawerBlock;
+import idv.ironnoobseventhree.tofurtherworld.block.ForgingTableL1;
 import idv.ironnoobseventhree.tofurtherworld.block.GlassLike;
 import idv.ironnoobseventhree.tofurtherworld.biome.BiomeMain;
 import idv.ironnoobseventhree.tofurtherworld.block.Facing;
+import idv.ironnoobseventhree.tofurtherworld.block.sapling.FrozenBushBlock;
 import idv.ironnoobseventhree.tofurtherworld.block.sapling.IceBirch;
 import idv.ironnoobseventhree.tofurtherworld.block.sapling.SaplingMain;
 import idv.ironnoobseventhree.tofurtherworld.tool.*;
@@ -244,6 +246,8 @@ public class Core implements ModInitializer {
     //Entity Block
     public static final DrawerBlock Drawer1 = new DrawerBlock(AbstractBlock.Settings.of(Material.STONE).requiresTool().strength(6.0F, 6.0F));
     public static final DrawerBlock Drawer2 = new DrawerBlock(AbstractBlock.Settings.of(Material.STONE).requiresTool().strength(6.0F, 6.0F));
+    public static final Block ForgingTableL1 = new ForgingTableL1(AbstractBlock.Settings.of(Material.STONE).requiresTool().strength(6.0F, 6.0F).sounds(BlockSoundGroup.METAL));
+    //Block Setting
     private static PillarBlock createLogBlock(MaterialColor topMaterialColor, MaterialColor sideMaterialColor) {
         return new PillarBlock(AbstractBlock.Settings.of(Material.WOOD, (blockState) -> {
             return blockState.get(PillarBlock.AXIS) == Direction.Axis.Y ? topMaterialColor : sideMaterialColor;
@@ -259,6 +263,7 @@ public class Core implements ModInitializer {
     public static final Block IceBirchLeaves = createLeavesBlock();
     public static final Block IceBirchPlanks = new Block(AbstractBlock.Settings.of(Material.WOOD, MaterialColor.ICE).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD));
     public static final Block StrippedIceBirchLog = new PillarBlock(AbstractBlock.Settings.of(Material.WOOD, MaterialColor.WOOD).strength(2.0F).sounds(BlockSoundGroup.WOOD));
+    public static final FrozenBushBlock FrozenBush =new FrozenBushBlock(AbstractBlock.Settings.of(Material.REPLACEABLE_PLANT, MaterialColor.WOOD).noCollision().breakInstantly().sounds(BlockSoundGroup.GRASS));
     
     public static final String MODID = "tofurtherworld";
     
@@ -535,6 +540,8 @@ public class Core implements ModInitializer {
         Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "drawer_1"), new BlockItem(Drawer1, new Item.Settings()));
         Registry.register(Registry.BLOCK, new Identifier("tofurtherworld", "drawer_2"), Drawer2);
         Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "drawer_2"), new BlockItem(Drawer2, new Item.Settings()));
+        Registry.register(Registry.BLOCK, new Identifier("tofurtherworld", "forging_table_l1"), ForgingTableL1);
+        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "forging_table_l1"), new BlockItem(ForgingTableL1, new Item.Settings()));
         //Nature block
         Registry.register(Registry.BLOCK, new Identifier("tofurtherworld", "apple_block"), AppleBlock);
         Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "apple_block"), new BlockItem(AppleBlock, new Item.Settings()));
@@ -548,6 +555,8 @@ public class Core implements ModInitializer {
         Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "icebirch_planks"), new BlockItem(IceBirchPlanks, new Item.Settings()));
         Registry.register(Registry.BLOCK, new Identifier("tofurtherworld", "stripped_icebirch_log"), StrippedIceBirchLog);
         Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "stripped_icebirch_log"), new BlockItem(StrippedIceBirchLog, new Item.Settings()));
+        Registry.register(Registry.BLOCK, new Identifier("tofurtherworld", "frozen_bush"), FrozenBush);
+        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "frozen_bush"), new BlockItem(FrozenBush, new Item.Settings()));
         //Biome
         OverworldBiomes.addContinentalBiome(BiomeMain.PoorDesert,OverworldClimate.TEMPERATE,2D);
         OverworldBiomes.addContinentalBiome(BiomeMain.PoorDesert,OverworldClimate.COOL,2D);
@@ -695,12 +704,14 @@ public class Core implements ModInitializer {
                 stacks.add(new ItemStack(BlackGlowingGlass));
                 stacks.add(new ItemStack(Drawer1));
                 stacks.add(new ItemStack(Drawer2));
+                stacks.add(new ItemStack(ForgingTableL1));
                 stacks.add(new ItemStack(AppleBlock));
                 stacks.add(new ItemStack(IceBirchSapling));
                 stacks.add(new ItemStack(IceBirchLog));
                 stacks.add(new ItemStack(IceBirchLeaves));
                 stacks.add(new ItemStack(IceBirchPlanks));
                 stacks.add(new ItemStack(StrippedIceBirchLog));
+                stacks.add(new ItemStack(FrozenBush));
                     }
             ).build();
     public static final ItemGroup ITEM = FabricItemGroupBuilder.create(

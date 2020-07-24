@@ -189,6 +189,8 @@
     "block.tofurtherworld.drawer":"\u00A70抽屉",
     "block.tofurtherworld.drawer_1":"\u00A7f抽屉（横向）",
     "block.tofurtherworld.drawer_2":"\u00A7f抽屉（竖向）",
+    "block.tofurtherworld.forging_table_l1":"\u00A7f锻造台§7·§2§o1级",
+    "block.tofurtherworld.forging_table_l1_t":"\u00A70锻造台§7·§2§o1级",
 
     "block.tofurtherworld.apple_block":"\u00A7f苹果方块",
     "block.tofurtherworld.icebirch_sapling":"\u00A7f冰桦木树苗",
@@ -196,6 +198,7 @@
     "block.tofurtherworld.icebirch_leaves":"\u00A7f冰桦木树叶",
     "block.tofurtherworld.icebirch_planks":"\u00A7f冰桦木木板",
     "block.tofurtherworld.stripped_icebirch_log":"\u00A7f去皮冰桦木树干",
+    "block.tofurtherworld.frozen_bush":"\u00A7f冻死的灌木",
 
     "itemGroup.tofurtherworld.material":"TFW-材料",
     "itemGroup.tofurtherworld.block":"TFW-方块",

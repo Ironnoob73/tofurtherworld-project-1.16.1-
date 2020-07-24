@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "particle": "tofurtherworld:block/forging_table_l1_side",
+    "north": "tofurtherworld:block/forging_table_l1_side",
+    "south": "tofurtherworld:block/forging_table_l1_side",
+    "east": "tofurtherworld:block/forging_table_l1_side",
+    "west": "tofurtherworld:block/forging_table_l1_side",
+    "up": "tofurtherworld:block/forging_table_l1_top",
+    "down": "missing"
+  }
+}

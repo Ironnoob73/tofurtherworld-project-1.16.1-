@@ -46,5 +46,6 @@ public class CliF implements ClientModInitializer{
         BlockRenderLayerMap.INSTANCE.putBlock(Core.BlackGlowingGlass, RenderLayer.getTranslucent());
 
         BlockRenderLayerMap.INSTANCE.putBlock(Core.IceBirchSapling, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(Core.FrozenBush, RenderLayer.getCutout());
     }
 }

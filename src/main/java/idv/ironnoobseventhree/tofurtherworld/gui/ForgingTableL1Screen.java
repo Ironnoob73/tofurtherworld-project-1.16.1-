@@ -1,8 +1,10 @@
 package idv.ironnoobseventhree.tofurtherworld.gui;
 
+import idv.ironnoobseventhree.tofurtherworld.Core;
+import idv.ironnoobseventhree.tofurtherworld.recipes.Forgingl1;
+import idv.ironnoobseventhree.tofurtherworld.recipes.Type;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.block.Blocks;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.CraftingInventory;
@@ -13,7 +15,6 @@ import net.minecraft.network.packet.s2c.play.ScreenHandlerSlotUpdateS2CPacket;
 import net.minecraft.recipe.CraftingRecipe;
 import net.minecraft.recipe.Recipe;
 import net.minecraft.recipe.RecipeFinder;
-import net.minecraft.recipe.RecipeType;
 import net.minecraft.screen.AbstractRecipeScreenHandler;
 import net.minecraft.screen.ScreenHandlerContext;
 import net.minecraft.screen.ScreenHandlerType;
@@ -36,7 +37,7 @@ public class ForgingTableL1Screen extends AbstractRecipeScreenHandler<CraftingIn
     }
 
     public ForgingTableL1Screen(int syncId, PlayerInventory playerInventory, ScreenHandlerContext context) {
-        super(ScreenHandlerType.GENERIC_3X3, syncId);
+        super(ScreenHandlerType.CRAFTING, syncId);
         this.input = new CraftingInventory(this, 3, 3);
         this.result = new CraftingResultInventory();
         this.context = context;
@@ -67,9 +68,9 @@ public class ForgingTableL1Screen extends AbstractRecipeScreenHandler<CraftingIn
         if (!world.isClient) {
             ServerPlayerEntity serverPlayerEntity = (ServerPlayerEntity)player;
             ItemStack itemStack = ItemStack.EMPTY;
-            Optional<CraftingRecipe> optional = Objects.requireNonNull(world.getServer()).getRecipeManager().getFirstMatch(RecipeType.CRAFTING, craftingInventory, world);
+            Optional<Forgingl1> optional = Objects.requireNonNull(world.getServer()).getRecipeManager().getFirstMatch(Type.Forgingl1, craftingInventory, world);
             if (optional.isPresent()) {
-                CraftingRecipe craftingRecipe = (CraftingRecipe)optional.get();
+                CraftingRecipe craftingRecipe = optional.get();
                 if (resultInventory.shouldCraftRecipe(world, serverPlayerEntity, craftingRecipe)) {
                     itemStack = craftingRecipe.craft(craftingInventory);
                 }
@@ -107,7 +108,7 @@ public class ForgingTableL1Screen extends AbstractRecipeScreenHandler<CraftingIn
     }
 
     public boolean canUse(PlayerEntity player) {
-        return canUse(this.context, player, Blocks.CRAFTING_TABLE);
+        return canUse(this.context, player, Core.ForgingTableL1);
     }
 
     public ItemStack transferSlot(PlayerEntity player, int index) {

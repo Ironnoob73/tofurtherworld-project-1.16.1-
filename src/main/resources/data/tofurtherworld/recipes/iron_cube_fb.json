@@ -1,0 +1,15 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+      "B"
+    ],
+    "key": {
+      "B": {
+        "item": "tofurtherworld:chiseled_iron_block"
+      }
+    },
+    "result": {
+      "item": "tofurtherworld:iron_cube",
+      "count": 9
+    }
+  }

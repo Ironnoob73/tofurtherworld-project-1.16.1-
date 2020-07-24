@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/orientable_with_bottom",
+  "textures": {
+    "top": "tofurtherworld:block/apple_block_top",
+    "front": "tofurtherworld:block/apple_block_front",
+    "side": "tofurtherworld:block/apple_block_side",
+    "bottom": "tofurtherworld:block/apple_block_bottom"
+  }
+}

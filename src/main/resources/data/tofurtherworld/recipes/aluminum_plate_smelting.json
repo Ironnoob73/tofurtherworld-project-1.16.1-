@@ -1,0 +1,8 @@
+{
+    "type": "minecraft:smelting",
+    "ingredient":{
+      "item": "tofurtherworld:aluminum_ingot"
+    },
+    "result": "tofurtherworld:aluminum_plate",
+    "experience": 0.2
+}

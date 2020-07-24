@@ -1,0 +1,15 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+      "FFF"
+    ],
+    "key": {
+      "F": {
+        "item": "tofurtherworld:carbon_fibre"
+      }
+    },
+    "result": {
+      "item": "tofurtherworld:carbon_plate",
+      "count": 1
+    }
+  }

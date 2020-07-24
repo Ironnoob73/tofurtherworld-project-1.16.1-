@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+      "III",
+      "III",
+      "III"
+    ],
+    "key": {
+      "I": {
+        "item": "tofurtherworld:steel_ingot"
+      }
+    },
+    "result": {
+      "item": "tofurtherworld:steel_block",
+      "count": 1
+    }
+  }

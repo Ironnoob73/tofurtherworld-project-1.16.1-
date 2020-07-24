@@ -1,0 +1,12 @@
+{
+    "type": "minecraft:smithing",
+    "base": {
+      "item": "minecraft:iron_axe"
+    },
+    "addition": {
+      "item": "tofurtherworld:steel_ingot"
+    },
+    "result": {
+      "item": "tofurtherworld:steel_axe"
+    }
+  }

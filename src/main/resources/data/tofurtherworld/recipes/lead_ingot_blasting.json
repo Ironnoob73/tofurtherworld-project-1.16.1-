@@ -1,0 +1,8 @@
+{
+    "type": "minecraft:blasting",
+    "ingredient":{
+      "item": "tofurtherworld:lead_ore"
+    },
+    "result": "tofurtherworld:lead_ingot",
+    "experience": 0.3
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "tofurtherworld:block/icebirch_sapling"
+  }
+}

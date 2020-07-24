@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "tofurtherworld:carbon_plate"
+  },
+  "result": "tofurtherworld:carbon_stick",
+  "count": 2
+}

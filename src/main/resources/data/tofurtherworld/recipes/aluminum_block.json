@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+      "CCC",
+      "CCC",
+      "CCC"
+    ],
+    "key": {
+      "C": {
+        "item": "tofurtherworld:aluminum_cube"
+      }
+    },
+    "result": {
+      "item": "tofurtherworld:aluminum_block",
+      "count": 1
+    }
+  }

@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "tofurtherworld:copper_plate"
+  },
+  "result": "tofurtherworld:copper_sword_part",
+  "count": 1
+}

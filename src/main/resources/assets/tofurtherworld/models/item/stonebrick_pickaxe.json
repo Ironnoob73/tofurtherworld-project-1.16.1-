@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "tofurtherworld:item/tool/stonebrick_pickaxe"
+  }
+}

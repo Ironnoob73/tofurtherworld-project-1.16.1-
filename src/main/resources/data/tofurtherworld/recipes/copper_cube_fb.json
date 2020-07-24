@@ -1,0 +1,15 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+      "B"
+    ],
+    "key": {
+      "B": {
+        "item": "tofurtherworld:copper_block"
+      }
+    },
+    "result": {
+      "item": "tofurtherworld:copper_cube",
+      "count": 9
+    }
+  }

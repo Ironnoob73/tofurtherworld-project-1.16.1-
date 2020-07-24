@@ -1,0 +1,8 @@
+{
+    "type": "minecraft:smelting",
+    "ingredient":{
+      "item": "tofurtherworld:silver_powder"
+    },
+    "result": "tofurtherworld:silver_ingot",
+    "experience": 0.5
+}

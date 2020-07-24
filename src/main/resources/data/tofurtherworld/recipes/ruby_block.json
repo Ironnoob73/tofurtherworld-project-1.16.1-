@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+      "GGG",
+      "GGG",
+      "GGG"
+    ],
+    "key": {
+      "G": {
+        "item": "tofurtherworld:ruby"
+      }
+    },
+    "result": {
+      "item": "tofurtherworld:ruby_block",
+      "count": 1
+    }
+  }

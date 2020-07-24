@@ -1,0 +1,8 @@
+{
+    "type": "minecraft:smelting",
+    "ingredient":{
+      "item": "tofurtherworld:lead_ingot"
+    },
+    "result": "tofurtherworld:lead_plate",
+    "experience": 0.2
+}

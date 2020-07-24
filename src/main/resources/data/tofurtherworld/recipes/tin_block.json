@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+      "CCC",
+      "CCC",
+      "CCC"
+    ],
+    "key": {
+      "C": {
+        "item": "tofurtherworld:tin_cube"
+      }
+    },
+    "result": {
+      "item": "tofurtherworld:tin_block",
+      "count": 1
+    }
+  }

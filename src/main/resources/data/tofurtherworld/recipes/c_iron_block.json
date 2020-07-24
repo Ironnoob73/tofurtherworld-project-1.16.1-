@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+      "CCC",
+      "CCC",
+      "CCC"
+    ],
+    "key": {
+      "C": {
+        "item": "tofurtherworld:iron_cube"
+      }
+    },
+    "result": {
+      "item": "tofurtherworld:chiseled_iron_block",
+      "count": 1
+    }
+  }

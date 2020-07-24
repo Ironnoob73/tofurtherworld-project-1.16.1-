@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "tofurtherworld:item/tool/ruggedized_aluminum_pickaxe"
+  }
+}

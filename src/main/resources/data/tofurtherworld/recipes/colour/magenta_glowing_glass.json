@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "glowing_glass",
+  "pattern": [
+    "#A#",
+    "AXA",
+    "#A#"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:glass"
+    },
+    "X": {
+      "item": "minecraft:magenta_dye"
+    },
+    "A": {
+      "item": "minecraft:glowstone_dust"
+    }
+  },
+  "result": {
+    "item": "tofurtherworld:magenta_glowing_glass",
+    "count": 4
+  }
+}

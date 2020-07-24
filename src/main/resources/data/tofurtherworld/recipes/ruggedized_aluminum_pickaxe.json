@@ -1,0 +1,12 @@
+{
+    "type": "minecraft:smithing",
+    "base": {
+      "item": "tofurtherworld:aluminum_pickaxe"
+    },
+    "addition": {
+      "item": "tofurtherworld:carbon_stick"
+    },
+    "result": {
+      "item": "tofurtherworld:ruggedized_aluminum_pickaxe"
+    }
+  }

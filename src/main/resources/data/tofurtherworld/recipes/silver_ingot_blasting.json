@@ -1,0 +1,8 @@
+{
+    "type": "minecraft:blasting",
+    "ingredient":{
+      "item": "tofurtherworld:silver_ore"
+    },
+    "result": "tofurtherworld:silver_ingot",
+    "experience": 0.3
+}

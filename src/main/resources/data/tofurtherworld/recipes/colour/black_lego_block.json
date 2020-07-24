@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "minecraft:black_concrete"
+  },
+  "result": "tofurtherworld:black_lego",
+  "count": 1
+}

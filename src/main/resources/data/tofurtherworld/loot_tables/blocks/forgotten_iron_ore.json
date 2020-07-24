@@ -1,0 +1,62 @@
+{
+  "type": "minecraft:block",
+  "pools":[
+    {
+      "rolls":1,
+      "bonus_rolls":2,
+      "entries": [
+        {
+            "type": "minecraft:item",
+            "name": "minecraft:iron_block",
+            "conditions": [
+              {
+                "condition": "minecraft:match_tool",
+                "predicate": {
+                  "item": "minecraft:stone_pickaxe"
+                }
+              }
+            ]
+        },
+        {
+            "type": "item",
+            "name": "minecraft:iron_block",
+            "conditions": [
+              {
+                "condition": "minecraft:alternative",
+                "terms": [
+                  {
+                    "condition": "minecraft:match_tool",
+                    "predicate": {
+                      "item": "minecraft:iron_pickaxe"
+                    }
+                  },
+                  {
+                    "condition": "minecraft:match_tool",
+                    "predicate": {
+                      "item": "minecraft:diamond_pickaxe"
+                    }
+                  },
+                  {
+                    "condition": "minecraft:match_tool",
+                    "predicate": {
+                      "item": "minecraft:netherite_pickaxe"
+                    }
+                  }
+                ]
+              }
+            ],
+            "functions": [
+              {
+                "function": "minecraft:set_count",
+                "count":{
+                  "type": "minecraft:uniform",
+                  "max": 3,
+                  "min": 1
+                }
+              }
+            ]
+        }
+      ]
+    }
+  ]
+}

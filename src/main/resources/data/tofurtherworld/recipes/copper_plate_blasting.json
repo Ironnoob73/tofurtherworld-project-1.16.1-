@@ -1,0 +1,8 @@
+{
+    "type": "minecraft:blasting",
+    "ingredient":{
+      "item": "tofurtherworld:copper_ingot"
+    },
+    "result": "tofurtherworld:copper_plate",
+    "experience": 0.2
+}

@@ -1,0 +1,6 @@
+{
+    "parent": "tofurtherworld:block/colourful/lego_temp",
+    "textures": {
+        "all": "block/gray_concrete"
+    }
+}

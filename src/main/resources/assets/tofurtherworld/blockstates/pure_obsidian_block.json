@@ -1,0 +1,5 @@
+{ 
+    "variants":{ 
+        "":{ "model":"tofurtherworld:block/obsidian/pure_obsidian_block"} 
+    } 
+}

@@ -1,0 +1,6 @@
+{
+    "parent": "minecraft:item/generated",
+    "textures": {
+      "layer0": "tofurtherworld:item/copper_block_low"
+    }
+  }

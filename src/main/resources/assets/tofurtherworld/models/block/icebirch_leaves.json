@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/leaves",
+  "textures": {
+    "all": "tofurtherworld:block/icebirch_leaves"
+  }
+}

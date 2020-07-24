@@ -1,0 +1,15 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+      "B"
+    ],
+    "key": {
+      "B": {
+        "item": "tofurtherworld:steel_block"
+      }
+    },
+    "result": {
+      "item": "tofurtherworld:steel_ingot",
+      "count": 9
+    }
+  }

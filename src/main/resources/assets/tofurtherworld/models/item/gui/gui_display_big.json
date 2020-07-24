@@ -1,0 +1,26 @@
+{
+	"credit": "Made with Blockbench",
+	"ambientocclusion": false,
+	"textures": {
+		"0": "tfw:gui/shulker_box_over",
+		"2": "#gui",
+		"particle": "tfw:gui/shulker_box_over"
+	},
+	"elements": [
+		{
+			"from": [-16, -16, 8],
+			"to": [32, 32, 8],
+			"faces": {
+				"north": {"uv": [0, 0, 16, 16], "texture": "#0"},
+				"south": {"uv": [0, 0, 16, 16], "texture": "#2"}
+			}
+		}
+	],
+	"gui_light": "front",
+	"display": {
+		"gui": {
+			"translation": [-72, -62, -70],
+			"scale": [3.65, 3.65, 1]
+		}
+	}
+}

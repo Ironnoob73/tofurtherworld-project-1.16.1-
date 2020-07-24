@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "minecraft:blue_stained_glass"
+  },
+  "result": "tofurtherworld:blue_seamless_glass",
+  "count": 1
+}

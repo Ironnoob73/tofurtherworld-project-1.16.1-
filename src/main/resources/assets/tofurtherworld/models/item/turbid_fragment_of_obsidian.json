@@ -1,0 +1,6 @@
+{
+    "parent": "minecraft:item/generated",
+    "textures": {
+      "layer0": "tofurtherworld:item/turbid_fragment_of_obsidian"
+    }
+  }

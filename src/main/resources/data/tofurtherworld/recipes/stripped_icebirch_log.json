@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "tofurtherworld:icebirch_log"
+  },
+  "result": "tofurtherworld:stripped_icebirch_log",
+  "count": 1
+}

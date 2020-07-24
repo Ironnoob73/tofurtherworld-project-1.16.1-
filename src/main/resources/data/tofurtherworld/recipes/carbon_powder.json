@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "minecraft:coal"
+  },
+  "result": "tofurtherworld:carbon_powder",
+  "count": 2
+}

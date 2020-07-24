@@ -1,0 +1,12 @@
+{
+    "type": "minecraft:smithing",
+    "base": {
+      "item": "tofurtherworld:copper_shovel"
+    },
+    "addition": {
+      "item": "tofurtherworld:aluminum_plate"
+    },
+    "result": {
+      "item": "tofurtherworld:aluminum_shovel"
+    }
+  }

@@ -1,0 +1,15 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "group":"tofurtherworld:copper_tool_make",
+    "ingredients": [
+        {
+            "item": "minecraft:stick"
+        },
+        {
+            "item": "tofurtherworld:copper_axe_part"
+        }
+    ],
+    "result": {
+        "item": "tofurtherworld:copper_axe"
+    }
+}

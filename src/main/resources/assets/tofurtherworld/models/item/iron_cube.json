@@ -1,0 +1,6 @@
+{
+    "parent": "minecraft:item/generated",
+    "textures": {
+      "layer0": "tofurtherworld:item/iron_block_low"
+    }
+  }

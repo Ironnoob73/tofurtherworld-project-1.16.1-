@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+      "CCC",
+      "CCC",
+      "CCC"
+    ],
+    "key": {
+      "C": {
+        "item": "tofurtherworld:silver_cube"
+      }
+    },
+    "result": {
+      "item": "tofurtherworld:silver_block",
+      "count": 1
+    }
+  }

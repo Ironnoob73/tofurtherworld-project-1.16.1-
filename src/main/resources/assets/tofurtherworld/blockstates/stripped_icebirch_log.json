@@ -1,0 +1,16 @@
+{
+    "variants": {
+      "axis=x": {
+        "model": "tofurtherworld:block/stripped_icebirch_log_horizontal",
+        "x": 90,
+        "y": 90
+      },
+      "axis=y": {
+        "model": "tofurtherworld:block/stripped_icebirch_log"
+      },
+      "axis=z": {
+        "model": "tofurtherworld:block/stripped_icebirch_log_horizontal",
+        "x": 90
+      }
+    }
+  }

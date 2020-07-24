@@ -1,0 +1,8 @@
+{
+    "type": "minecraft:smelting",
+    "ingredient":{
+      "item": "tofurtherworld:tin_ore"
+    },
+    "result": "tofurtherworld:tin_ingot",
+    "experience": 0.3
+}

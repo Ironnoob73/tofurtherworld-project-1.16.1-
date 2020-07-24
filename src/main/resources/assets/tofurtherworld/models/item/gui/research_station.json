@@ -1,0 +1,6 @@
+{
+	"parent":"tfw:item/gui/gui_display_big",
+	"textures": {
+		"gui": "tfw:gui/research_station"
+	}
+}

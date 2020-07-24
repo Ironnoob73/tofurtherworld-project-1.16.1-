@@ -1,0 +1,8 @@
+{ 
+    "variants":{ 
+        "facing=north": { "model": "tofurtherworld:block/drawer_1", "y": 180 },
+        "facing=east":  { "model": "tofurtherworld:block/drawer_1", "y": 270 },
+        "facing=south": { "model": "tofurtherworld:block/drawer_1" },
+        "facing=west":  { "model": "tofurtherworld:block/drawer_1", "y": 90 }
+    } 
+}

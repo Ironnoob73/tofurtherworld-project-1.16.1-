@@ -1,0 +1,5 @@
+{ 
+    "variants":{ 
+        "":{ "model":"tofurtherworld:block/old_command_block"} 
+    } 
+}

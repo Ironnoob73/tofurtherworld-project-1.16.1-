@@ -1,0 +1,8 @@
+{
+    "type": "minecraft:blasting",
+    "ingredient":{
+      "item": "tofurtherworld:gold_powder"
+    },
+    "result": "minecraft:gold_ingot",
+    "experience": 0.5
+}

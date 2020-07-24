@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "tofurtherworld:block/icebirch_planks"
+  }
+}

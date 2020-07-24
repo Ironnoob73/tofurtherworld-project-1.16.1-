@@ -1,0 +1,12 @@
+{
+    "type": "minecraft:smithing",
+    "base": {
+      "item": "minecraft:iron_hoe"
+    },
+    "addition": {
+      "item": "tofurtherworld:steel_ingot"
+    },
+    "result": {
+      "item": "tofurtherworld:steel_hoe"
+    }
+  }

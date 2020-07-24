@@ -1,0 +1,6 @@
+{
+    "parent": "block/cube_all",
+    "textures": {
+        "all": "tofurtherworld:block/colourful/brown_seamless_glass"
+    }
+}

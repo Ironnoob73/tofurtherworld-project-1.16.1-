@@ -1,0 +1,23 @@
+{
+	"credit": "Made with Blockbench",
+	"parent": "tfw:block/machine_display",
+	"textures": {
+		"0": "minecraft:block/furnace_top",
+		"2": "minecraft:block/furnace_front",
+		"3": "minecraft:block/furnace_side",
+		"particle": "minecraft:block/furnace_top"
+	},
+	"elements": [
+		{
+			"from": [0, 0, 0],
+			"to": [16, 16, 16],
+			"faces": {
+				"north": {"uv": [0, 0, 16, 16], "texture": "#3"},
+				"east": {"uv": [0, 0, 16, 16], "texture": "#3"},
+				"south": {"uv": [0, 0, 16, 16], "texture": "#2"},
+				"west": {"uv": [0, 0, 16, 16], "texture": "#3"},
+				"up": {"uv": [0, 0, 16, 16], "texture": "#0"}
+			}
+		}
+	]
+}

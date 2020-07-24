@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "package": "idv.ironnoobseventhree.tofurtherworld.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+    "MixinMain"
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

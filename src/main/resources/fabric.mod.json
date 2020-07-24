@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "id": "tofurtherworld",
+  "version": "0.1.1",
+
+  "name": "To Further World",
+  "description": "description",
+  "authors": [
+    "Iron_noob_73"
+  ],
+  "contact": {
+    "homepage": "https://fabricmc.net/",
+    "sources": "https://github.com/FabricMC/fabric-example-mod"
+  },
+
+  "license": "CC0-1.0",
+  "icon": "assets/tofurtherworld/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "idv.ironnoobseventhree.tofurtherworld.Core"
+    ],
+    "client": [
+      "idv.ironnoobseventhree.tofurtherworld.CliF"
+    ]
+  },
+  "mixins": [
+    "tofurtherworld.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.8.7",
+    "fabric": "*",
+    "fabric-language-kotlin": "*",
+    "minecraft": "1.16.x"
+  },
+  "suggests": {
+    "flamingo": "*"
+  }
+}

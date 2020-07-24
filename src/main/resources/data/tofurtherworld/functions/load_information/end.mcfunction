@@ -1,0 +1,1 @@
+tellraw @a {"translate": "inf.load.end"}

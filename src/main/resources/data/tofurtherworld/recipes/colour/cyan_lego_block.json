@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "minecraft:cyan_concrete"
+  },
+  "result": "tofurtherworld:cyan_lego",
+  "count": 1
+}

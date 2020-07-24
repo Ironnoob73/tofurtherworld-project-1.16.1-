@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+      "GGG",
+      "GGG",
+      "GGG"
+    ],
+    "key": {
+      "G": {
+        "item": "tofurtherworld:topaz"
+      }
+    },
+    "result": {
+      "item": "tofurtherworld:topaz_block",
+      "count": 1
+    }
+  }

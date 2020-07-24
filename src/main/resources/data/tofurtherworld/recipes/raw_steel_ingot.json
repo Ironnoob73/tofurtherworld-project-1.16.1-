@@ -1,0 +1,19 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+      "III",
+      "FFF"
+    ],
+    "key": {
+      "I": {
+        "item": "tofurtherworld:iron_cube"
+      },
+      "F": {
+        "item": "tofurtherworld:carbon_powder"
+      }
+    },
+    "result": {
+      "item": "tofurtherworld:raw_steel_ingot",
+      "count": 1
+    }
+  }

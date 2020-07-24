@@ -1,0 +1,16 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+      "II",
+      "II"
+    ],
+    "key": {
+      "I": {
+        "item": "tofurtherworld:tin_ingot"
+      }
+    },
+    "result": {
+      "item": "tofurtherworld:tin_cube",
+      "count": 1
+    }
+  }

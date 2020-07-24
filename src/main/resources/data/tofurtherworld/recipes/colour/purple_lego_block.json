@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "minecraft:purple_concrete"
+  },
+  "result": "tofurtherworld:purple_lego",
+  "count": 1
+}

@@ -1,0 +1,12 @@
+{
+    "type": "minecraft:smithing",
+    "base": {
+      "item": "tofurtherworld:aluminum_axe"
+    },
+    "addition": {
+      "item": "tofurtherworld:carbon_stick"
+    },
+    "result": {
+      "item": "tofurtherworld:ruggedized_aluminum_axe"
+    }
+  }

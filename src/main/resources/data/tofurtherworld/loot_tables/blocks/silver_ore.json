@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:block",
+  "pools":[
+    {
+      "rolls":1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "tofurtherworld:silver_powder"
+        }
+      ],
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "functions": [
+        {
+          "function": "minecraft:set_count",
+          "count":{
+            "type": "minecraft:uniform",
+            "max": 5,
+            "min": 2
+          }
+        }
+      ]
+    }
+  ]
+}

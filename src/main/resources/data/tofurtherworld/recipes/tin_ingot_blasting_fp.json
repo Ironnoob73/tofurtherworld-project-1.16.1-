@@ -1,0 +1,8 @@
+{
+    "type": "minecraft:blasting",
+    "ingredient":{
+      "item": "tofurtherworld:tin_powder"
+    },
+    "result": "tofurtherworld:tin_ingot",
+    "experience": 0.5
+}

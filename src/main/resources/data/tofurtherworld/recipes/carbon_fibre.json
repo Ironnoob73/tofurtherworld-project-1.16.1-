@@ -1,0 +1,8 @@
+{
+    "type": "minecraft:blasting",
+    "ingredient":{
+      "item": "tofurtherworld:carbon_powder"
+    },
+    "result": "tofurtherworld:carbon_fibre",
+    "experience": 0.2
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "tofurtherworld:block/icebirch_log_top",
+    "side": "tofurtherworld:block/icebirch_log"
+  }
+}

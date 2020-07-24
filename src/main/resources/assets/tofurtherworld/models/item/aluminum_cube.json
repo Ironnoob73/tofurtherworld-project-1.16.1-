@@ -1,0 +1,6 @@
+{
+    "parent": "minecraft:item/generated",
+    "textures": {
+      "layer0": "tofurtherworld:item/aluminum_block_low"
+    }
+  }

@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+      "CCC",
+      "CCC",
+      "CCC"
+    ],
+    "key": {
+      "C": {
+        "item": "tofurtherworld:lead_cube"
+      }
+    },
+    "result": {
+      "item": "tofurtherworld:lead_block",
+      "count": 1
+    }
+  }

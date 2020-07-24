@@ -1,0 +1,6 @@
+{
+	"parent":"tfw:item/gui/gui_display",
+	"textures": {
+		"gui": "tfw:gui/research_station_common_material"
+	}
+}

@@ -1,6 +1,5 @@
 package idv.ironnoobseventhree.tofurtherworld.block;
 
-import idv.ironnoobseventhree.tofurtherworld.gui.ForgingTableL1Screen;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -35,9 +34,4 @@ public class ForgingTableL1 extends Block {
         }
     }
 
-    public NamedScreenHandlerFactory createScreenHandlerFactory(BlockState state, World world, BlockPos pos) {
-        return new SimpleNamedScreenHandlerFactory((i, playerInventory, playerEntity) -> {
-            return new ForgingTableL1Screen(i, playerInventory, ScreenHandlerContext.create(world, pos));
-        }, TITLE);
-    }
 }

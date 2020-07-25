@@ -270,164 +270,164 @@ public class Core implements ModInitializer {
     @Override
     public void onInitialize() {
         //Base Item
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "copper_ingot"), CopperIngot);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "copper_powder"), CopperPowder);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "copper_plate"), CopperPlate);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "copper_cube"), CopperCube);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "aluminum_ingot"), AluminumIngot);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "aluminum_powder"), AluminumPowder);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "aluminum_plate"), AluminumPlate);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "aluminum_cube"), AluminumCube);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "iron_powder"), IronPowder);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "iron_plate"), IronPlate);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "iron_cube"), IronCube);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "gold_powder"), GoldPowder);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "gold_cube"), GoldCube);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "carbon_fibre"), CarbonFibre);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "carbon_powder"), CarbonPowder);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "carbon_plate"), CarbonPlate);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "carbon_stick"), CarbonStick);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "tin_ingot"), TinIngot);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "tin_powder"), TinPowder);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "tin_plate"), TinPlate);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "tin_cube"), TinCube);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "lead_ingot"), LeadIngot);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "lead_powder"), LeadPowder);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "lead_plate"), LeadPlate);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "lead_cube"), LeadCube);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "silver_ingot"), SilverIngot);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "silver_powder"), SilverPowder);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "silver_plate"), SilverPlate);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "silver_cube"), SilverCube);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "stone_ingot"), StoneIngot);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "stone_plate"), StonePlate);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "rust"), Rust);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "rusty_iron_ingot"), RustyIronIngot);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "steel_ingot"), SteelIngot);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "raw_steel_ingot"), RawSteelIngot);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "copper_ingot"), CopperIngot);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "copper_powder"), CopperPowder);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "copper_plate"), CopperPlate);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "copper_cube"), CopperCube);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "aluminum_ingot"), AluminumIngot);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "aluminum_powder"), AluminumPowder);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "aluminum_plate"), AluminumPlate);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "aluminum_cube"), AluminumCube);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "iron_powder"), IronPowder);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "iron_plate"), IronPlate);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "iron_cube"), IronCube);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "gold_powder"), GoldPowder);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "gold_cube"), GoldCube);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "carbon_fibre"), CarbonFibre);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "carbon_powder"), CarbonPowder);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "carbon_plate"), CarbonPlate);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "carbon_stick"), CarbonStick);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "tin_ingot"), TinIngot);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "tin_powder"), TinPowder);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "tin_plate"), TinPlate);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "tin_cube"), TinCube);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "lead_ingot"), LeadIngot);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "lead_powder"), LeadPowder);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "lead_plate"), LeadPlate);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "lead_cube"), LeadCube);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "silver_ingot"), SilverIngot);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "silver_powder"), SilverPowder);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "silver_plate"), SilverPlate);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "silver_cube"), SilverCube);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "stone_ingot"), StoneIngot);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "stone_plate"), StonePlate);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "rust"), Rust);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "rusty_iron_ingot"), RustyIronIngot);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "steel_ingot"), SteelIngot);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "raw_steel_ingot"), RawSteelIngot);
         //Nature Item
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "tiny_rock"), TinyRock);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "stone_chippings"), StoneChippings);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "rich_ore_stone_chippings"), RichOreStoneChippings);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "tiny_flint"), TinyFlint);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "bone_fragments"), BoneFragments);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "grass_stem"), GrassStem);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "rattan"), Rattan);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "soil_heaps"), SoilHeaps);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "wooden_staff"), WoodenStaff);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "turbid_fragment_of_obsidian"), TurbidFragmentOfObsidian);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "pure_fragment_of_obsidian"), PureFragmentOfObsidian);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "turbid_obsidian"), TurbidObsidian);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "pure_obsidian"), PureObsidian);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "tiny_rock"), TinyRock);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "stone_chippings"), StoneChippings);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "rich_ore_stone_chippings"), RichOreStoneChippings);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "tiny_flint"), TinyFlint);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "bone_fragments"), BoneFragments);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "grass_stem"), GrassStem);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "rattan"), Rattan);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "soil_heaps"), SoilHeaps);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "wooden_staff"), WoodenStaff);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "turbid_fragment_of_obsidian"), TurbidFragmentOfObsidian);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "pure_fragment_of_obsidian"), PureFragmentOfObsidian);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "turbid_obsidian"), TurbidObsidian);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "pure_obsidian"), PureObsidian);
         //Food
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "apple_piece"), ApplePiece);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "apple_piece"), ApplePiece);
         //Magic Item
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "ruby"), Ruby);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "sapphire"), Sapphire);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "topaz"), Topaz);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "nether_wart_slurries"), NetherWartSlurries);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "warped_wart_slurries"), WarpedWartSlurries);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "blackgold_ingot"), BlackgoldIngot);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "end_pearl"), EndPearl);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "end_pearl_powder"), EndPearlPowder);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "end_pearl_stick"), EndPearlStick);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "ruby"), Ruby);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "sapphire"), Sapphire);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "topaz"), Topaz);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "nether_wart_slurries"), NetherWartSlurries);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "warped_wart_slurries"), WarpedWartSlurries);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "blackgold_ingot"), BlackgoldIngot);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "end_pearl"), EndPearl);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "end_pearl_powder"), EndPearlPowder);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "end_pearl_stick"), EndPearlStick);
         //Special
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "pda"), PDA);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "copper_wrench"), CopperWrench);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "blueprint"), Blueprint);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "empty_blueprint"), EmptyBlueprint);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "pda"), PDA);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "copper_wrench"), CopperWrench);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "blueprint"), Blueprint);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "empty_blueprint"), EmptyBlueprint);
         //Tool
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "rough_hatchet"), RoughHatchet);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "rough_knife"), RoughKnife);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "copper_axe_part"), CopperAxePart);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "copper_sword_part"), CopperSwordPart);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "copper_pickaxe_part"), CopperPickaxePart);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "copper_shovel_part"), CopperShovelPart);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "copper_hoe_part"), CopperHoePart);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "copper_axe"), CopperAxe);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "copper_sword"), CopperSword);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "copper_pickaxe"), CopperPickaxe);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "copper_shovel"), CopperShovel);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "copper_hoe"), CopperHoe);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "aluminum_axe"), AluminumAxe);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "aluminum_sword"), AluminumSword);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "aluminum_pickaxe"), AluminumPickaxe);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "aluminum_shovel"), AluminumShovel);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "aluminum_hoe"), AluminumHoe);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "only_iron_axe"), OnlyIronAxe);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "only_iron_sword"), OnlyIronSword);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "only_iron_pickaxe"), OnlyIronPickaxe);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "only_iron_shovel"), OnlyIronShovel);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "only_iron_hoe"), OnlyIronHoe);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "ruggedized_aluminum_axe"), RuggedizedAluminumAxe);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "ruggedized_aluminum_sword"), RuggedizedAluminumSword);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "ruggedized_aluminum_pickaxe"), RuggedizedAluminumPickaxe);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "ruggedized_aluminum_shovel"), RuggedizedAluminumShovel);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "ruggedized_aluminum_hoe"), RuggedizedAluminumHoe);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "stonebrick_axe"), StoneBrickAxe);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "stonebrick_sword"), StoneBrickSword);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "stonebrick_pickaxe"), StoneBrickPickaxe);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "stonebrick_shovel"), StoneBrickShovel);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "stonebrick_hoe"), StoneBrickHoe);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "steel_axe"), SteelAxe);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "steel_sword"), SteelSword);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "steel_pickaxe"), SteelPickaxe);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "steel_shovel"), SteelShovel);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "steel_hoe"), SteelHoe);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "obsidian_axe"), ObsidianAxe);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "obsidian_sword"), ObsidianSword);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "obsidian_pickaxe"), ObsidianPickaxe);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "obsidian_shovel"), ObsidianShovel);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "obsidian_hoe"), ObsidianHoe);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "rough_hatchet"), RoughHatchet);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "rough_knife"), RoughKnife);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "copper_axe_part"), CopperAxePart);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "copper_sword_part"), CopperSwordPart);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "copper_pickaxe_part"), CopperPickaxePart);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "copper_shovel_part"), CopperShovelPart);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "copper_hoe_part"), CopperHoePart);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "copper_axe"), CopperAxe);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "copper_sword"), CopperSword);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "copper_pickaxe"), CopperPickaxe);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "copper_shovel"), CopperShovel);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "copper_hoe"), CopperHoe);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "aluminum_axe"), AluminumAxe);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "aluminum_sword"), AluminumSword);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "aluminum_pickaxe"), AluminumPickaxe);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "aluminum_shovel"), AluminumShovel);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "aluminum_hoe"), AluminumHoe);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "only_iron_axe"), OnlyIronAxe);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "only_iron_sword"), OnlyIronSword);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "only_iron_pickaxe"), OnlyIronPickaxe);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "only_iron_shovel"), OnlyIronShovel);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "only_iron_hoe"), OnlyIronHoe);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "ruggedized_aluminum_axe"), RuggedizedAluminumAxe);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "ruggedized_aluminum_sword"), RuggedizedAluminumSword);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "ruggedized_aluminum_pickaxe"), RuggedizedAluminumPickaxe);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "ruggedized_aluminum_shovel"), RuggedizedAluminumShovel);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "ruggedized_aluminum_hoe"), RuggedizedAluminumHoe);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "stonebrick_axe"), StoneBrickAxe);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "stonebrick_sword"), StoneBrickSword);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "stonebrick_pickaxe"), StoneBrickPickaxe);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "stonebrick_shovel"), StoneBrickShovel);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "stonebrick_hoe"), StoneBrickHoe);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "steel_axe"), SteelAxe);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "steel_sword"), SteelSword);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "steel_pickaxe"), SteelPickaxe);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "steel_shovel"), SteelShovel);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "steel_hoe"), SteelHoe);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "obsidian_axe"), ObsidianAxe);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "obsidian_sword"), ObsidianSword);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "obsidian_pickaxe"), ObsidianPickaxe);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "obsidian_shovel"), ObsidianShovel);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "obsidian_hoe"), ObsidianHoe);
         //Material Block
-        Registry.register(Registry.BLOCK, new Identifier("tofurtherworld", "test_ore"),TestOre);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "test_ore"), new BlockItem(TestOre, new Item.Settings()));
-        Registry.register(Registry.BLOCK, new Identifier("tofurtherworld", "forgotten_iron_ore"), ForgottenIronOre);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "forgotten_iron_ore"), new BlockItem(ForgottenIronOre, new Item.Settings()));
-        Registry.register(Registry.BLOCK, new Identifier("tofurtherworld", "chiseled_iron_block"), ChiseledIronBlock);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "chiseled_iron_block"), new BlockItem(ChiseledIronBlock, new Item.Settings()));
-        Registry.register(Registry.BLOCK, new Identifier("tofurtherworld", "copper_ore"), CopperOre);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "copper_ore"), new BlockItem(CopperOre, new Item.Settings()));
-        Registry.register(Registry.BLOCK, new Identifier("tofurtherworld", "copper_block"), CopperBlock);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "copper_block"), new BlockItem(CopperBlock, new Item.Settings()));
-        Registry.register(Registry.BLOCK, new Identifier("tofurtherworld", "aluminum_ore"), AluminumOre);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "aluminum_ore"), new BlockItem(AluminumOre, new Item.Settings()));
-        Registry.register(Registry.BLOCK, new Identifier("tofurtherworld", "aluminum_block"), AluminumBlock);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "aluminum_block"), new BlockItem(AluminumBlock, new Item.Settings()));
-        Registry.register(Registry.BLOCK, new Identifier("tofurtherworld", "tin_ore"), TinOre);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "tin_ore"), new BlockItem(TinOre, new Item.Settings()));
-        Registry.register(Registry.BLOCK, new Identifier("tofurtherworld", "tin_block"), TinBlock);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "tin_block"), new BlockItem(TinBlock, new Item.Settings()));
-        Registry.register(Registry.BLOCK, new Identifier("tofurtherworld", "lead_ore"), LeadOre);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "lead_ore"), new BlockItem(LeadOre, new Item.Settings()));
-        Registry.register(Registry.BLOCK, new Identifier("tofurtherworld", "lead_block"), LeadBlock);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "lead_block"), new BlockItem(LeadBlock, new Item.Settings()));
-        Registry.register(Registry.BLOCK, new Identifier("tofurtherworld", "silver_ore"), SilverOre);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "silver_ore"), new BlockItem(SilverOre, new Item.Settings()));
-        Registry.register(Registry.BLOCK, new Identifier("tofurtherworld", "silver_block"), SilverBlock);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "silver_block"), new BlockItem(SilverBlock, new Item.Settings()));
-        Registry.register(Registry.BLOCK, new Identifier("tofurtherworld", "old_command_block"), OldCommandBlock);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "old_command_block"), new BlockItem(OldCommandBlock, new Item.Settings()));
-        Registry.register(Registry.BLOCK, new Identifier("tofurtherworld", "old_reactor"), OldReactor);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "old_reactor"), new BlockItem(OldReactor, new Item.Settings()));
-        Registry.register(Registry.BLOCK, new Identifier("tofurtherworld", "ruby_ore"), RubyOre);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "ruby_ore"), new BlockItem(RubyOre, new Item.Settings()));
-        Registry.register(Registry.BLOCK, new Identifier("tofurtherworld", "ruby_block"), RubyBlock);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "ruby_block"), new BlockItem(RubyBlock, new Item.Settings()));
-        Registry.register(Registry.BLOCK, new Identifier("tofurtherworld", "sapphire_ore"), SapphireOre);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "sapphire_ore"), new BlockItem(SapphireOre, new Item.Settings()));
-        Registry.register(Registry.BLOCK, new Identifier("tofurtherworld", "sapphire_block"), SapphireBlock);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "sapphire_block"), new BlockItem(SapphireBlock, new Item.Settings()));
-        Registry.register(Registry.BLOCK, new Identifier("tofurtherworld", "topaz_ore"), TopazOre);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "topaz_ore"), new BlockItem(TopazOre, new Item.Settings()));
-        Registry.register(Registry.BLOCK, new Identifier("tofurtherworld", "topaz_block"), TopazBlock);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "topaz_block"), new BlockItem(TopazBlock, new Item.Settings()));
-        Registry.register(Registry.BLOCK, new Identifier("tofurtherworld", "steel_block"), SteelBlock);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "steel_block"), new BlockItem(SteelBlock, new Item.Settings()));
-        Registry.register(Registry.BLOCK, new Identifier("tofurtherworld", "turbid_obsidian_block"), TurbidObsidianBlock);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "turbid_obsidian_block"), new BlockItem(TurbidObsidianBlock, new Item.Settings()));
-        Registry.register(Registry.BLOCK, new Identifier("tofurtherworld", "pure_obsidian_block"), PureObsidianBlock);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "pure_obsidian_block"), new BlockItem(PureObsidianBlock, new Item.Settings()));
+        Registry.register(Registry.BLOCK, new Identifier(MODID, "test_ore"),TestOre);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "test_ore"), new BlockItem(TestOre, new Item.Settings()));
+        Registry.register(Registry.BLOCK, new Identifier(MODID, "forgotten_iron_ore"), ForgottenIronOre);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "forgotten_iron_ore"), new BlockItem(ForgottenIronOre, new Item.Settings()));
+        Registry.register(Registry.BLOCK, new Identifier(MODID, "chiseled_iron_block"), ChiseledIronBlock);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "chiseled_iron_block"), new BlockItem(ChiseledIronBlock, new Item.Settings()));
+        Registry.register(Registry.BLOCK, new Identifier(MODID, "copper_ore"), CopperOre);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "copper_ore"), new BlockItem(CopperOre, new Item.Settings()));
+        Registry.register(Registry.BLOCK, new Identifier(MODID, "copper_block"), CopperBlock);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "copper_block"), new BlockItem(CopperBlock, new Item.Settings()));
+        Registry.register(Registry.BLOCK, new Identifier(MODID, "aluminum_ore"), AluminumOre);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "aluminum_ore"), new BlockItem(AluminumOre, new Item.Settings()));
+        Registry.register(Registry.BLOCK, new Identifier(MODID, "aluminum_block"), AluminumBlock);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "aluminum_block"), new BlockItem(AluminumBlock, new Item.Settings()));
+        Registry.register(Registry.BLOCK, new Identifier(MODID, "tin_ore"), TinOre);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "tin_ore"), new BlockItem(TinOre, new Item.Settings()));
+        Registry.register(Registry.BLOCK, new Identifier(MODID, "tin_block"), TinBlock);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "tin_block"), new BlockItem(TinBlock, new Item.Settings()));
+        Registry.register(Registry.BLOCK, new Identifier(MODID, "lead_ore"), LeadOre);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "lead_ore"), new BlockItem(LeadOre, new Item.Settings()));
+        Registry.register(Registry.BLOCK, new Identifier(MODID, "lead_block"), LeadBlock);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "lead_block"), new BlockItem(LeadBlock, new Item.Settings()));
+        Registry.register(Registry.BLOCK, new Identifier(MODID, "silver_ore"), SilverOre);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "silver_ore"), new BlockItem(SilverOre, new Item.Settings()));
+        Registry.register(Registry.BLOCK, new Identifier(MODID, "silver_block"), SilverBlock);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "silver_block"), new BlockItem(SilverBlock, new Item.Settings()));
+        Registry.register(Registry.BLOCK, new Identifier(MODID, "old_command_block"), OldCommandBlock);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "old_command_block"), new BlockItem(OldCommandBlock, new Item.Settings()));
+        Registry.register(Registry.BLOCK, new Identifier(MODID, "old_reactor"), OldReactor);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "old_reactor"), new BlockItem(OldReactor, new Item.Settings()));
+        Registry.register(Registry.BLOCK, new Identifier(MODID, "ruby_ore"), RubyOre);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "ruby_ore"), new BlockItem(RubyOre, new Item.Settings()));
+        Registry.register(Registry.BLOCK, new Identifier(MODID, "ruby_block"), RubyBlock);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "ruby_block"), new BlockItem(RubyBlock, new Item.Settings()));
+        Registry.register(Registry.BLOCK, new Identifier(MODID, "sapphire_ore"), SapphireOre);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "sapphire_ore"), new BlockItem(SapphireOre, new Item.Settings()));
+        Registry.register(Registry.BLOCK, new Identifier(MODID, "sapphire_block"), SapphireBlock);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "sapphire_block"), new BlockItem(SapphireBlock, new Item.Settings()));
+        Registry.register(Registry.BLOCK, new Identifier(MODID, "topaz_ore"), TopazOre);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "topaz_ore"), new BlockItem(TopazOre, new Item.Settings()));
+        Registry.register(Registry.BLOCK, new Identifier(MODID, "topaz_block"), TopazBlock);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "topaz_block"), new BlockItem(TopazBlock, new Item.Settings()));
+        Registry.register(Registry.BLOCK, new Identifier(MODID, "steel_block"), SteelBlock);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "steel_block"), new BlockItem(SteelBlock, new Item.Settings()));
+        Registry.register(Registry.BLOCK, new Identifier(MODID, "turbid_obsidian_block"), TurbidObsidianBlock);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "turbid_obsidian_block"), new BlockItem(TurbidObsidianBlock, new Item.Settings()));
+        Registry.register(Registry.BLOCK, new Identifier(MODID, "pure_obsidian_block"), PureObsidianBlock);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "pure_obsidian_block"), new BlockItem(PureObsidianBlock, new Item.Settings()));
         //Colour Block
         Registry.register(Registry.BLOCK, new Identifier("tofurtherworld", "white_lego"),WhiteLego);
         Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "white_lego"), new BlockItem(WhiteLego, new Item.Settings()));
@@ -543,27 +543,27 @@ public class Core implements ModInitializer {
         Registry.register(Registry.BLOCK, new Identifier("tofurtherworld", "forging_table_l1"), ForgingTableL1);
         Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "forging_table_l1"), new BlockItem(ForgingTableL1, new Item.Settings()));
         //Nature block
-        Registry.register(Registry.BLOCK, new Identifier("tofurtherworld", "apple_block"), AppleBlock);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "apple_block"), new BlockItem(AppleBlock, new Item.Settings()));
-        Registry.register(Registry.BLOCK, new Identifier("tofurtherworld", "icebirch_sapling"), IceBirchSapling);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "icebirch_sapling"), new BlockItem(IceBirchSapling, new Item.Settings()));
-        Registry.register(Registry.BLOCK, new Identifier("tofurtherworld", "icebirch_log"), IceBirchLog);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "icebirch_log"), new BlockItem(IceBirchLog, new Item.Settings()));
-        Registry.register(Registry.BLOCK, new Identifier("tofurtherworld", "icebirch_leaves"), IceBirchLeaves);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "icebirch_leaves"), new BlockItem(IceBirchLeaves, new Item.Settings()));
-        Registry.register(Registry.BLOCK, new Identifier("tofurtherworld", "icebirch_planks"), IceBirchPlanks);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "icebirch_planks"), new BlockItem(IceBirchPlanks, new Item.Settings()));
-        Registry.register(Registry.BLOCK, new Identifier("tofurtherworld", "stripped_icebirch_log"), StrippedIceBirchLog);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "stripped_icebirch_log"), new BlockItem(StrippedIceBirchLog, new Item.Settings()));
-        Registry.register(Registry.BLOCK, new Identifier("tofurtherworld", "frozen_bush"), FrozenBush);
-        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "frozen_bush"), new BlockItem(FrozenBush, new Item.Settings()));
+        Registry.register(Registry.BLOCK, new Identifier(MODID, "apple_block"), AppleBlock);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "apple_block"), new BlockItem(AppleBlock, new Item.Settings()));
+        Registry.register(Registry.BLOCK, new Identifier(MODID, "icebirch_sapling"), IceBirchSapling);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "icebirch_sapling"), new BlockItem(IceBirchSapling, new Item.Settings()));
+        Registry.register(Registry.BLOCK, new Identifier(MODID, "icebirch_log"), IceBirchLog);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "icebirch_log"), new BlockItem(IceBirchLog, new Item.Settings()));
+        Registry.register(Registry.BLOCK, new Identifier(MODID, "icebirch_leaves"), IceBirchLeaves);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "icebirch_leaves"), new BlockItem(IceBirchLeaves, new Item.Settings()));
+        Registry.register(Registry.BLOCK, new Identifier(MODID, "icebirch_planks"), IceBirchPlanks);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "icebirch_planks"), new BlockItem(IceBirchPlanks, new Item.Settings()));
+        Registry.register(Registry.BLOCK, new Identifier(MODID, "stripped_icebirch_log"), StrippedIceBirchLog);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "stripped_icebirch_log"), new BlockItem(StrippedIceBirchLog, new Item.Settings()));
+        Registry.register(Registry.BLOCK, new Identifier(MODID, "frozen_bush"), FrozenBush);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "frozen_bush"), new BlockItem(FrozenBush, new Item.Settings()));
         //Biome
         OverworldBiomes.addContinentalBiome(BiomeMain.PoorDesert,OverworldClimate.TEMPERATE,2D);
         OverworldBiomes.addContinentalBiome(BiomeMain.PoorDesert,OverworldClimate.COOL,2D);
         OverworldBiomes.addBiomeVariant(Biomes.DESERT,BiomeMain.PoorDesert,0.0001);
     }
     public static final ItemGroup MATERIAL = FabricItemGroupBuilder.create(
-            new Identifier("tofurtherworld", "material"))
+            new Identifier(MODID, "material"))
             .icon(() -> new ItemStack(AluminumIngot))
             .appendItems(stacks ->{
                 stacks.add(new ItemStack(CopperIngot));
@@ -627,7 +627,7 @@ public class Core implements ModInitializer {
                     }
             ).build();
     public static final ItemGroup BLOCK = FabricItemGroupBuilder.create(
-            new Identifier("tofurtherworld", "block"))
+            new Identifier(MODID, "block"))
             .icon(() -> new ItemStack(TestOre))
             .appendItems(stacks ->{
                 stacks.add(new ItemStack(TestOre));
@@ -715,7 +715,7 @@ public class Core implements ModInitializer {
                     }
             ).build();
     public static final ItemGroup ITEM = FabricItemGroupBuilder.create(
-            new Identifier("tofurtherworld", "item"))
+            new Identifier(MODID, "item"))
             .icon(() -> new ItemStack(PDA))
             .appendItems(stacks ->{
                 stacks.add(new ItemStack(PDA));
@@ -725,7 +725,7 @@ public class Core implements ModInitializer {
                     }
             ).build();
     public static final ItemGroup TOOL = FabricItemGroupBuilder.create(
-            new Identifier("tofurtherworld", "tool"))
+            new Identifier(MODID, "tool"))
             .icon(() -> new ItemStack(RoughHatchet))
             .appendItems(stacks ->{
                 stacks.add(new ItemStack(RoughHatchet));

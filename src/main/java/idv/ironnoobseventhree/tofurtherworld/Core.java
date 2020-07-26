@@ -8,6 +8,7 @@ import idv.ironnoobseventhree.tofurtherworld.block.Facing;
 import idv.ironnoobseventhree.tofurtherworld.block.sapling.FrozenBushBlock;
 import idv.ironnoobseventhree.tofurtherworld.block.sapling.IceBirch;
 import idv.ironnoobseventhree.tofurtherworld.block.sapling.SaplingMain;
+import idv.ironnoobseventhree.tofurtherworld.dimension.OldAge;
 import idv.ironnoobseventhree.tofurtherworld.tool.*;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.biomes.v1.OverworldBiomes;
@@ -558,9 +559,7 @@ public class Core implements ModInitializer {
         Registry.register(Registry.BLOCK, new Identifier(MODID, "frozen_bush"), FrozenBush);
         Registry.register(Registry.ITEM, new Identifier(MODID, "frozen_bush"), new BlockItem(FrozenBush, new Item.Settings()));
         //Biome
-        OverworldBiomes.addContinentalBiome(BiomeMain.PoorDesert,OverworldClimate.TEMPERATE,2D);
-        OverworldBiomes.addContinentalBiome(BiomeMain.PoorDesert,OverworldClimate.COOL,2D);
-        OverworldBiomes.addBiomeVariant(Biomes.DESERT,BiomeMain.PoorDesert,0.0001);
+        OverworldBiomes.addBiomeVariant(Biomes.DESERT,BiomeMain.PoorDesert,0.1);
     }
     public static final ItemGroup MATERIAL = FabricItemGroupBuilder.create(
             new Identifier(MODID, "material"))

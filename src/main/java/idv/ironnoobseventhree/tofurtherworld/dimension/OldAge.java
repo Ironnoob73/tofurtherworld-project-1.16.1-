@@ -5,8 +5,6 @@ import static net.minecraft.server.command.CommandManager.literal;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 
-import com.sun.media.sound.ModelStandardIndexedDirector;
-import idv.ironnoobseventhree.tofurtherworld.Core;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.pattern.BlockPattern;
 import net.minecraft.entity.Entity;

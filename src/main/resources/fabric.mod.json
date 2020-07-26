@@ -20,7 +20,8 @@
   "entrypoints": {
     "main": [
       "idv.ironnoobseventhree.tofurtherworld.Core",
-      "idv.ironnoobseventhree.tofurtherworld.dimension.OldAge"
+      "idv.ironnoobseventhree.tofurtherworld.dimension.OldAge",
+      "idv.ironnoobseventhree.tofurtherworld.entity.EntitySp"
     ],
     "client": [
       "idv.ironnoobseventhree.tofurtherworld.CliF"

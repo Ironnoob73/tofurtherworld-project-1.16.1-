@@ -19,7 +19,8 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "idv.ironnoobseventhree.tofurtherworld.Core"
+      "idv.ironnoobseventhree.tofurtherworld.Core",
+      "idv.ironnoobseventhree.tofurtherworld.dimension.OldAge"
     ],
     "client": [
       "idv.ironnoobseventhree.tofurtherworld.CliF"

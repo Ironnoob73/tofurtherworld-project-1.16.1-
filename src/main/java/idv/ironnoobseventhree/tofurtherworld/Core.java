@@ -6,6 +6,7 @@ import idv.ironnoobseventhree.tofurtherworld.block.GlassLike;
 import idv.ironnoobseventhree.tofurtherworld.biome.BiomeMain;
 import idv.ironnoobseventhree.tofurtherworld.block.Facing;
 import idv.ironnoobseventhree.tofurtherworld.block.furniture.Chair;
+import idv.ironnoobseventhree.tofurtherworld.block.furniture.LongTable;
 import idv.ironnoobseventhree.tofurtherworld.block.sapling.FrozenBushBlock;
 import idv.ironnoobseventhree.tofurtherworld.block.sapling.IceBirch;
 import idv.ironnoobseventhree.tofurtherworld.block.sapling.SaplingMain;
@@ -249,6 +250,8 @@ public class Core implements ModInitializer {
     public static final Block ForgingTableL1 = new ForgingTableL1(AbstractBlock.Settings.of(Material.STONE).requiresTool().strength(6.0F, 6.0F).sounds(BlockSoundGroup.METAL));
     //Furniture
     public static final Block WoodenChair = new Chair(AbstractBlock.Settings.of(Material.WOOD, MaterialColor.BROWN).strength(2.0F).sounds(BlockSoundGroup.WOOD).nonOpaque());
+    public static final Block WoodenLongTable = new LongTable(AbstractBlock.Settings.of(Material.WOOD, MaterialColor.BROWN).strength(2.0F).sounds(BlockSoundGroup.WOOD).nonOpaque());
+    public static final Block AluminumChair = new Chair(AbstractBlock.Settings.of(Material.METAL, MaterialColor.IRON).strength(5.0F, 6.0F).sounds(BlockSoundGroup.METAL).nonOpaque());
     //Block Setting
     private static PillarBlock createLogBlock(MaterialColor topMaterialColor, MaterialColor sideMaterialColor) {
         return new PillarBlock(AbstractBlock.Settings.of(Material.WOOD, (blockState) -> {
@@ -547,6 +550,10 @@ public class Core implements ModInitializer {
         //Furniture
         Registry.register(Registry.BLOCK, new Identifier("tofurtherworld", "wooden_chair"), WoodenChair);
         Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "wooden_chair"), new BlockItem(WoodenChair, new Item.Settings()));
+        Registry.register(Registry.BLOCK, new Identifier("tofurtherworld", "wooden_longtable"), WoodenLongTable);
+        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "wooden_longtable"), new BlockItem(WoodenLongTable, new Item.Settings()));
+        Registry.register(Registry.BLOCK, new Identifier("tofurtherworld", "aluminum_chair"), AluminumChair);
+        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "aluminum_chair"), new BlockItem(AluminumChair, new Item.Settings()));
         //Nature block
         Registry.register(Registry.BLOCK, new Identifier(MODID, "apple_block"), AppleBlock);
         Registry.register(Registry.ITEM, new Identifier(MODID, "apple_block"), new BlockItem(AppleBlock, new Item.Settings()));
@@ -707,6 +714,9 @@ public class Core implements ModInitializer {
                 stacks.add(new ItemStack(BlackGlowingGlass));
                 stacks.add(new ItemStack(Drawer1));
                 stacks.add(new ItemStack(Drawer2));
+                stacks.add(new ItemStack(WoodenChair));
+                stacks.add(new ItemStack(WoodenLongTable));
+                stacks.add(new ItemStack(AluminumChair));
                 stacks.add(new ItemStack(ForgingTableL1));
                 stacks.add(new ItemStack(AppleBlock));
                 stacks.add(new ItemStack(IceBirchSapling));

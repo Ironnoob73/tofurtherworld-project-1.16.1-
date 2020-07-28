@@ -29,9 +29,13 @@ public class ForgingTableL1 extends Block {
             return ActionResult.SUCCESS;
         } else {
             player.openHandledScreen(state.createScreenHandlerFactory(world, pos));
-            player.incrementStat(Stats.INTERACT_WITH_CRAFTING_TABLE);
+            //player.incrementStat(Stats.INTERACT_WITH_ANVIL);
             return ActionResult.CONSUME;
         }
     }
-
+    public NamedScreenHandlerFactory createScreenHandlerFactory(BlockState state, World world, BlockPos pos) {
+        return new SimpleNamedScreenHandlerFactory((i, playerInventory, playerEntity) -> {
+            return new CraftingScreenHandler(i, playerInventory, ScreenHandlerContext.create(world, pos));
+        }, TITLE);
+    }
 }

@@ -1,0 +1,8 @@
+{ 
+    "variants":{ 
+        "facing=north": { "model": "tofurtherworld:block/furniture/aluminum_chair", "y": 180 },
+        "facing=east":  { "model": "tofurtherworld:block/furniture/aluminum_chair", "y": 270 },
+        "facing=south": { "model": "tofurtherworld:block/furniture/aluminum_chair" },
+        "facing=west":  { "model": "tofurtherworld:block/furniture/aluminum_chair", "y": 90 }
+    } 
+}

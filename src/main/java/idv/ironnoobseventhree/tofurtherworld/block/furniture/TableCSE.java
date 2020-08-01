@@ -1,4 +1,4 @@
-package idv.ironnoobseventhree.tofurtherworld.block;
+package idv.ironnoobseventhree.tofurtherworld.block.furniture;
 
 import idv.ironnoobseventhree.tofurtherworld.Core;
 import net.minecraft.block.BlockState;
@@ -8,23 +8,24 @@ import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventories;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.screen.Generic3x3ContainerScreenHandler;
-import net.minecraft.screen.ScreenHandler;
+import net.minecraft.screen.*;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.registry.Registry;
 
-public class DrawerEntity extends LootableContainerBlockEntity {
+import java.awt.*;
+
+public class TableCSE extends LootableContainerBlockEntity {
     public  DefaultedList<ItemStack> inv;
-    public static BlockEntityType<DrawerEntity> Drawere=
-            Registry.register(Registry.BLOCK_ENTITY_TYPE,"tofurtherworld:drawer_entity",BlockEntityType.Builder.create(DrawerEntity::new, Core.Drawer1).build(null));
-    public DrawerEntity(){
-        this(Drawere);
+    public static BlockEntityType<TableCSE> TableE=
+            Registry.register(Registry.BLOCK_ENTITY_TYPE,"tofurtherworld:table_entity",BlockEntityType.Builder.create(TableCSE::new, Core.AluminumTable).build(null));
+    public TableCSE(){
+        this(TableE);
     }
-    protected DrawerEntity(BlockEntityType<?> blockEntityType){
+    protected TableCSE(BlockEntityType<?> blockEntityType){
         super(blockEntityType);
-        inv=DefaultedList.ofSize(9,ItemStack.EMPTY);
+        inv=DefaultedList.ofSize(5,ItemStack.EMPTY);
     }
     @Override
     protected DefaultedList<ItemStack> getInvStackList() {
@@ -38,17 +39,21 @@ public class DrawerEntity extends LootableContainerBlockEntity {
 
     @Override
     protected Text getContainerName() {
-        return new TranslatableText("block.tofurtherworld.drawer");
+        return new TranslatableText("block.tofurtherworld.table");
     }
 
     @Override
-    protected ScreenHandler createScreenHandler(int syncId, PlayerInventory playerInventory) {
-        return new Generic3x3ContainerScreenHandler(syncId, playerInventory, this);
+        protected ScreenHandler createScreenHandler(int syncId, PlayerInventory playerInventory) {
+        return new HopperScreenHandler(syncId, playerInventory, this);
+        //return new GenericContainerScreenHandler(ScreenHandlerType.GENERIC_9X1,syncId, playerInventory, 1);
+        //return GenericContainerScreenHandler.createGeneric9x1(syncId, playerInventory);
     }
-
+    /*protected ScreenHandler createScreenHandler(int syncId, PlayerInventory playerInventory) {
+        return GenericContainerScreenHandler.createGeneric9x3(syncId, playerInventory, this);
+    }*/
     @Override
     public int size() {
-        return 9;
+        return 5;
     }
     public void fromTag(BlockState state, CompoundTag tag) {
         super.fromTag(state, tag);

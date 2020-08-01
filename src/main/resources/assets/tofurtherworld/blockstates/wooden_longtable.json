@@ -1,8 +1,10 @@
 { 
     "variants":{ 
-        "facing=north": { "model": "tofurtherworld:block/furniture/wooden_longtable", "y": 180 },
-        "facing=east":  { "model": "tofurtherworld:block/furniture/wooden_longtable", "y": 270 },
-        "facing=south": { "model": "tofurtherworld:block/furniture/wooden_longtable" },
-        "facing=west":  { "model": "tofurtherworld:block/furniture/wooden_longtable", "y": 90 }
+        "facing=north,part=middle": { "model": "tofurtherworld:block/furniture/wooden_longtable", "y": 180 },
+        "facing=east,part=middle":  { "model": "tofurtherworld:block/furniture/wooden_longtable", "y": 270 },
+        "facing=south,part=middle": { "model": "tofurtherworld:block/furniture/wooden_longtable" },
+        "facing=west,part=middle":  { "model": "tofurtherworld:block/furniture/wooden_longtable", "y": 90 },
+        "part=left":{"model":"tofurtherworld:block/furniture/wooden_longtable_emp"},
+        "part=right":{"model":"tofurtherworld:block/furniture/wooden_longtable_emp"}
     } 
 }

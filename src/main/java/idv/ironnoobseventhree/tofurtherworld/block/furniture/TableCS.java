@@ -1,26 +1,29 @@
-package idv.ironnoobseventhree.tofurtherworld.block;
+package idv.ironnoobseventhree.tofurtherworld.block.furniture;
 
+import idv.ironnoobseventhree.tofurtherworld.block.DrawerEntity;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.DispenserBlockEntity;
-import net.minecraft.block.entity.DropperBlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
-import net.minecraft.stat.Stats;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.state.property.Properties;
-import net.minecraft.util.*;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.Hand;
+import net.minecraft.util.ItemScatterer;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
+import net.minecraft.util.shape.VoxelShape;
+import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 
 
-public class DrawerBlock extends BlockWithEntity {
+public class TableCS extends BlockWithEntity {
     public static final DirectionProperty FACING;
-    public DrawerBlock(Settings settings) {
+    public TableCS(Settings settings) {
         super(settings);
         setDefaultState(this.stateManager.getDefaultState().with(Properties.HORIZONTAL_FACING, Direction.NORTH));
     }
@@ -32,8 +35,8 @@ public class DrawerBlock extends BlockWithEntity {
             return ActionResult.SUCCESS;
         } else {
             BlockEntity blockEntity = world.getBlockEntity(pos);
-            if (blockEntity instanceof DrawerEntity) {
-                player.openHandledScreen((DrawerEntity)blockEntity);
+            if (blockEntity instanceof TableCSE) {
+                player.openHandledScreen((TableCSE)blockEntity);
                 }
             }
             return ActionResult.CONSUME;
@@ -54,7 +57,7 @@ public class DrawerBlock extends BlockWithEntity {
     }
     @Override
     public BlockEntity createBlockEntity(BlockView blockView) {
-        return new DrawerEntity();
+        return new TableCSE();
     }
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> stateManager) {
@@ -62,5 +65,9 @@ public class DrawerBlock extends BlockWithEntity {
     }
     public BlockState getPlacementState(ItemPlacementContext ctx) {
         return (BlockState)this.getDefaultState().with(FACING, ctx.getPlayerFacing());
+    }
+    @Override
+    public VoxelShape getOutlineShape(BlockState state, BlockView view, BlockPos pos, ShapeContext context) {
+        return VoxelShapes.cuboid(0f, 0.5f, 0f, 1f, 1f, 1);
     }
 }

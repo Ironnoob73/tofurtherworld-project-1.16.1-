@@ -1,4 +1,4 @@
-package idv.ironnoobseventhree.tofurtherworld.recipe;
+package idv.ironnoobseventhree.tofurtherworld.block.forging;
 
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.entity.player.PlayerEntity;

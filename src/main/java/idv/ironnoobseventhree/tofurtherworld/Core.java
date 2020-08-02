@@ -1,7 +1,7 @@
 package idv.ironnoobseventhree.tofurtherworld;
 
 import idv.ironnoobseventhree.tofurtherworld.block.DrawerBlock;
-import idv.ironnoobseventhree.tofurtherworld.block.ForgingTableL1;
+import idv.ironnoobseventhree.tofurtherworld.block.forging.ForgingTableL1;
 import idv.ironnoobseventhree.tofurtherworld.block.GlassLike;
 import idv.ironnoobseventhree.tofurtherworld.biome.BiomeMain;
 import idv.ironnoobseventhree.tofurtherworld.block.Facing;

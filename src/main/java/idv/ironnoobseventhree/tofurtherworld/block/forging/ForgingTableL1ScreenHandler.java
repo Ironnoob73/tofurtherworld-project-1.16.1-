@@ -1,20 +1,20 @@
-package idv.ironnoobseventhree.tofurtherworld.recipe;
+package idv.ironnoobseventhree.tofurtherworld.block.forging;
 
 import idv.ironnoobseventhree.tofurtherworld.Core;
+import idv.ironnoobseventhree.tofurtherworld.block.forging.ForgingTableL1Inventory;
+import idv.ironnoobseventhree.tofurtherworld.recipe.ForgingL1Recipe;
+import idv.ironnoobseventhree.tofurtherworld.recipe.Recipes;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.block.Blocks;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.inventory.CraftingInventory;
 import net.minecraft.inventory.CraftingResultInventory;
 import net.minecraft.inventory.Inventory;
+import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.packet.s2c.play.ScreenHandlerSlotUpdateS2CPacket;
-import net.minecraft.recipe.CraftingRecipe;
 import net.minecraft.recipe.Recipe;
 import net.minecraft.recipe.RecipeFinder;
-import net.minecraft.recipe.RecipeType;
 import net.minecraft.screen.AbstractRecipeScreenHandler;
 import net.minecraft.screen.ScreenHandlerContext;
 import net.minecraft.screen.ScreenHandlerType;
@@ -35,9 +35,16 @@ public class ForgingTableL1ScreenHandler extends AbstractRecipeScreenHandler<For
         this(syncId, playerInventory, ScreenHandlerContext.EMPTY);
     }
 
-    public ForgingTableL1ScreenHandler(int syncId, PlayerInventory playerInventory, ScreenHandlerContext context) {
+    public ForgingTableL1ScreenHandler(int syncId, PlayerInventory playerInventory,final ScreenHandlerContext context) {
         super(ScreenHandlerType.CRAFTING, syncId);
         this.input = new ForgingTableL1Inventory(this, 3, 3);
+        /*this.input = new SimpleInventory(1) {
+            public void markDirty() {
+                super.markDirty();
+                ForgingTableL1ScreenHandler.this.onContentChanged(this);
+                ForgingTableL1ScreenHandler.this.contentsChangedListener.run();
+            }
+        };*/
         this.result = new CraftingResultInventory();
         this.context = context;
         this.player = playerInventory.player;
@@ -67,7 +74,7 @@ public class ForgingTableL1ScreenHandler extends AbstractRecipeScreenHandler<For
         if (!world.isClient) {
             ServerPlayerEntity serverPlayerEntity = (ServerPlayerEntity)player;
             ItemStack itemStack = ItemStack.EMPTY;
-            Optional<ForgingL1Recipe> optional = world.getServer().getRecipeManager().getFirstMatch(Recipes.ForgingL1, craftingInventory, world);
+            Optional<ForgingL1Recipe> optional = world.getServer().getRecipeManager().getFirstMatch(Recipes.ForgingL1, /*new ForgingTableL1Inventory(new ItemStack[]{itemStack2}),*/craftingInventory, world);
             if (optional.isPresent()) {
                 ForgingL1Recipe craftingRecipe = (ForgingL1Recipe)optional.get();
                 if (resultInventory.shouldCraftRecipe(world, serverPlayerEntity, craftingRecipe)) {

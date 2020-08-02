@@ -1,32 +1,22 @@
 package idv.ironnoobseventhree.tofurtherworld.block.forging;
 
 import idv.ironnoobseventhree.tofurtherworld.Core;
-import idv.ironnoobseventhree.tofurtherworld.block.forging.ForgingTableL1Inventory;
-import idv.ironnoobseventhree.tofurtherworld.recipe.ForgingL1Recipe;
-import idv.ironnoobseventhree.tofurtherworld.recipe.Recipes;
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
+import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.inventory.CraftingResultInventory;
 import net.minecraft.inventory.Inventory;
-import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.ItemStack;
-import net.minecraft.network.packet.s2c.play.ScreenHandlerSlotUpdateS2CPacket;
-import net.minecraft.recipe.Recipe;
-import net.minecraft.recipe.RecipeFinder;
-import net.minecraft.screen.AbstractRecipeScreenHandler;
+import net.minecraft.recipe.*;
+import net.minecraft.screen.ForgingScreenHandler;
 import net.minecraft.screen.ScreenHandlerContext;
 import net.minecraft.screen.ScreenHandlerType;
-import net.minecraft.screen.slot.CraftingResultSlot;
 import net.minecraft.screen.slot.Slot;
-import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.world.World;
 
-import java.util.Optional;
+import java.util.List;
 
-public class ForgingTableL1ScreenHandler extends AbstractRecipeScreenHandler<ForgingTableL1Inventory> {
-    private final ForgingTableL1Inventory input;
+public class ForgingTableL1ScreenHandler extends ForgingScreenHandler {
+    /*private final ForgingTableL1Inventory input;
     private final CraftingResultInventory result;
     private final ScreenHandlerContext context;
     private final PlayerEntity player;
@@ -36,15 +26,15 @@ public class ForgingTableL1ScreenHandler extends AbstractRecipeScreenHandler<For
     }
 
     public ForgingTableL1ScreenHandler(int syncId, PlayerInventory playerInventory,final ScreenHandlerContext context) {
-        super(ScreenHandlerType.CRAFTING, syncId);
+        super(ScreenHandlerType.SMITHING, syncId);
         this.input = new ForgingTableL1Inventory(this, 3, 3);
-        /*this.input = new SimpleInventory(1) {
+        this.input = new SimpleInventory(1) {
             public void markDirty() {
                 super.markDirty();
                 ForgingTableL1ScreenHandler.this.onContentChanged(this);
                 ForgingTableL1ScreenHandler.this.contentsChangedListener.run();
             }
-        };*/
+        };
         this.result = new CraftingResultInventory();
         this.context = context;
         this.player = playerInventory.player;
@@ -74,9 +64,18 @@ public class ForgingTableL1ScreenHandler extends AbstractRecipeScreenHandler<For
         if (!world.isClient) {
             ServerPlayerEntity serverPlayerEntity = (ServerPlayerEntity)player;
             ItemStack itemStack = ItemStack.EMPTY;
-            Optional<ForgingL1Recipe> optional = world.getServer().getRecipeManager().getFirstMatch(Recipes.ForgingL1, /*new ForgingTableL1Inventory(new ItemStack[]{itemStack2}),*/craftingInventory, world);
+            Optional<ForgingL1Recipe> optional = world.getServer().getRecipeManager().getFirstMatch(Recipes.ForgingL1, new ForgingTableL1Inventory(new ItemStack[]{itemStack2}),craftingInventory, world);
             if (optional.isPresent()) {
                 ForgingL1Recipe craftingRecipe = (ForgingL1Recipe)optional.get();
+                if (resultInventory.shouldCraftRecipe(world, serverPlayerEntity, craftingRecipe)) {
+                    itemStack = craftingRecipe.craft(craftingInventory);
+                }
+            }
+            ServerPlayerEntity serverPlayerEntity = (ServerPlayerEntity)player;
+            ItemStack itemStack = ItemStack.EMPTY;
+            Optional<CraftingRecipe> optional = world.getServer().getRecipeManager().getFirstMatch(RecipeType.CRAFTING, new ForgingTableL1Inventory(new ItemStack[]{itemStack2}),craftingInventory, world);
+            if (optional.isPresent()) {
+                CraftingRecipe craftingRecipe = (CraftingRecipe)optional.get();
                 if (resultInventory.shouldCraftRecipe(world, serverPlayerEntity, craftingRecipe)) {
                     itemStack = craftingRecipe.craft(craftingInventory);
                 }
@@ -182,5 +181,94 @@ public class ForgingTableL1ScreenHandler extends AbstractRecipeScreenHandler<For
     @Environment(EnvType.CLIENT)
     public int getCraftingSlotCount() {
         return 10;
+    }*/
+    private final World world;
+    private SmithingRecipe recipe;
+    private final List<SmithingRecipe> recipeList;
+
+    public ForgingTableL1ScreenHandler(int syncId, PlayerInventory playerInventory) {
+        this(syncId, playerInventory, ScreenHandlerContext.EMPTY);
+    }
+    public ForgingTableL1ScreenHandler(int syncId, PlayerInventory playerInventory, ScreenHandlerContext context) {
+        super(Core.ForgingTableL1Screen, syncId, playerInventory, context);
+        this.world = playerInventory.player.world;
+        this.recipeList = this.world.getRecipeManager().method_30027(RecipeType.SMITHING);
+        this.addSlot(new Slot(this.input, 0, 27, 37));
+        this.addSlot(new Slot(this.input, 1, 76, 47));
+        this.addSlot(new Slot(this.output, 2, 134, 47) {
+            public boolean canInsert(ItemStack stack) {
+                return false;
+            }
+
+            public boolean canTakeItems(PlayerEntity playerEntity) {
+                return ForgingTableL1ScreenHandler.this.canTakeOutput(playerEntity, this.hasStack());
+            }
+
+            public ItemStack onTakeItem(PlayerEntity player, ItemStack stack) {
+                return ForgingTableL1ScreenHandler.this.onTakeOutput(player, stack);
+            }
+        });
+
+        int k;
+        for(k = 0; k < 3; ++k) {
+            for(int j = 0; j < 9; ++j) {
+                this.addSlot(new Slot(playerInventory, j + k * 9 + 9, 8 + j * 18, 84 + k * 18));
+            }
+        }
+
+        for(k = 0; k < 9; ++k) {
+            this.addSlot(new Slot(playerInventory, k, 8 + k * 18, 142));
+        }
+
+    }
+    /*//@Override
+    public ForgingTableL1ScreenHandler( ScreenHandlerType<?> type, int syncId, PlayerInventory playerInventory, ScreenHandlerContext context) {
+        super(Core.ForgingTableL1Screen, syncId, playerInventory, context);
+        //this.context = context;
+        this.world = playerInventory.player.world;
+        this.recipeList = this.world.getRecipeManager().method_30027(RecipeType.SMITHING);
+        //this.player = playerInventory.player;
+    }*/
+
+    protected boolean canUse(BlockState state) { return state.isOf(Core.ForgingTableL1); }
+
+    protected boolean canTakeOutput(PlayerEntity player, boolean present) {
+        return this.recipe != null && this.recipe.matches(this.input, this.world);
+    }
+
+    protected ItemStack onTakeOutput(PlayerEntity player, ItemStack stack) {
+        this.method_29539(0);
+        this.method_29539(1);
+        this.context.run((world, blockPos) -> {
+            world.syncWorldEvent(1044, blockPos, 0);
+        });
+        return stack;
+    }
+
+    private void method_29539(int i) {
+        ItemStack itemStack = this.input.getStack(i);
+        itemStack.decrement(1);
+        this.input.setStack(i, itemStack);
+    }
+
+    public void updateResult() {
+        List<SmithingRecipe> list = this.world.getRecipeManager().getAllMatches(RecipeType.SMITHING, this.input, this.world);
+        if (list.isEmpty()) {
+            this.output.setStack(0, ItemStack.EMPTY);
+        } else {
+            this.recipe = (SmithingRecipe)list.get(0);
+            ItemStack itemStack = this.recipe.craft(this.input);
+            this.output.setStack(0, itemStack);
+        }
+
+    }
+
+    protected boolean method_30025(ItemStack itemStack) {
+        return this.recipeList.stream().anyMatch((smithingRecipe) -> smithingRecipe.method_30029(itemStack));
+    }
+    public ItemStack transferSlot(PlayerEntity player, int index) {
+        ItemStack itemStack = super.transferSlot(player, index);
+        System.out.println(itemStack);
+        return ItemStack.EMPTY;
     }
 }

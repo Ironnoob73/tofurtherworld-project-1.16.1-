@@ -16,7 +16,7 @@ import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.world.World;
 
 public interface ForgingL1Recipe<C extends ForgingTableL1Inventory> extends Recipe<Inventory> {
-    boolean matches(C inv, World world);
+    /*boolean matches(C inv, World world);
 
     ItemStack craft(C inv);
 
@@ -60,5 +60,5 @@ public interface ForgingL1Recipe<C extends ForgingTableL1Inventory> extends Reci
 
     RecipeSerializer<?> getSerializer();
 
-    RecipeType<?> getType();
+    RecipeType<?> getType();*/
 }

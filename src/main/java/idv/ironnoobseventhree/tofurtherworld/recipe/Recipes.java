@@ -11,5 +11,5 @@ import net.minecraft.world.World;
 import java.util.Optional;
 
 public interface Recipes<T extends Recipe<?>> extends RecipeType{
-    Recipes<ForgingL1Recipe> ForgingL1 = RecipeType.register("forgingl1");
+    //Recipes<ForgingL1Recipe> ForgingL1 = RecipeType.register("forgingl1");
 }

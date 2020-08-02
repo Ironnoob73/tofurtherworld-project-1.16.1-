@@ -5,6 +5,7 @@ import idv.ironnoobseventhree.tofurtherworld.block.forging.ForgingTableL1;
 import idv.ironnoobseventhree.tofurtherworld.block.GlassLike;
 import idv.ironnoobseventhree.tofurtherworld.biome.BiomeMain;
 import idv.ironnoobseventhree.tofurtherworld.block.Facing;
+import idv.ironnoobseventhree.tofurtherworld.block.forging.ForgingTableL1ScreenHandler;
 import idv.ironnoobseventhree.tofurtherworld.block.furniture.Chair;
 import idv.ironnoobseventhree.tofurtherworld.block.furniture.TableCS;
 import idv.ironnoobseventhree.tofurtherworld.block.furniture.LongTable;
@@ -17,9 +18,11 @@ import net.fabricmc.fabric.api.biomes.v1.OverworldBiomes;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.fabricmc.fabric.api.event.registry.RegistryEntryAddedCallback;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.fabricmc.fabric.api.screenhandler.v1.ScreenHandlerRegistry;
 import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
 import net.minecraft.block.*;
 import net.minecraft.item.*;
+import net.minecraft.screen.ScreenHandlerType;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Direction;
@@ -33,6 +36,7 @@ import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.OreFeatureConfig;
 
 public class Core implements ModInitializer {
+    public static final String MODID = "tofurtherworld";
     //Base Item
     public static final Item CopperIngot = new Item(new Item.Settings());
     public static final Item CopperPowder = new Item(new Item.Settings());
@@ -271,9 +275,9 @@ public class Core implements ModInitializer {
     public static final Block IceBirchPlanks = new Block(AbstractBlock.Settings.of(Material.WOOD, MaterialColor.ICE).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD));
     public static final Block StrippedIceBirchLog = new PillarBlock(AbstractBlock.Settings.of(Material.WOOD, MaterialColor.WOOD).strength(2.0F).sounds(BlockSoundGroup.WOOD));
     public static final FrozenBushBlock FrozenBush =new FrozenBushBlock(AbstractBlock.Settings.of(Material.REPLACEABLE_PLANT, MaterialColor.WOOD).noCollision().breakInstantly().sounds(BlockSoundGroup.GRASS));
-    
-    public static final String MODID = "tofurtherworld";
-    
+    //Gui
+    public static final ScreenHandlerType<ForgingTableL1ScreenHandler> ForgingTableL1Screen = ScreenHandlerRegistry.registerSimple(new Identifier(MODID, "forging_table_l1_screen"), ForgingTableL1ScreenHandler::new);
+
     @Override
     public void onInitialize() {
         //Base Item

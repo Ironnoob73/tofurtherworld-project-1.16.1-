@@ -1,18 +1,27 @@
 package idv.ironnoobseventhree.tofurtherworld.block.forging;
 
+import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.block.AbstractBlock;
+import net.minecraft.client.gui.screen.ingame.ForgingScreen;
+import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.CraftingInventory;
 import net.minecraft.inventory.Inventories;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.recipe.RecipeFinder;
+import net.minecraft.recipe.RecipeInputProvider;
 import net.minecraft.screen.ScreenHandler;
+import net.minecraft.text.Text;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.collection.DefaultedList;
 
 import java.util.Iterator;
 
-public class ForgingTableL1Inventory extends CraftingInventory implements Inventory {
+public class ForgingTableL1Inventory extends ForgingScreen<ForgingTableL1ScreenHandler> {
+    /*private static final Identifier TEXTURE = new Identifier("textures/gui/forgingtablel1.png");
+
     private final DefaultedList<ItemStack> stacks;
     private final int width;
     private final int height;
@@ -24,6 +33,11 @@ public class ForgingTableL1Inventory extends CraftingInventory implements Invent
         this.handler = handler;
         this.width = width;
         this.height = height;
+    }
+    public ForgingTableL1Inventory(Screenhandler handler, PlayerInventory playerInventory, Text title) {
+        super(handler, playerInventory, title, TEXTURE);
+        this.titleX = 60;
+        this.titleY = 18;
     }
 
     public int size() {
@@ -94,5 +108,17 @@ public class ForgingTableL1Inventory extends CraftingInventory implements Invent
             finder.addNormalItem(itemStack);
         }
 
+    }*/
+    private static final Identifier TEXTURE = new Identifier("tofurtherworld:textures/gui/forgingtablel1.png");
+
+    public ForgingTableL1Inventory(ForgingTableL1ScreenHandler handler, PlayerInventory playerInventory, Text title) {
+        super(handler, playerInventory, title, TEXTURE);
+        this.titleX = 30;
+        this.titleY = 5;
+    }
+
+    protected void drawForeground(MatrixStack matrices, int mouseX, int mouseY) {
+        RenderSystem.disableBlend();
+        super.drawForeground(matrices, mouseX, mouseY);
     }
 }

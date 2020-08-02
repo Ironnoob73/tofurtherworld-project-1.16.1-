@@ -1,16 +1,19 @@
 package idv.ironnoobseventhree.tofurtherworld;
 
+import idv.ironnoobseventhree.tofurtherworld.block.forging.ForgingTableL1Inventory;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
+import net.fabricmc.fabric.api.client.screenhandler.v1.ScreenRegistry;
 import net.minecraft.client.render.RenderLayer;
 
 
 @Environment(EnvType.CLIENT)
-public class CliF implements ClientModInitializer{
+public class CliF implements net.fabricmc.api.ClientModInitializer{
     @Override
     public void onInitializeClient() {
+        //Transparent
         BlockRenderLayerMap.INSTANCE.putBlock(Core.PureObsidianBlock, RenderLayer.getTranslucent());
         BlockRenderLayerMap.INSTANCE.putBlock(Core.WhiteSeamlessGlass, RenderLayer.getTranslucent());
         BlockRenderLayerMap.INSTANCE.putBlock(Core.OrangeSeamlessGlass, RenderLayer.getTranslucent());
@@ -44,8 +47,10 @@ public class CliF implements ClientModInitializer{
         BlockRenderLayerMap.INSTANCE.putBlock(Core.GreenGlowingGlass, RenderLayer.getTranslucent());
         BlockRenderLayerMap.INSTANCE.putBlock(Core.RedGlowingGlass, RenderLayer.getTranslucent());
         BlockRenderLayerMap.INSTANCE.putBlock(Core.BlackGlowingGlass, RenderLayer.getTranslucent());
-
+        //Transparent with alpha
         BlockRenderLayerMap.INSTANCE.putBlock(Core.IceBirchSapling, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(Core.FrozenBush, RenderLayer.getCutout());
+        //Gui
+        ScreenRegistry.register(Core.ForgingTableL1Screen, ForgingTableL1Inventory::new);
     }
 }

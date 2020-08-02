@@ -12,6 +12,7 @@ import idv.ironnoobseventhree.tofurtherworld.block.furniture.LongTable;
 import idv.ironnoobseventhree.tofurtherworld.block.sapling.FrozenBushBlock;
 import idv.ironnoobseventhree.tofurtherworld.block.sapling.IceBirch;
 import idv.ironnoobseventhree.tofurtherworld.block.sapling.SaplingMain;
+import idv.ironnoobseventhree.tofurtherworld.recipe.ForgingL1Recipe;
 import idv.ironnoobseventhree.tofurtherworld.tool.*;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.biomes.v1.OverworldBiomes;
@@ -34,6 +35,8 @@ import net.minecraft.world.gen.decorator.Decorator;
 import net.minecraft.world.gen.decorator.RangeDecoratorConfig;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.OreFeatureConfig;
+import net.minecraft.recipe.RecipeSerializer;
+import net.minecraft.recipe.RecipeType;
 
 public class Core implements ModInitializer {
     public static final String MODID = "tofurtherworld";
@@ -277,6 +280,25 @@ public class Core implements ModInitializer {
     public static final FrozenBushBlock FrozenBush =new FrozenBushBlock(AbstractBlock.Settings.of(Material.REPLACEABLE_PLANT, MaterialColor.WOOD).noCollision().breakInstantly().sounds(BlockSoundGroup.GRASS));
     //Gui
     public static final ScreenHandlerType<ForgingTableL1ScreenHandler> ForgingTableL1Screen = ScreenHandlerRegistry.registerSimple(new Identifier(MODID, "forging_table_l1_screen"), ForgingTableL1ScreenHandler::new);
+    //Recipe
+    //#1
+    private static RecipeType<ForgingL1Recipe> forging_l1_type(Identifier id) {
+        return Registry.register(Registry.RECIPE_TYPE, id, new RecipeType<ForgingL1Recipe>() {
+            public String toString() {
+                return id.toString();
+            }
+        });
+    }
+    private static ForgingL1Recipe.Serializer forging_l1_serializer(Identifier id, ForgingL1Recipe.Serializer serializer) {
+        return Registry.register(Registry.RECIPE_SERIALIZER, id, serializer);
+    }
+    public static final RecipeSerializer<ForgingL1Recipe> ForgingL1Serializer = forging_l1_serializer(new Identifier(
+            MODID, "forging_l1"
+    ), new ForgingL1Recipe.Serializer());
+    public static final RecipeType<ForgingL1Recipe> ForgingL1Type = forging_l1_type(new Identifier(
+            MODID, "forging_l1"
+    ));
+
 
     @Override
     public void onInitialize() {

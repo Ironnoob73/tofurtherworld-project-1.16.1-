@@ -13,7 +13,7 @@ import net.minecraft.screen.ScreenHandlerType;
 
 public abstract class ForgingNotForge extends ScreenHandler {
     protected final Inventory output = new CraftingResultInventory();
-    protected final Inventory input = new SimpleInventory(2) {
+    protected final Inventory input = new SimpleInventory(10) {//这里还存在上限问题，预计会合并ForgingTableL1ScreenHandler
         public void markDirty() {
             super.markDirty();
             ForgingNotForge.this.onContentChanged(this);

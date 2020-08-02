@@ -1,0 +1,33 @@
+{
+    "type": "tofurtherworld:forging_l1",
+    "s1": {
+      "item": "minecraft:oak_planks"
+    },
+    "s2": {
+      "item": "minecraft:spruce_planks"
+    },
+    "s3": {
+      "item": "minecraft:birch_planks"
+    },
+    "s4": {
+      "item": "minecraft:jungle_planks"
+    },
+    "s5": {
+      "item": "minecraft:stone"
+    },
+    "s6": {
+      "item": "minecraft:acacia_planks"
+    },
+    "s7": {
+      "item": "minecraft:dark_oak_planks"
+    },
+    "s8": {
+      "item": "minecraft:crimson_planks"
+    },
+    "s9": {
+      "item": "minecraft:warped_planks"
+    },
+    "result": {
+      "item": "tofurtherworld:empty_blueprint"
+    }
+  }

@@ -24,225 +24,132 @@ import net.minecraft.util.JsonHelper;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
-
-
+//在此非常感谢qq群友@Saltwater Sea提供的巨大帮助！
+//以及来自b站的@因为所以的教程！没有你们我什么都写不出来......
 public class ForgingL1Recipe implements Recipe<Inventory> {
-    /*boolean matches(C inv, World world);
-
-    ItemStack craft(C inv);
-
-    @Environment(EnvType.CLIENT)
-    boolean fits(int width, int height);
-
-    ItemStack getOutput();
-
-    default DefaultedList<ItemStack> getRemainingStacks(C inventory) {
-        DefaultedList<ItemStack> defaultedList = DefaultedList.ofSize(inventory.size(), ItemStack.EMPTY);
-
-        for(int i = 0; i < defaultedList.size(); ++i) {
-            Item item = inventory.getStack(i).getItem();
-            if (item.hasRecipeRemainder()) {
-                defaultedList.set(i, new ItemStack(item.getRecipeRemainder()));
-            }
-        }
-
-        return defaultedList;
-    }
-
-    default DefaultedList<Ingredient> getPreviewInputs() {
-        return DefaultedList.of();
-    }
-
-    default boolean isIgnoredInRecipeBook() {
-        return false;
-    }
-
-    @Environment(EnvType.CLIENT)
-    default String getGroup() {
-        return "";
-    }
-
-    @Environment(EnvType.CLIENT)
-    default ItemStack getRecipeKindIcon() {
-        return new ItemStack(Blocks.CRAFTING_TABLE);
-    }
-
-    Identifier getId();
-
-    RecipeSerializer<?> getSerializer();
-
-    RecipeType<?> getType();*/
-    /*private final Ingredient base;
-    private final Ingredient addition;
+    private final Ingredient s1;
+    private final Ingredient s2;
+    private final Ingredient s3;
+    private final Ingredient s4;
+    private final Ingredient s5;
+    private final Ingredient s6;
+    private final Ingredient s7;
+    private final Ingredient s8;
+    private final Ingredient s9;
     private final ItemStack result;
     private final Identifier id;
-    public static final Identifier ID = new Identifier(Core.MODID, "dungeons_transformer");
-    public static final Type TYPE = new Type();
 
-
-    public ForgingL1Recipe(Identifier id, Ingredient base, Ingredient addition, ItemStack result) {
-        this.id = id;
-        this.base = base;
-        this.addition = addition;
+    public ForgingL1Recipe(Identifier id, Ingredient s1, Ingredient s2, Ingredient s3, Ingredient s4, Ingredient s5, Ingredient s6, Ingredient s7, Ingredient s8, Ingredient s9, ItemStack result) {
+        this.s1 = s1;
+        this.s2 = s2;
+        this.s3 = s3;
+        this.s4 = s4;
+        this.s5 = s5;
+        this.s6 = s6;
+        this.s7 = s7;
+        this.s8 = s8;
+        this.s9 = s9;
         this.result = result;
+        this.id = id;
     }
 
-    public boolean matches(Inventory inv, World world) {
-        return this.base.test(inv.getStack(0)) && this.addition.test(inv.getStack(1));
+    //@Override
+    public boolean matches(/*@Nonnull*/ Inventory inv, World world) {
+        return this.s1.test(inv.getStack(0))
+                &&this.s2.test(inv.getStack(1))
+                &&this.s3.test(inv.getStack(2))
+                &&this.s4.test(inv.getStack(3))
+                &&this.s5.test(inv.getStack(4))
+                &&this.s6.test(inv.getStack(5))
+                &&this.s7.test(inv.getStack(6))
+                &&this.s8.test(inv.getStack(7))
+                &&this.s9.test(inv.getStack(8));
     }
 
+    @Override
     public ItemStack craft(Inventory inv) {
         ItemStack itemStack = this.result.copy();
-        CompoundTag compoundTag = inv.getStack(0).getTag();
-        if (compoundTag != null) {
-            itemStack.setTag(compoundTag.copy());
-        }
-
         return itemStack;
     }
 
-    @Environment(EnvType.CLIENT)
+    @Environment(EnvType.CLIENT)//@Override
     public boolean fits(int width, int height) {
-        return width * height >= 2;
+        return width * height >= 9;
     }
 
+    //@Override
     public ItemStack getOutput() {
         return this.result;
     }
 
-    public boolean method_30029(ItemStack itemStack) {
-        return this.addition.test(itemStack);
-    }
-
     @Environment(EnvType.CLIENT)
     public ItemStack getRecipeKindIcon() {
-        return new ItemStack(Blocks.SMITHING_TABLE);
+        return new ItemStack(Core.SteelIngot);
     }
 
+    //@Override
     public Identifier getId() {
         return this.id;
     }
 
+    //@Override
     public RecipeSerializer<?> getSerializer() {
-        return RecipeSerializer.SMITHING;
+        return Core.ForgingL1Serializer;
     }
 
+    //@Override
     public RecipeType<?> getType() {
-        return RecipeType.SMITHING;
+        return Core.ForgingL1Type;
     }
 
-    public static class Serializer implements RecipeSerializer<ForgingL1Recipe> {
-        public ForgingL1Recipe read(Identifier identifier, JsonObject jsonObject) {
-            Ingredient ingredient = Ingredient.fromJson(JsonHelper.getObject(jsonObject, "base"));
-            Ingredient ingredient2 = Ingredient.fromJson(JsonHelper.getObject(jsonObject, "addition"));
-            ItemStack itemStack = ShapedRecipe.getItemStack(JsonHelper.getObject(jsonObject, "result"));
-            return new ForgingL1Recipe(identifier, ingredient, ingredient2, itemStack);
-        }
-
-        public ForgingL1Recipe read(Identifier identifier, PacketByteBuf packetByteBuf) {
-            Ingredient ingredient = Ingredient.fromPacket(packetByteBuf);
-            Ingredient ingredient2 = Ingredient.fromPacket(packetByteBuf);
-            ItemStack itemStack = packetByteBuf.readItemStack();
-            return new ForgingL1Recipe(identifier, ingredient, ingredient2, itemStack);
-        }
-
-        public void write(PacketByteBuf packetByteBuf, ForgingL1Recipe smithingRecipe) {
-            smithingRecipe.base.write(packetByteBuf);
-            smithingRecipe.addition.write(packetByteBuf);
-            packetByteBuf.writeItemStack(smithingRecipe.result);
-        }
+    /*public boolean method_30029(ItemStack itemStack) {
+        return this.s1.test(itemStack);
     }*/
 
-    public static final Identifier ID = new Identifier(Core.MODID, "forgingtable_l1");
-    public static final Type TYPE = new Type();
-
-    private Identifier id;
-    private Ingredient input;
-    private ItemStack output;
-
-    private ForgingL1Recipe(Identifier id, Ingredient input, ItemStack output) {
-        this.id = id;
-        this.input = input;
-        this.output = output;
-    }
-
-    @Override
-    public boolean matches(Inventory inv, World world) {
-        return input.test(inv.getStack(0)) && inv.getStack(1).isEmpty();
-    }
-
-    @Override
-    public ItemStack craft(Inventory inv) {
-        return output.copy();
-    }
-
-    @Override
-    public boolean fits(int width, int height) {
-        return true;
-    }
-
-    @Override
-    public ItemStack getOutput() {
-        return output;
-    }
-
-    @Override
-    public Identifier getId() {
-        return id;
-    }
-
-    @Override
-    public RecipeSerializer<?> getSerializer() {
-        return Recipes.ForgingL1;
-    }
-
-    @Override
-    public RecipeType<?> getType() {
-        return TYPE;
-    }
-
-    @Override
-    public DefaultedList<Ingredient> getPreviewInputs() {
-        return DefaultedList.copyOf(Ingredient.EMPTY, this.input);
-    }
-
-    public static class Type implements RecipeType<ForgingL1Recipe> {
-        @Override
-        public String toString() {
-            return ID.toString();
-        }
-    }
-
     public static class Serializer implements RecipeSerializer<ForgingL1Recipe> {
 
-        public static final Serializer INSTANCE = new Serializer();
-
-        @Override
-        public ForgingL1Recipe read(Identifier id, JsonObject jsonObject) {
-            Ingredient ingredient2;
-            if (JsonHelper.hasArray(jsonObject, "ingredient")) {
-                ingredient2 = Ingredient.fromJson(JsonHelper.getArray(jsonObject, "ingredient"));
-            } else {
-                ingredient2 = Ingredient.fromJson(JsonHelper.getObject(jsonObject, "ingredient"));
-            }
-
-            String string2 = JsonHelper.getString(jsonObject, "result");
-            int i = JsonHelper.getInt(jsonObject, "count");
-            ItemStack itemStack = new ItemStack(Registry.ITEM.get(new Identifier(string2)), i);
-            return new ForgingL1Recipe(id, ingredient2, itemStack);
+        //@Override
+        public ForgingL1Recipe read(Identifier identifier, JsonObject jsonObject) {
+            Ingredient ingredient1 = Ingredient.fromJson(JsonHelper.getObject(jsonObject, "s1"));
+            Ingredient ingredient2 = Ingredient.fromJson(JsonHelper.getObject(jsonObject, "s2"));
+            Ingredient ingredient3 = Ingredient.fromJson(JsonHelper.getObject(jsonObject, "s3"));
+            Ingredient ingredient4 = Ingredient.fromJson(JsonHelper.getObject(jsonObject, "s4"));
+            Ingredient ingredient5 = Ingredient.fromJson(JsonHelper.getObject(jsonObject, "s5"));
+            Ingredient ingredient6 = Ingredient.fromJson(JsonHelper.getObject(jsonObject, "s6"));
+            Ingredient ingredient7 = Ingredient.fromJson(JsonHelper.getObject(jsonObject, "s7"));
+            Ingredient ingredient8 = Ingredient.fromJson(JsonHelper.getObject(jsonObject, "s8"));
+            Ingredient ingredient9 = Ingredient.fromJson(JsonHelper.getObject(jsonObject, "s9"));
+            ItemStack itemStack = ShapedRecipe.getItemStack(JsonHelper.getObject(jsonObject, "result"));
+            return new ForgingL1Recipe(identifier, ingredient1, ingredient2, ingredient3, ingredient4, ingredient5, ingredient6, ingredient7, ingredient8, ingredient9, itemStack);
         }
 
-        @Override
-        public ForgingL1Recipe read(Identifier id, PacketByteBuf packetByteBuf) {
-            Ingredient ingredient = Ingredient.fromPacket(packetByteBuf);
+        //@Override
+        public ForgingL1Recipe read(Identifier identifier, PacketByteBuf packetByteBuf) {
+            Ingredient ingredient1 = Ingredient.fromPacket(packetByteBuf);
+            Ingredient ingredient2 = Ingredient.fromPacket(packetByteBuf);
+            Ingredient ingredient3 = Ingredient.fromPacket(packetByteBuf);
+            Ingredient ingredient4 = Ingredient.fromPacket(packetByteBuf);
+            Ingredient ingredient5 = Ingredient.fromPacket(packetByteBuf);
+            Ingredient ingredient6 = Ingredient.fromPacket(packetByteBuf);
+            Ingredient ingredient7 = Ingredient.fromPacket(packetByteBuf);
+            Ingredient ingredient8 = Ingredient.fromPacket(packetByteBuf);
+            Ingredient ingredient9 = Ingredient.fromPacket(packetByteBuf);
             ItemStack itemStack = packetByteBuf.readItemStack();
-            return new ForgingL1Recipe(id, ingredient, itemStack);
+            return new ForgingL1Recipe(identifier, ingredient1, ingredient2,ingredient3,ingredient4,ingredient5,ingredient6,ingredient7,ingredient8,ingredient9, itemStack);
         }
 
-        @Override
-        public void write(PacketByteBuf packetByteBuf, ForgingL1Recipe recipe) {
-            recipe.input.write(packetByteBuf);
-            packetByteBuf.writeItemStack(recipe.output);
+        //@Override
+        public void write(PacketByteBuf buf, /*@Nonnull*/ ForgingL1Recipe recipe) {
+            recipe.s1.write(buf);
+            recipe.s2.write(buf);
+            recipe.s3.write(buf);
+            recipe.s4.write(buf);
+            recipe.s5.write(buf);
+            recipe.s6.write(buf);
+            recipe.s7.write(buf);
+            recipe.s8.write(buf);
+            recipe.s9.write(buf);
+            buf.writeItemStack(recipe.result);
         }
     }
 }

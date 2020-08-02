@@ -1,21 +1,19 @@
 package idv.ironnoobseventhree.tofurtherworld.block.forging;
 
 import idv.ironnoobseventhree.tofurtherworld.Core;
+import idv.ironnoobseventhree.tofurtherworld.recipe.ForgingL1Recipe;
+import idv.ironnoobseventhree.tofurtherworld.recipe.Recipes;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.recipe.*;
-import net.minecraft.screen.ForgingScreenHandler;
 import net.minecraft.screen.ScreenHandlerContext;
-import net.minecraft.screen.ScreenHandlerType;
 import net.minecraft.screen.slot.Slot;
 import net.minecraft.world.World;
 
 import java.util.List;
-
-public class ForgingTableL1ScreenHandler extends ForgingScreenHandler {
+public class ForgingTableL1ScreenHandler extends ForgingNotForge {
     /*private final ForgingTableL1Inventory input;
     private final CraftingResultInventory result;
     private final ScreenHandlerContext context;
@@ -183,8 +181,8 @@ public class ForgingTableL1ScreenHandler extends ForgingScreenHandler {
         return 10;
     }*/
     private final World world;
-    private SmithingRecipe recipe;
-    private final List<SmithingRecipe> recipeList;
+    private ForgingL1Recipe recipe;
+    private final List<ForgingL1Recipe> recipeList;
 
     public ForgingTableL1ScreenHandler(int syncId, PlayerInventory playerInventory) {
         this(syncId, playerInventory, ScreenHandlerContext.EMPTY);
@@ -192,10 +190,17 @@ public class ForgingTableL1ScreenHandler extends ForgingScreenHandler {
     public ForgingTableL1ScreenHandler(int syncId, PlayerInventory playerInventory, ScreenHandlerContext context) {
         super(Core.ForgingTableL1Screen, syncId, playerInventory, context);
         this.world = playerInventory.player.world;
-        this.recipeList = this.world.getRecipeManager().method_30027(RecipeType.SMITHING);
-        this.addSlot(new Slot(this.input, 0, 27, 37));
-        this.addSlot(new Slot(this.input, 1, 76, 47));
-        this.addSlot(new Slot(this.output, 2, 134, 47) {
+        this.recipeList = this.world.getRecipeManager().method_30027(Recipes.ForgingL1);
+        this.addSlot(new Slot(this.input, 0, 30, 17));
+        this.addSlot(new Slot(this.input, 1, 48, 17));
+        this.addSlot(new Slot(this.input, 2, 66, 17));
+        this.addSlot(new Slot(this.input, 3, 30, 35));
+        this.addSlot(new Slot(this.input, 4, 48, 35));
+        this.addSlot(new Slot(this.input, 5, 66, 35));
+        this.addSlot(new Slot(this.input, 6, 30, 53));
+        this.addSlot(new Slot(this.input, 7, 48, 53));
+        this.addSlot(new Slot(this.input, 8, 66, 53));
+        this.addSlot(new Slot(this.output, 9, 124, 35) {
             public boolean canInsert(ItemStack stack) {
                 return false;
             }
@@ -221,18 +226,9 @@ public class ForgingTableL1ScreenHandler extends ForgingScreenHandler {
         }
 
     }
-    /*//@Override
-    public ForgingTableL1ScreenHandler( ScreenHandlerType<?> type, int syncId, PlayerInventory playerInventory, ScreenHandlerContext context) {
-        super(Core.ForgingTableL1Screen, syncId, playerInventory, context);
-        //this.context = context;
-        this.world = playerInventory.player.world;
-        this.recipeList = this.world.getRecipeManager().method_30027(RecipeType.SMITHING);
-        //this.player = playerInventory.player;
-    }*/
-
     protected boolean canUse(BlockState state) { return state.isOf(Core.ForgingTableL1); }
 
-    protected boolean canTakeOutput(PlayerEntity player, boolean present) {
+    protected boolean canTakeOutput(PlayerEntity player, boolean pnt) {
         return this.recipe != null && this.recipe.matches(this.input, this.world);
     }
 
@@ -252,11 +248,11 @@ public class ForgingTableL1ScreenHandler extends ForgingScreenHandler {
     }
 
     public void updateResult() {
-        List<SmithingRecipe> list = this.world.getRecipeManager().getAllMatches(RecipeType.SMITHING, this.input, this.world);
+        List<ForgingL1Recipe> list = this.world.getRecipeManager().getAllMatches(Recipes.ForgingL1, this.input, this.world);
         if (list.isEmpty()) {
             this.output.setStack(0, ItemStack.EMPTY);
         } else {
-            this.recipe = (SmithingRecipe)list.get(0);
+            this.recipe = (ForgingL1Recipe)list.get(0);
             ItemStack itemStack = this.recipe.craft(this.input);
             this.output.setStack(0, itemStack);
         }
@@ -264,7 +260,7 @@ public class ForgingTableL1ScreenHandler extends ForgingScreenHandler {
     }
 
     protected boolean method_30025(ItemStack itemStack) {
-        return this.recipeList.stream().anyMatch((smithingRecipe) -> smithingRecipe.method_30029(itemStack));
+        return this.recipeList.stream().anyMatch((forgingL1Recipe) -> forgingL1Recipe.method_30029(itemStack));
     }
     public ItemStack transferSlot(PlayerEntity player, int index) {
         ItemStack itemStack = super.transferSlot(player, index);

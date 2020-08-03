@@ -1,5 +1,6 @@
 package idv.ironnoobseventhree.tofurtherworld;
 
+import idv.ironnoobseventhree.tofurtherworld.block.ChiseledIronBlock;
 import idv.ironnoobseventhree.tofurtherworld.block.DrawerBlock;
 import idv.ironnoobseventhree.tofurtherworld.block.forging.ForgingTableL1;
 import idv.ironnoobseventhree.tofurtherworld.block.GlassLike;
@@ -175,6 +176,7 @@ public class Core implements ModInitializer {
     public static final Block SteelBlock = new Block(AbstractBlock.Settings.of(Material.METAL, MaterialColor.IRON).requiresTool().strength(10.0F, 6.0F).sounds(BlockSoundGroup.NETHERITE));
     public static final Block TurbidObsidianBlock = new Block(AbstractBlock.Settings.of(Material.STONE, MaterialColor.BLACK).requiresTool().strength(50.0F, 999.0F).sounds(BlockSoundGroup.STONE));
     public static final Block PureObsidianBlock = new GlassLike(AbstractBlock.Settings.of(Material.STONE, MaterialColor.BLACK).requiresTool().strength(50.0F, 999.0F).sounds(BlockSoundGroup.STONE).nonOpaque());
+    public static final Block PrismarineBricksSmooth = new Block(AbstractBlock.Settings.of(Material.STONE, MaterialColor.DIAMOND).requiresTool().strength(1.5F, 6.0F));
     //Colour Block
     public static final Block WhiteLego = new Block(FabricBlockSettings.of(Material.STONE).hardness(6.0f).breakByTool(FabricToolTags.PICKAXES, 0));
     public static final Block OrangeLego = new Block(FabricBlockSettings.of(Material.STONE).hardness(6.0f).breakByTool(FabricToolTags.PICKAXES, 0));
@@ -255,6 +257,7 @@ public class Core implements ModInitializer {
     //Entity Block
     public static final DrawerBlock Drawer1 = new DrawerBlock(AbstractBlock.Settings.of(Material.STONE).requiresTool().strength(6.0F, 6.0F));
     public static final DrawerBlock Drawer2 = new DrawerBlock(AbstractBlock.Settings.of(Material.STONE).requiresTool().strength(6.0F, 6.0F));
+    public static final Block ChiseledIronBox = new ChiseledIronBlock(AbstractBlock.Settings.of(Material.METAL, MaterialColor.IRON).requiresTool().strength(10.0F, 6.0F).sounds(BlockSoundGroup.NETHERITE));
     public static final Block ForgingTableL1 = new ForgingTableL1(AbstractBlock.Settings.of(Material.STONE).requiresTool().strength(6.0F, 6.0F).sounds(BlockSoundGroup.METAL));
     //Furniture
     public static final Block WoodenChair = new Chair(AbstractBlock.Settings.of(Material.WOOD, MaterialColor.BROWN).strength(2.0F).sounds(BlockSoundGroup.WOOD).nonOpaque());
@@ -282,23 +285,10 @@ public class Core implements ModInitializer {
     public static final ScreenHandlerType<ForgingTableL1ScreenHandler> ForgingTableL1Screen = ScreenHandlerRegistry.registerSimple(new Identifier(MODID, "forging_table_l1_screen"), ForgingTableL1ScreenHandler::new);
     //Recipe
     //#1
-    private static RecipeType<ForgingL1Recipe> forging_l1_type(Identifier id) {
-        return Registry.register(Registry.RECIPE_TYPE, id, new RecipeType<ForgingL1Recipe>() {
-            public String toString() {
-                return id.toString();
-            }
-        });
-    }
-    private static ForgingL1Recipe.Serializer forging_l1_serializer(Identifier id, ForgingL1Recipe.Serializer serializer) {
-        return Registry.register(Registry.RECIPE_SERIALIZER, id, serializer);
-    }
-    public static final RecipeSerializer<ForgingL1Recipe> ForgingL1Serializer = forging_l1_serializer(new Identifier(
-            MODID, "forging_l1"
-    ), new ForgingL1Recipe.Serializer());
-    public static final RecipeType<ForgingL1Recipe> ForgingL1Type = forging_l1_type(new Identifier(
-            MODID, "forging_l1"
-    ));
-
+    private static RecipeType<ForgingL1Recipe> forging_l1_type(Identifier id) {return Registry.register(Registry.RECIPE_TYPE, id, new RecipeType<ForgingL1Recipe>() {public String toString() { return id.toString(); }}); }
+    private static ForgingL1Recipe.Serializer forging_l1_serializer(Identifier id, ForgingL1Recipe.Serializer serializer) { return Registry.register(Registry.RECIPE_SERIALIZER, id, serializer); }
+    public static final RecipeSerializer<ForgingL1Recipe> ForgingL1Serializer = forging_l1_serializer(new Identifier(MODID, "forging_l1"), new ForgingL1Recipe.Serializer());
+    public static final RecipeType<ForgingL1Recipe> ForgingL1Type = forging_l1_type(new Identifier(MODID, "forging_l1"));
 
     @Override
     public void onInitialize() {
@@ -461,6 +451,8 @@ public class Core implements ModInitializer {
         Registry.register(Registry.ITEM, new Identifier(MODID, "turbid_obsidian_block"), new BlockItem(TurbidObsidianBlock, new Item.Settings()));
         Registry.register(Registry.BLOCK, new Identifier(MODID, "pure_obsidian_block"), PureObsidianBlock);
         Registry.register(Registry.ITEM, new Identifier(MODID, "pure_obsidian_block"), new BlockItem(PureObsidianBlock, new Item.Settings()));
+        Registry.register(Registry.BLOCK, new Identifier(MODID, "prismarine_bricks_smooth"), PrismarineBricksSmooth);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "prismarine_bricks_smooth"), new BlockItem(PrismarineBricksSmooth, new Item.Settings()));
         //Colour Block
         Registry.register(Registry.BLOCK, new Identifier("tofurtherworld", "white_lego"),WhiteLego);
         Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "white_lego"), new BlockItem(WhiteLego, new Item.Settings()));
@@ -573,6 +565,8 @@ public class Core implements ModInitializer {
         Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "drawer_1"), new BlockItem(Drawer1, new Item.Settings()));
         Registry.register(Registry.BLOCK, new Identifier("tofurtherworld", "drawer_2"), Drawer2);
         Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "drawer_2"), new BlockItem(Drawer2, new Item.Settings()));
+        Registry.register(Registry.BLOCK, new Identifier("tofurtherworld", "chiseled_iron_box"), ChiseledIronBox);
+        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "chiseled_iron_box"), new BlockItem(ChiseledIronBox, new Item.Settings()));
         Registry.register(Registry.BLOCK, new Identifier("tofurtherworld", "forging_table_l1"), ForgingTableL1);
         Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "forging_table_l1"), new BlockItem(ForgingTableL1, new Item.Settings()));
         //Furniture
@@ -694,6 +688,7 @@ public class Core implements ModInitializer {
                 stacks.add(new ItemStack(PureObsidianBlock));
                 stacks.add(new ItemStack(OldCommandBlock));
                 stacks.add(new ItemStack(OldReactor));
+                stacks.add(new ItemStack(PrismarineBricksSmooth));
                 stacks.add(new ItemStack(WhiteLego));
                 stacks.add(new ItemStack(OrangeLego));
                 stacks.add(new ItemStack(MagentaLego));
@@ -744,6 +739,7 @@ public class Core implements ModInitializer {
                 stacks.add(new ItemStack(BlackGlowingGlass));
                 stacks.add(new ItemStack(Drawer1));
                 stacks.add(new ItemStack(Drawer2));
+                stacks.add(new ItemStack(ChiseledIronBox));
                 stacks.add(new ItemStack(WoodenChair));
                 stacks.add(new ItemStack(WoodenLongTable));
                 stacks.add(new ItemStack(AluminumChair));

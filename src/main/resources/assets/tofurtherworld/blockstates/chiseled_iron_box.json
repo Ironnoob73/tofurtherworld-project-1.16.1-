@@ -1,0 +1,8 @@
+{ 
+    "variants":{ 
+        "facing=north": { "model": "tofurtherworld:block/chiseled_iron_box", "y": 180 },
+        "facing=east":  { "model": "tofurtherworld:block/chiseled_iron_box", "y": 270 },
+        "facing=south": { "model": "tofurtherworld:block/chiseled_iron_box" },
+        "facing=west":  { "model": "tofurtherworld:block/chiseled_iron_box", "y": 90 }
+    } 
+}

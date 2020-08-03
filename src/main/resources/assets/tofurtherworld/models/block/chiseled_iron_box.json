@@ -1,0 +1,19 @@
+{
+"parent": "block/cube",
+"display": {
+    "firstperson_righthand": {
+        "rotation": [ 0, 135, 0 ],
+        "translation": [ 0, 0, 0 ],
+        "scale": [ 0.40, 0.40, 0.40 ]
+    }
+},
+"textures": {
+    "particle": "tofurtherworld:block/chiseled_iron_block",
+    "down": "tofurtherworld:block/chiseled_iron_box_bottom",
+    "up": "tofurtherworld:block/chiseled_iron_box_top",
+    "north": "tofurtherworld:block/chiseled_iron_box_front",
+    "east": "tofurtherworld:block/chiseled_iron_box_side",
+    "south": "tofurtherworld:block/chiseled_iron_box_back",
+    "west": "tofurtherworld:block/chiseled_iron_box_side"
+  }
+}

@@ -98,13 +98,52 @@ public class ForgingTableL1ScreenHandler extends ForgingNotForge {
         }
 
     }
-
-    /*protected boolean method_30025(ItemStack itemStack) {
-        return this.recipeList.stream().anyMatch((forgingL1Recipe) -> forgingL1Recipe.method_30029(itemStack));
-    }*/
     public ItemStack transferSlot(PlayerEntity player, int index) {
-        ItemStack itemStack = super.transferSlot(player, index);
-        System.out.println(itemStack);
-        return ItemStack.EMPTY;
+        ItemStack itemStack = ItemStack.EMPTY;
+        Slot slot = (Slot)this.slots.get(index);
+        if (slot != null && slot.hasStack()) {
+            ItemStack itemStack2 = slot.getStack();
+            itemStack = itemStack2.copy();
+            if (index == 0) {
+                this.context.run((world, blockPos) -> {
+                    itemStack2.getItem().onCraft(itemStack2, world, player);
+                });
+                if (!this.insertItem(itemStack2, 10, 46, true)) {
+                    return ItemStack.EMPTY;
+                }
+
+                slot.onStackChanged(itemStack2, itemStack);
+            } else if (index >= 10 && index < 46) {
+                if (!this.insertItem(itemStack2, 0, 9, false)) {
+                    if (index < 37) {
+                        if (!this.insertItem(itemStack2, 37, 46, false)) {
+                            return ItemStack.EMPTY;
+                        }
+                    } else if (!this.insertItem(itemStack2, 10, 37, false)) {
+                        return ItemStack.EMPTY;
+                    }
+                }
+            } else if (!this.insertItem(itemStack2, 10, 46, false)) {
+                return ItemStack.EMPTY;
+            }
+
+            if (itemStack2.isEmpty()) {
+                slot.setStack(ItemStack.EMPTY);
+            } else {
+                slot.markDirty();
+            }
+
+            if (itemStack2.getCount() == itemStack.getCount()) {
+                return ItemStack.EMPTY;
+            }
+
+            ItemStack itemStack3 = slot.onTakeItem(player, itemStack2);
+            if (index == 0) {
+                player.dropItem(itemStack3, false);
+            }
+        }
+
+        return itemStack;
     }
+
 }

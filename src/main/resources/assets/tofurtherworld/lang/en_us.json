@@ -136,6 +136,7 @@
     "block.tofurtherworld.steel_block":"\u00A7fSteel block",
     "block.tofurtherworld.turbid_obsidian_block":"\u00A7fTurbid obsidian block",
     "block.tofurtherworld.pure_obsidian_block":"\u00A7fPure obsidian block",
+    "block.tofurtherworld.prismarine_bricks_smooth":"\u00A7fSmooth prismarine bricks",
 
     "block.tofurtherworld.white_lego":"\u00A7fWhite \u00A7mlego \u00A7rblock",
     "block.tofurtherworld.orange_lego":"\u00A7fOrange \u00A7mlego \u00A7rblock",
@@ -189,6 +190,8 @@
     "block.tofurtherworld.drawer":"\u00A70Drawer",
     "block.tofurtherworld.drawer_1":"\u00A7fDrawer(transverse)",
     "block.tofurtherworld.drawer_2":"\u00A7fDrawer(vertical)",
+    "block.tofurtherworld.chiseled_iron_box":"\u00A7fChiseled iron box",
+    "block.tofurtherworld.chiseled_iron_box.text":"\u00A70Chiseled iron box",
     "block.tofurtherworld.forging_table_l1":"\u00A7fForging table§7 - §2§oLEVEL1",
     "block.tofurtherworld.forging_table_l1_t":"\u00A70Forging table§7 - §2§oLEVEL1",
 

@@ -151,6 +151,7 @@ public class Core implements ModInitializer {
     public static ToolItem ObsidianPickaxe = new PickaxeModel(ToolSetting.Steel,1,-2.5f,new Item.Settings());
     public static ToolItem ObsidianShovel = new ShovelItem(ToolSetting.Steel,1,-3,new Item.Settings());
     public static ToolItem ObsidianHoe = new HoeModel(ToolSetting.Steel,-3,-1,new Item.Settings());
+    public static final Item MelonGun = new MelonGun(new Item.Settings());
     //Material Block
     public static final Block TestOre = new Block(FabricBlockSettings.of(Material.STONE).hardness(6.0f).breakByTool(FabricToolTags.PICKAXES, 0));
     public static final Block ForgottenIronOre = new OreBlock(AbstractBlock.Settings.of(Material.STONE).requiresTool().strength(3.0F, 3.0F));
@@ -402,6 +403,7 @@ public class Core implements ModInitializer {
         Registry.register(Registry.ITEM, new Identifier(MODID, "obsidian_pickaxe"), ObsidianPickaxe);
         Registry.register(Registry.ITEM, new Identifier(MODID, "obsidian_shovel"), ObsidianShovel);
         Registry.register(Registry.ITEM, new Identifier(MODID, "obsidian_hoe"), ObsidianHoe);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "melon_gun"), MelonGun);
         //Material Block
         Registry.register(Registry.BLOCK, new Identifier(MODID, "test_ore"),TestOre);
         Registry.register(Registry.ITEM, new Identifier(MODID, "test_ore"), new BlockItem(TestOre, new Item.Settings()));
@@ -810,6 +812,7 @@ public class Core implements ModInitializer {
                 stacks.add(new ItemStack(ObsidianPickaxe));
                 stacks.add(new ItemStack(ObsidianShovel));
                 stacks.add(new ItemStack(ObsidianHoe));
+                stacks.add(new ItemStack(MelonGun));
                     }
             ).build();
 

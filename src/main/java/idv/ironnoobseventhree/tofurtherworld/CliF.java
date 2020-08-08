@@ -1,7 +1,6 @@
 package idv.ironnoobseventhree.tofurtherworld;
 
 import idv.ironnoobseventhree.tofurtherworld.block.forging.ForgingTableL1Inventory;
-import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;

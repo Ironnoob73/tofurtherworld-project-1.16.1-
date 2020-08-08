@@ -1,0 +1,10 @@
+{
+    "variants": {
+        "": [
+            { "model": "tofurtherworld:block/alchemical_silver_block" },
+            { "model": "tofurtherworld:block/alchemical_silver_block", "y": 90 },
+            { "model": "tofurtherworld:block/alchemical_silver_block", "y": 180 },
+            { "model": "tofurtherworld:block/alchemical_silver_block", "y": 270 }
+        ]
+    }
+}

@@ -1,6 +1,5 @@
 package idv.ironnoobseventhree.tofurtherworld.block.furniture;
 
-import idv.ironnoobseventhree.tofurtherworld.block.DrawerEntity;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.DispenserBlockEntity;

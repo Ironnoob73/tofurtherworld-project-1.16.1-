@@ -1,0 +1,10 @@
+{
+    "variants": {
+        "": [
+            { "model": "tofurtherworld:block/hard_aluminum_block" },
+            { "model": "tofurtherworld:block/hard_aluminum_block", "y": 90 },
+            { "model": "tofurtherworld:block/hard_aluminum_block", "y": 180 },
+            { "model": "tofurtherworld:block/hard_aluminum_block", "y": 270 }
+        ]
+    }
+}

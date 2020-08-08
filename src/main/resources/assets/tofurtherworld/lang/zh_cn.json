@@ -38,6 +38,11 @@
     "item.tofurtherworld.end_pearl":"\u00A7f末地珍珠",
     "item.tofurtherworld.end_pearl_powder":"\u00A7f末地珍珠粉",
     "item.tofurtherworld.end_pearl_stick":"\u00A7f末地珍珠棍",
+    "item.tofurtherworld.pattern_gold_ingot":"\u00A7f纹金锭",
+    "item.tofurtherworld.cast_iron_ingot":"\u00A7f铸铁锭",
+    "item.tofurtherworld.alchemical_silver_ingot":"\u00A7f炼银锭",
+    "item.tofurtherworld.tough_copper_ingot":"\u00A7f韧铜锭",
+    "item.tofurtherworld.hard_aluminum_ingot":"\u00A7f坚铝锭",
 
     "item.tofurtherworld.rough_knife":"\u00A7f粗制小刀",
     "item.tofurtherworld.rough_hatchet":"\u00A7f粗制短斧",
@@ -139,6 +144,10 @@
     "block.tofurtherworld.turbid_obsidian_block":"\u00A7f浑浊的黑曜石块",
     "block.tofurtherworld.pure_obsidian_block":"\u00A7f纯净的黑曜石块",
     "block.tofurtherworld.prismarine_bricks_smooth":"\u00A7f平滑海晶石砖",
+    "block.tofurtherworld.pattern_gold_block":"\u00A7f纹金块",
+    "block.tofurtherworld.cast_iron_block":"\u00A7f铸铁块",
+    "block.tofurtherworld.alchemical_silver_block":"\u00A7f炼银块",
+    "block.tofurtherworld.hard_aluminum_block":"\u00A7f坚铝块",
 
     "block.tofurtherworld.white_lego":"\u00A7f白色\u00A7m乐高\u00A7r块",
     "block.tofurtherworld.orange_lego":"\u00A7f橙色\u00A7m乐高\u00A7r块",

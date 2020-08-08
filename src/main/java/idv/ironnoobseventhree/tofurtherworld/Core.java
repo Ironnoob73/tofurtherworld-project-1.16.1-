@@ -1,15 +1,15 @@
 package idv.ironnoobseventhree.tofurtherworld;
 
+import idv.ironnoobseventhree.tofurtherworld.biome.BiomeMain;
 import idv.ironnoobseventhree.tofurtherworld.block.ChiseledIronBlock;
 import idv.ironnoobseventhree.tofurtherworld.block.DrawerBlock;
-import idv.ironnoobseventhree.tofurtherworld.block.forging.ForgingTableL1;
-import idv.ironnoobseventhree.tofurtherworld.block.GlassLike;
-import idv.ironnoobseventhree.tofurtherworld.biome.BiomeMain;
 import idv.ironnoobseventhree.tofurtherworld.block.Facing;
+import idv.ironnoobseventhree.tofurtherworld.block.GlassLike;
+import idv.ironnoobseventhree.tofurtherworld.block.forging.ForgingTableL1;
 import idv.ironnoobseventhree.tofurtherworld.block.forging.ForgingTableL1ScreenHandler;
 import idv.ironnoobseventhree.tofurtherworld.block.furniture.Chair;
-import idv.ironnoobseventhree.tofurtherworld.block.furniture.TableCS;
 import idv.ironnoobseventhree.tofurtherworld.block.furniture.LongTable;
+import idv.ironnoobseventhree.tofurtherworld.block.furniture.TableCS;
 import idv.ironnoobseventhree.tofurtherworld.block.sapling.FrozenBushBlock;
 import idv.ironnoobseventhree.tofurtherworld.block.sapling.IceBirch;
 import idv.ironnoobseventhree.tofurtherworld.block.sapling.SaplingMain;
@@ -24,6 +24,8 @@ import net.fabricmc.fabric.api.screenhandler.v1.ScreenHandlerRegistry;
 import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
 import net.minecraft.block.*;
 import net.minecraft.item.*;
+import net.minecraft.recipe.RecipeSerializer;
+import net.minecraft.recipe.RecipeType;
 import net.minecraft.screen.ScreenHandlerType;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
@@ -36,8 +38,6 @@ import net.minecraft.world.gen.decorator.Decorator;
 import net.minecraft.world.gen.decorator.RangeDecoratorConfig;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.OreFeatureConfig;
-import net.minecraft.recipe.RecipeSerializer;
-import net.minecraft.recipe.RecipeType;
 
 public class Core implements ModInitializer {
     public static final String MODID = "tofurtherworld";
@@ -103,6 +103,11 @@ public class Core implements ModInitializer {
     public static final Item EndPearl = new Item(new Item.Settings());
     public static final Item EndPearlPowder = new Item(new Item.Settings());
     public static final Item EndPearlStick = new Item(new Item.Settings());
+    public static final Item PatternGoldIngot = new Item(new Item.Settings());
+    public static final Item CastIronIngot = new Item(new Item.Settings());
+    public static final Item AlchemicalSilverIngot = new Item(new Item.Settings());
+    public static final Item ToughCopperIngot = new Item(new Item.Settings());
+    public static final Item HardAluminumIngot = new Item(new Item.Settings());
     //Special
     public static final idv.ironnoobseventhree.tofurtherworld.tool.PDA PDA = new PDA(new Item.Settings());
     public static final Item CopperWrench = new Item(new Item.Settings());
@@ -150,8 +155,8 @@ public class Core implements ModInitializer {
     public static ToolItem ObsidianSword = new SwordItem(ToolSetting.Steel,3,-2.5f,new Item.Settings());
     public static ToolItem ObsidianPickaxe = new PickaxeModel(ToolSetting.Steel,1,-2.5f,new Item.Settings());
     public static ToolItem ObsidianShovel = new ShovelItem(ToolSetting.Steel,1,-3,new Item.Settings());
-    public static ToolItem ObsidianHoe = new HoeModel(ToolSetting.Steel,-3,-1,new Item.Settings());
-    public static final Item MelonGun = new MelonGun(new Item.Settings());
+    public static ToolItem ObsidianHoe = new HoeModel(ToolSetting.Steel,-3,-1,new Item.Settings());gradlew
+    public static final Item MelonGun = new MelonGun(new Item.Settings().maxDamage(1000));
     //Material Block
     public static final Block TestOre = new Block(FabricBlockSettings.of(Material.STONE).hardness(6.0f).breakByTool(FabricToolTags.PICKAXES, 0));
     public static final Block ForgottenIronOre = new OreBlock(AbstractBlock.Settings.of(Material.STONE).requiresTool().strength(3.0F, 3.0F));
@@ -178,6 +183,10 @@ public class Core implements ModInitializer {
     public static final Block TurbidObsidianBlock = new Block(AbstractBlock.Settings.of(Material.STONE, MaterialColor.BLACK).requiresTool().strength(50.0F, 999.0F).sounds(BlockSoundGroup.STONE));
     public static final Block PureObsidianBlock = new GlassLike(AbstractBlock.Settings.of(Material.STONE, MaterialColor.BLACK).requiresTool().strength(50.0F, 999.0F).sounds(BlockSoundGroup.STONE).nonOpaque());
     public static final Block PrismarineBricksSmooth = new Block(AbstractBlock.Settings.of(Material.STONE, MaterialColor.DIAMOND).requiresTool().strength(1.5F, 6.0F));
+    public static final Block PatternGoldBlock = new Block(AbstractBlock.Settings.of(Material.METAL, MaterialColor.GOLD).requiresTool().strength(15F, 10F).nonOpaque().sounds(BlockSoundGroup.NETHERITE).lightLevel((state)-> 2));
+    public static final Block CastIronBlock = new Block(AbstractBlock.Settings.of(Material.METAL, MaterialColor.IRON).requiresTool().strength(15F, 10F).sounds(BlockSoundGroup.NETHERITE).lightLevel((state)-> 2));
+    public static final Block AlchemicalSilverBlock = new Block(AbstractBlock.Settings.of(Material.METAL, MaterialColor.LIGHT_GRAY).requiresTool().strength(15F, 10F).nonOpaque().sounds(BlockSoundGroup.NETHERITE).lightLevel((state)-> 2));
+    public static final Block HardAluminumBlock = new Block(AbstractBlock.Settings.of(Material.METAL, MaterialColor.BLUE).requiresTool().strength(15F, 10F).nonOpaque().sounds(BlockSoundGroup.NETHERITE).lightLevel((state)-> 2));
     //Colour Block
     public static final Block WhiteLego = new Block(FabricBlockSettings.of(Material.STONE).hardness(6.0f).breakByTool(FabricToolTags.PICKAXES, 0));
     public static final Block OrangeLego = new Block(FabricBlockSettings.of(Material.STONE).hardness(6.0f).breakByTool(FabricToolTags.PICKAXES, 0));
@@ -355,6 +364,11 @@ public class Core implements ModInitializer {
         Registry.register(Registry.ITEM, new Identifier(MODID, "end_pearl"), EndPearl);
         Registry.register(Registry.ITEM, new Identifier(MODID, "end_pearl_powder"), EndPearlPowder);
         Registry.register(Registry.ITEM, new Identifier(MODID, "end_pearl_stick"), EndPearlStick);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "pattern_gold_ingot"), PatternGoldIngot);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "cast_iron_ingot"), CastIronIngot);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "alchemical_silver_ingot"), AlchemicalSilverIngot);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "tough_copper_ingot"), ToughCopperIngot);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "hard_aluminum_ingot"), HardAluminumIngot);
         //Special
         Registry.register(Registry.ITEM, new Identifier(MODID, "pda"), PDA);
         Registry.register(Registry.ITEM, new Identifier(MODID, "copper_wrench"), CopperWrench);
@@ -455,6 +469,14 @@ public class Core implements ModInitializer {
         Registry.register(Registry.ITEM, new Identifier(MODID, "pure_obsidian_block"), new BlockItem(PureObsidianBlock, new Item.Settings()));
         Registry.register(Registry.BLOCK, new Identifier(MODID, "prismarine_bricks_smooth"), PrismarineBricksSmooth);
         Registry.register(Registry.ITEM, new Identifier(MODID, "prismarine_bricks_smooth"), new BlockItem(PrismarineBricksSmooth, new Item.Settings()));
+        Registry.register(Registry.BLOCK, new Identifier(MODID, "pattern_gold_block"), PatternGoldBlock);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "pattern_gold_block"), new BlockItem(PatternGoldBlock, new Item.Settings()));
+        Registry.register(Registry.BLOCK, new Identifier(MODID, "cast_iron_block"), CastIronBlock);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "cast_iron_block"), new BlockItem(CastIronBlock, new Item.Settings()));
+        Registry.register(Registry.BLOCK, new Identifier(MODID, "alchemical_silver_block"), AlchemicalSilverBlock);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "alchemical_silver_block"), new BlockItem(AlchemicalSilverBlock, new Item.Settings()));
+        Registry.register(Registry.BLOCK, new Identifier(MODID, "hard_aluminum_block"), HardAluminumBlock);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "hard_aluminum_block"), new BlockItem(HardAluminumBlock, new Item.Settings()));
         //Colour Block
         Registry.register(Registry.BLOCK, new Identifier("tofurtherworld", "white_lego"),WhiteLego);
         Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "white_lego"), new BlockItem(WhiteLego, new Item.Settings()));
@@ -659,6 +681,11 @@ public class Core implements ModInitializer {
                 stacks.add(new ItemStack(EndPearl));
                 stacks.add(new ItemStack(EndPearlPowder));
                 stacks.add(new ItemStack(EndPearlStick));
+                stacks.add(new ItemStack(PatternGoldIngot));
+                stacks.add(new ItemStack(CastIronIngot));
+                stacks.add(new ItemStack(AlchemicalSilverIngot));
+                stacks.add(new ItemStack(ToughCopperIngot));
+                stacks.add(new ItemStack(HardAluminumIngot));
                 stacks.add(new ItemStack(ApplePiece));
                     }
             ).build();
@@ -688,6 +715,9 @@ public class Core implements ModInitializer {
                 stacks.add(new ItemStack(TopazBlock));
                 stacks.add(new ItemStack(TurbidObsidianBlock));
                 stacks.add(new ItemStack(PureObsidianBlock));
+                stacks.add(new ItemStack(PatternGoldBlock));
+                stacks.add(new ItemStack(CastIronBlock));
+                stacks.add(new ItemStack(AlchemicalSilverBlock));
                 stacks.add(new ItemStack(OldCommandBlock));
                 stacks.add(new ItemStack(OldReactor));
                 stacks.add(new ItemStack(PrismarineBricksSmooth));

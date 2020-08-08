@@ -36,6 +36,11 @@
     "item.tofurtherworld.end_pearl":"\u00A7fEnd pearl",
     "item.tofurtherworld.end_pearl_powder":"\u00A7fEnd pearl powder",
     "item.tofurtherworld.end_pearl_stick":"\u00A7fEnd pearl stick",
+    "item.tofurtherworld.pattern_gold_ingot":"\u00A7fPattern gold ingot",
+    "item.tofurtherworld.cast_iron_ingot":"\u00A7fCast iron ingot",
+    "item.tofurtherworld.alchemical_silver_ingot":"\u00A7fAlchemical Silver ingot",
+    "item.tofurtherworld.tough_copper_ingot":"\u00A7fTough copper ingot",
+    "item.tofurtherworld.hard_aluminum_ingot":"\u00A7fHard aluminum ingot",
 
     "item.tofurtherworld.rough_knife":"\u00A7fRough knife",
     "item.tofurtherworld.rough_hatchet":"\u00A7fRough hatchet",
@@ -139,6 +144,10 @@
     "block.tofurtherworld.turbid_obsidian_block":"\u00A7fTurbid obsidian block",
     "block.tofurtherworld.pure_obsidian_block":"\u00A7fPure obsidian block",
     "block.tofurtherworld.prismarine_bricks_smooth":"\u00A7fSmooth prismarine bricks",
+    "block.tofurtherworld.pattern_gold_block":"\u00A7fPattern gold block",
+    "block.tofurtherworld.cast_iron_block":"\u00A7Cast iron block",
+    "block.tofurtherworld.alchemical_silver_block":"\u00A7fAlchemical silver block",
+    "block.tofurtherworld.hard_aluminum_block":"\u00A7fHard aluminum block",
 
     "block.tofurtherworld.white_lego":"\u00A7fWhite \u00A7mlego \u00A7rblock",
     "block.tofurtherworld.orange_lego":"\u00A7fOrange \u00A7mlego \u00A7rblock",

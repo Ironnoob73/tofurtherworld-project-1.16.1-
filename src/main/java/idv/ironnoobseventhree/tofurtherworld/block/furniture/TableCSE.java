@@ -8,13 +8,12 @@ import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventories;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.screen.*;
+import net.minecraft.screen.HopperScreenHandler;
+import net.minecraft.screen.ScreenHandler;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.registry.Registry;
-
-import java.awt.*;
 
 public class TableCSE extends LootableContainerBlockEntity {
     public  DefaultedList<ItemStack> inv;

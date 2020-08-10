@@ -28,7 +28,7 @@ public class MelonGun extends RangedWeaponItem {
          * 我也不知道这个方法是什么，大概是蓄力时间吧
          * 你回去调试一下，把值改成15会发生什么
          */
-        return 0;
+        return 5;
     }
 
     private static ItemStack getSnowballType(PlayerEntity playerEntity, ItemStack stack) {
@@ -48,8 +48,8 @@ public class MelonGun extends RangedWeaponItem {
 
                 boolean bl = creative && itemStack.getItem() == Items.MELON_SEEDS;
                 if (!world.isClient) {
-                    //assert Items.SNOWBALL instanceof SnowballItem;  // Here, please test it. Can Items.SNOWBALL instanceof SnowballItem? -- teddyxlandlee
-                    //Item item = (itemStack.getItem() instanceof SnowballItem ? itemStack.getItem() : Items.MELON_SEEDS);
+                    assert Items.SNOWBALL instanceof SnowballItem;  // Here, please test it. Can Items.SNOWBALL instanceof SnowballItem? -- teddyxlandlee
+                    Item item = (itemStack.getItem() instanceof SnowballItem ? itemStack.getItem() : Items.MELON_SEEDS);
                     SnowballEntity snowballEntity = new SnowballEntity(world, user);
                     snowballEntity.setProperties(user, user.pitch, user.yaw, 0.0F, 1.5F, 1.0F);
                     stack.damage(1, playerEntity, (p) -> p.sendToolBreakStatus(playerEntity.getActiveHand()));

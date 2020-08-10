@@ -1,6 +1,7 @@
-package idv.ironnoobseventhree.tofurtherworld.block.forging;
+package idv.ironnoobseventhree.tofurtherworld.block.machine;
 
 import idv.ironnoobseventhree.tofurtherworld.Core;
+import idv.ironnoobseventhree.tofurtherworld.block.forging.ForgingTableL1B;
 import idv.ironnoobseventhree.tofurtherworld.recipe.ForgingL1Recipe;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
@@ -11,40 +12,23 @@ import net.minecraft.screen.slot.Slot;
 import net.minecraft.world.World;
 
 import java.util.List;
-public class ForgingTableL1ScreenHandler extends ForgingTableL1B {
+
+public class GrinderScreenHandler extends GrinderB {
     private final World world;
     private ForgingL1Recipe recipe;
     private final List<ForgingL1Recipe> recipeList;
 
-    public ForgingTableL1ScreenHandler(int syncId, PlayerInventory playerInventory) {
+    public GrinderScreenHandler(int syncId, PlayerInventory playerInventory) {
         this(syncId, playerInventory, ScreenHandlerContext.EMPTY);
     }
-    public ForgingTableL1ScreenHandler(int syncId, PlayerInventory playerInventory, ScreenHandlerContext context) {
-        super(Core.ForgingTableL1Screen, syncId, playerInventory, context);
+    public GrinderScreenHandler(int syncId, PlayerInventory playerInventory, ScreenHandlerContext context) {
+        super(Core.GrinderScreen, syncId, playerInventory, context);
         this.world = playerInventory.player.world;
         this.recipeList = this.world.getRecipeManager().method_30027(Core.ForgingL1Type);
-        this.addSlot(new Slot(this.input, 0, 30, 17));
-        this.addSlot(new Slot(this.input, 1, 48, 17));
-        this.addSlot(new Slot(this.input, 2, 66, 17));
-        this.addSlot(new Slot(this.input, 3, 30, 35));
-        this.addSlot(new Slot(this.input, 4, 48, 35));
-        this.addSlot(new Slot(this.input, 5, 66, 35));
-        this.addSlot(new Slot(this.input, 6, 30, 53));
-        this.addSlot(new Slot(this.input, 7, 48, 53));
-        this.addSlot(new Slot(this.input, 8, 66, 53));
-        this.addSlot(new Slot(this.output, 9, 124, 35) {
-            public boolean canInsert(ItemStack stack) {
-                return false;
-            }
-
-            public boolean canTakeItems(PlayerEntity playerEntity) {
-                return ForgingTableL1ScreenHandler.this.canTakeOutput(playerEntity, this.hasStack());
-            }
-
-            public ItemStack onTakeItem(PlayerEntity player, ItemStack stack) {
-                return ForgingTableL1ScreenHandler.this.onTakeOutput(player, stack);
-            }
-        });
+        this.addSlot(new Slot(this.input, 0, 48, 32));
+        this.addSlot(new Slot(this.output, 1, 112, 14){public boolean canInsert(ItemStack stack) { return false; }public boolean canTakeItems(PlayerEntity playerEntity) { return GrinderScreenHandler.this.canTakeOutput(playerEntity, this.hasStack()); }public ItemStack onTakeItem(PlayerEntity player, ItemStack stack) { return GrinderScreenHandler.this.onTakeOutput(player, stack); }});
+        this.addSlot(new Slot(this.output, 2, 112, 32){public boolean canInsert(ItemStack stack) { return false; }public boolean canTakeItems(PlayerEntity playerEntity) { return GrinderScreenHandler.this.canTakeOutput(playerEntity, this.hasStack()); }public ItemStack onTakeItem(PlayerEntity player, ItemStack stack) { return GrinderScreenHandler.this.onTakeOutput(player, stack); }});
+        this.addSlot(new Slot(this.output, 3, 112, 50){public boolean canInsert(ItemStack stack) { return false; }public boolean canTakeItems(PlayerEntity playerEntity) { return GrinderScreenHandler.this.canTakeOutput(playerEntity, this.hasStack()); }public ItemStack onTakeItem(PlayerEntity player, ItemStack stack) { return GrinderScreenHandler.this.onTakeOutput(player, stack); }});
 
         int k;
         for(k = 0; k < 3; ++k) {
@@ -58,7 +42,7 @@ public class ForgingTableL1ScreenHandler extends ForgingTableL1B {
         }
 
     }
-    protected boolean canUse(BlockState state) { return state.isOf(Core.ForgingTableL1); }
+    protected boolean canUse(BlockState state) { return state.isOf(Core.Grinder); }
 
     protected boolean canTakeOutput(PlayerEntity player, boolean pnt) {
         return this.recipe != null && this.recipe.matches(this.input, this.world);
@@ -69,12 +53,6 @@ public class ForgingTableL1ScreenHandler extends ForgingTableL1B {
         this.method_29539(1);
         this.method_29539(2);
         this.method_29539(3);
-        this.method_29539(4);
-        this.method_29539(5);
-        this.method_29539(6);
-        this.method_29539(7);
-        this.method_29539(8);
-        this.method_29539(9);
         this.context.run((world, blockPos) -> {
             world.syncWorldEvent(1044, blockPos, 0);
         });

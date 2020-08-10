@@ -1,6 +1,7 @@
-package idv.ironnoobseventhree.tofurtherworld.block.forging;
+package idv.ironnoobseventhree.tofurtherworld.block.machine;
 
 import com.mojang.blaze3d.systems.RenderSystem;
+import idv.ironnoobseventhree.tofurtherworld.block.forging.ForgingTableL1B;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
@@ -14,10 +15,10 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.collection.DefaultedList;
 
 @Environment(EnvType.CLIENT)
-public class ForgingScreen<T extends ForgingNotForge> extends HandledScreen<T> implements ScreenHandlerListener {
+public class GrinderScreen<T extends GrinderB> extends HandledScreen<T> implements ScreenHandlerListener {
     private Identifier texture;
 
-    public ForgingScreen(T handler, PlayerInventory playerInventory, Text title, Identifier texture) {
+    public GrinderScreen(T handler, PlayerInventory playerInventory, Text title, Identifier texture) {
         super(handler, playerInventory, title);
         this.texture = texture;
     }
@@ -28,12 +29,12 @@ public class ForgingScreen<T extends ForgingNotForge> extends HandledScreen<T> i
     protected void init() {
         super.init();
         this.setup();
-        ((ForgingNotForge)this.handler).addListener(this);
+        ((GrinderB)this.handler).addListener(this);
     }
 
     public void removed() {
         super.removed();
-        ((ForgingNotForge)this.handler).removeListener(this);
+        ((GrinderB)this.handler).removeListener(this);
     }
 
     public void render(MatrixStack matrices, int mouseX, int mouseY, float delta) {
@@ -53,10 +54,10 @@ public class ForgingScreen<T extends ForgingNotForge> extends HandledScreen<T> i
         int i = (this.width - this.backgroundWidth) / 2;
         int j = (this.height - this.backgroundHeight) / 2;
         this.drawTexture(matrices, i, j, 0, 0, this.backgroundWidth, this.backgroundHeight);
-        this.drawTexture(matrices, i + 59, j + 20, 0, this.backgroundHeight + (((ForgingNotForge)this.handler).getSlot(0).hasStack() ? 0 : 16), 110, 16);
-        if ((((ForgingNotForge)this.handler).getSlot(0).hasStack() || ((ForgingNotForge)this.handler).getSlot(1).hasStack()) && !((ForgingNotForge)this.handler).getSlot(2).hasStack()) {
+        /*this.drawTexture(matrices, i + 59, j + 20, 0, this.backgroundHeight + (((GrinderB)this.handler).getSlot(0).hasStack() ? 0 : 16), 110, 16);
+        if ((((GrinderB)this.handler).getSlot(0).hasStack() || ((GrinderB)this.handler).getSlot(1).hasStack()) && !((GrinderB)this.handler).getSlot(2).hasStack()) {
             this.drawTexture(matrices, i + 99, j + 45, this.backgroundWidth, 0, 28, 21);
-        }
+        }*/
 
     }
 

@@ -1,4 +1,4 @@
-package idv.ironnoobseventhree.tofurtherworld.block.forging;
+package idv.ironnoobseventhree.tofurtherworld.block.machine;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.util.math.MatrixStack;
@@ -6,12 +6,12 @@ import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
-public class ForgingTableL1Inventory extends ForgingTableL1Screen<ForgingTableL1ScreenHandler> {
-    private static final Identifier TEXTURE = new Identifier("tofurtherworld:textures/gui/forgingtablel1.png");
+public class GrinderInventory extends GrinderScreen<GrinderScreenHandler> {
+    private static final Identifier TEXTURE = new Identifier("tofurtherworld:textures/gui/grinder.png");
 
-    public ForgingTableL1Inventory(ForgingTableL1ScreenHandler handler, PlayerInventory playerInventory, Text title) {
+    public GrinderInventory(GrinderScreenHandler handler, PlayerInventory playerInventory, Text title) {
         super(handler, playerInventory, title, TEXTURE);
-        this.titleX = 30;
+        this.titleX = 75;
         this.titleY = 5;
     }
 

@@ -10,6 +10,8 @@ import idv.ironnoobseventhree.tofurtherworld.block.forging.ForgingTableL1ScreenH
 import idv.ironnoobseventhree.tofurtherworld.block.furniture.Chair;
 import idv.ironnoobseventhree.tofurtherworld.block.furniture.LongTable;
 import idv.ironnoobseventhree.tofurtherworld.block.furniture.TableCS;
+import idv.ironnoobseventhree.tofurtherworld.block.machine.Grinder;
+import idv.ironnoobseventhree.tofurtherworld.block.machine.GrinderScreenHandler;
 import idv.ironnoobseventhree.tofurtherworld.block.sapling.FrozenBushBlock;
 import idv.ironnoobseventhree.tofurtherworld.block.sapling.IceBirch;
 import idv.ironnoobseventhree.tofurtherworld.block.sapling.SaplingMain;
@@ -155,7 +157,7 @@ public class Core implements ModInitializer {
     public static ToolItem ObsidianSword = new SwordItem(ToolSetting.Steel,3,-2.5f,new Item.Settings());
     public static ToolItem ObsidianPickaxe = new PickaxeModel(ToolSetting.Steel,1,-2.5f,new Item.Settings());
     public static ToolItem ObsidianShovel = new ShovelItem(ToolSetting.Steel,1,-3,new Item.Settings());
-    public static ToolItem ObsidianHoe = new HoeModel(ToolSetting.Steel,-3,-1,new Item.Settings());gradlew
+    public static ToolItem ObsidianHoe = new HoeModel(ToolSetting.Steel,-3,-1,new Item.Settings());
     public static final Item MelonGun = new MelonGun(new Item.Settings().maxDamage(1000));
     //Material Block
     public static final Block TestOre = new Block(FabricBlockSettings.of(Material.STONE).hardness(6.0f).breakByTool(FabricToolTags.PICKAXES, 0));
@@ -269,11 +271,13 @@ public class Core implements ModInitializer {
     public static final DrawerBlock Drawer2 = new DrawerBlock(AbstractBlock.Settings.of(Material.STONE).requiresTool().strength(6.0F, 6.0F));
     public static final Block ChiseledIronBox = new ChiseledIronBlock(AbstractBlock.Settings.of(Material.METAL, MaterialColor.IRON).requiresTool().strength(10.0F, 6.0F).sounds(BlockSoundGroup.NETHERITE));
     public static final Block ForgingTableL1 = new ForgingTableL1(AbstractBlock.Settings.of(Material.STONE).requiresTool().strength(6.0F, 6.0F).sounds(BlockSoundGroup.METAL));
+    public static final Block Grinder = new Grinder(AbstractBlock.Settings.of(Material.STONE).requiresTool().strength(6.0F, 6.0F).sounds(BlockSoundGroup.STONE));
     //Furniture
     public static final Block WoodenChair = new Chair(AbstractBlock.Settings.of(Material.WOOD, MaterialColor.BROWN).strength(2.0F).sounds(BlockSoundGroup.WOOD).nonOpaque());
     public static final Block WoodenLongTable = new LongTable(AbstractBlock.Settings.of(Material.WOOD, MaterialColor.BROWN).strength(2.0F).sounds(BlockSoundGroup.WOOD).nonOpaque());
     public static final Block AluminumChair = new Chair(AbstractBlock.Settings.of(Material.METAL, MaterialColor.IRON).strength(5.0F, 6.0F).sounds(BlockSoundGroup.METAL).nonOpaque());
     public static final Block AluminumTable = new TableCS(AbstractBlock.Settings.of(Material.METAL, MaterialColor.IRON).strength(5.0F, 6.0F).sounds(BlockSoundGroup.METAL).nonOpaque());
+    public static final Block RuinBookshelf = new Block(AbstractBlock.Settings.of(Material.WOOD, MaterialColor.BROWN).strength(1.5F).sounds(BlockSoundGroup.WOOD));
     //Block Setting
     private static PillarBlock createLogBlock(MaterialColor topMaterialColor, MaterialColor sideMaterialColor) {
         return new PillarBlock(AbstractBlock.Settings.of(Material.WOOD, (blockState) -> {
@@ -293,6 +297,7 @@ public class Core implements ModInitializer {
     public static final FrozenBushBlock FrozenBush =new FrozenBushBlock(AbstractBlock.Settings.of(Material.REPLACEABLE_PLANT, MaterialColor.WOOD).noCollision().breakInstantly().sounds(BlockSoundGroup.GRASS));
     //Gui
     public static final ScreenHandlerType<ForgingTableL1ScreenHandler> ForgingTableL1Screen = ScreenHandlerRegistry.registerSimple(new Identifier(MODID, "forging_table_l1_screen"), ForgingTableL1ScreenHandler::new);
+    public static final ScreenHandlerType<GrinderScreenHandler> GrinderScreen = ScreenHandlerRegistry.registerSimple(new Identifier(MODID, "grinder_screen"), GrinderScreenHandler::new);
     //Recipe
     //#1
     private static RecipeType<ForgingL1Recipe> forging_l1_type(Identifier id) {return Registry.register(Registry.RECIPE_TYPE, id, new RecipeType<ForgingL1Recipe>() {public String toString() { return id.toString(); }}); }
@@ -593,6 +598,8 @@ public class Core implements ModInitializer {
         Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "chiseled_iron_box"), new BlockItem(ChiseledIronBox, new Item.Settings()));
         Registry.register(Registry.BLOCK, new Identifier("tofurtherworld", "forging_table_l1"), ForgingTableL1);
         Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "forging_table_l1"), new BlockItem(ForgingTableL1, new Item.Settings()));
+        Registry.register(Registry.BLOCK, new Identifier("tofurtherworld", "grinder"), Grinder);
+        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "grinder"), new BlockItem(Grinder, new Item.Settings()));
         //Furniture
         Registry.register(Registry.BLOCK, new Identifier("tofurtherworld", "wooden_chair"), WoodenChair);
         Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "wooden_chair"), new BlockItem(WoodenChair, new Item.Settings()));
@@ -602,6 +609,8 @@ public class Core implements ModInitializer {
         Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "aluminum_chair"), new BlockItem(AluminumChair, new Item.Settings()));
         Registry.register(Registry.BLOCK, new Identifier("tofurtherworld", "aluminum_table"), AluminumTable);
         Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "aluminum_table"), new BlockItem(AluminumTable, new Item.Settings()));
+        Registry.register(Registry.BLOCK, new Identifier("tofurtherworld", "ruin_bookshelf"), RuinBookshelf);
+        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "ruin_bookshelf"), new BlockItem(RuinBookshelf, new Item.Settings()));
         //Nature block
         Registry.register(Registry.BLOCK, new Identifier(MODID, "apple_block"), AppleBlock);
         Registry.register(Registry.ITEM, new Identifier(MODID, "apple_block"), new BlockItem(AppleBlock, new Item.Settings()));
@@ -776,7 +785,9 @@ public class Core implements ModInitializer {
                 stacks.add(new ItemStack(WoodenLongTable));
                 stacks.add(new ItemStack(AluminumChair));
                 stacks.add(new ItemStack(AluminumTable));
+                stacks.add(new ItemStack(RuinBookshelf));
                 stacks.add(new ItemStack(ForgingTableL1));
+                stacks.add(new ItemStack(Grinder));
                 stacks.add(new ItemStack(AppleBlock));
                 stacks.add(new ItemStack(IceBirchSapling));
                 stacks.add(new ItemStack(IceBirchLog));

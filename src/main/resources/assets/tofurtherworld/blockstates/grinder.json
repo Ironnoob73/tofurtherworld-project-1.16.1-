@@ -1,0 +1,8 @@
+{ 
+    "variants":{ 
+        "facing=north": { "model": "tofurtherworld:block/grinder", "y": 180 },
+        "facing=east":  { "model": "tofurtherworld:block/grinder", "y": 270 },
+        "facing=south": { "model": "tofurtherworld:block/grinder" },
+        "facing=west":  { "model": "tofurtherworld:block/grinder", "y": 90 }
+    } 
+}

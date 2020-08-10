@@ -1,0 +1,15 @@
+{
+    "variants": {
+        "": [
+            { "model": "tofurtherworld:block/ruin_bookshelf_0","weight":2 },
+            { "model": "tofurtherworld:block/ruin_bookshelf_1","weight":3 },
+            { "model": "tofurtherworld:block/ruin_bookshelf_2","weight":2 },
+            { "model": "tofurtherworld:block/ruin_bookshelf_3","weight":1 },
+            { "model": "tofurtherworld:block/ruin_bookshelf_4","weight":1 },
+            { "model": "tofurtherworld:block/ruin_bookshelf_5","weight":1 },
+            { "model": "tofurtherworld:block/ruin_bookshelf_6","weight":1 },
+            { "model": "tofurtherworld:block/ruin_bookshelf_7","weight":1 },
+            { "model": "tofurtherworld:block/ruin_bookshelf_8","weight":3 }
+        ]
+    }
+}

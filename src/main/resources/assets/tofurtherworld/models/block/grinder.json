@@ -1,0 +1,19 @@
+{
+"parent": "block/cube",
+"display": {
+    "firstperson_righthand": {
+        "rotation": [ 0, 135, 0 ],
+        "translation": [ 0, 0, 0 ],
+        "scale": [ 0.40, 0.40, 0.40 ]
+    }
+},
+"textures": {
+    "particle": "minecraft:block/furnace_top",
+    "down": "minecraft:block/furnace_top",
+    "up": "tofurtherworld:block/grinder_top",
+    "north": "tofurtherworld:block/grinder_front",
+    "east": "minecraft:block/furnace_side",
+    "south": "minecraft:block/furnace_side",
+    "west": "tofurtherworld:block/grinder_side"
+  }
+}

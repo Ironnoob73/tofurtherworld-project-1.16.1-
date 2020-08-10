@@ -1,4 +1,4 @@
-package idv.ironnoobseventhree.tofurtherworld.block.forging;
+package idv.ironnoobseventhree.tofurtherworld.block.machine;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
@@ -11,12 +11,12 @@ import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.ScreenHandlerContext;
 import net.minecraft.screen.ScreenHandlerType;
 
-public abstract class ForgingNotForge extends ScreenHandler {
+public abstract class GrinderB extends ScreenHandler {
     protected final Inventory output = new CraftingResultInventory();
-    protected final Inventory input = new SimpleInventory(10) {//这里还存在上限问题，预计会合并ForgingTableL1ScreenHandler
+    protected final Inventory input = new SimpleInventory(4) {
         public void markDirty() {
             super.markDirty();
-            ForgingNotForge.this.onContentChanged(this);
+            GrinderB.this.onContentChanged(this);
         }
     };
     protected final ScreenHandlerContext context;
@@ -28,7 +28,7 @@ public abstract class ForgingNotForge extends ScreenHandler {
 
     protected abstract boolean canUse(BlockState state);
 
-    public ForgingNotForge( ScreenHandlerType<?> type, int syncId, PlayerInventory playerInventory, ScreenHandlerContext context) {
+    public GrinderB(ScreenHandlerType<?> type, int syncId, PlayerInventory playerInventory, ScreenHandlerContext context) {
         super(type, syncId);
         this.context = context;
         this.player = playerInventory.player;

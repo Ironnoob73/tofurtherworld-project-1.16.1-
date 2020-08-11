@@ -1,0 +1,8 @@
+{
+    "type": "tofurtherworld:refiner",
+    "ingredient":{
+      "item": "minecraft:stone"
+    },
+    "result": "minecraft:diamond",
+    "experience": 0.2
+}

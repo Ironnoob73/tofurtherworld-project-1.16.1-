@@ -1,6 +1,7 @@
 package idv.ironnoobseventhree.tofurtherworld.block.machine;
 
 import idv.ironnoobseventhree.tofurtherworld.Core;
+import idv.ironnoobseventhree.tofurtherworld.recipe.RefinerRB;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.block.entity.AbstractFurnaceBlockEntity;
@@ -21,24 +22,24 @@ import net.minecraft.world.World;
 
 public class RefinerSH extends RefinerSHB {
     public RefinerSH(int syncId, PlayerInventory playerInventory) {
-        super(Core.RefinerScreen, RecipeType.SMELTING, syncId, playerInventory);
+        super(Core.RefinerScreen, Core.RefinerType, syncId, playerInventory);
     }
 
     public RefinerSH(int syncId, PlayerInventory playerInventory, Inventory inventory, PropertyDelegate propertyDelegate) {
-        super(Core.RefinerScreen, RecipeType.SMELTING, syncId, playerInventory, inventory, propertyDelegate);
+        super(Core.RefinerScreen, Core.RefinerType, syncId, playerInventory, inventory, propertyDelegate);
     }
 }
 abstract class RefinerSHB extends AbstractRecipeScreenHandler<Inventory> {
     private final Inventory inventory;
     private final PropertyDelegate propertyDelegate;
     protected final World world;
-    private final RecipeType<? extends AbstractCookingRecipe> recipeType;
+    private final RecipeType<? extends RefinerRB> recipeType;
 
-    protected RefinerSHB(ScreenHandlerType<?> type, RecipeType<? extends AbstractCookingRecipe> recipeType, int syncId, PlayerInventory playerInventory) {
+    protected RefinerSHB(ScreenHandlerType<?> type, RecipeType<? extends RefinerRB> recipeType, int syncId, PlayerInventory playerInventory) {
         this(type, recipeType, syncId, playerInventory, new SimpleInventory(5), new ArrayPropertyDelegate(4));
     }
 
-    protected RefinerSHB(ScreenHandlerType<?> type, RecipeType<? extends AbstractCookingRecipe> recipeType, int syncId, PlayerInventory playerInventory, Inventory inventory, PropertyDelegate propertyDelegate) {
+    protected RefinerSHB(ScreenHandlerType<?> type, RecipeType<? extends RefinerRB> recipeType, int syncId, PlayerInventory playerInventory, Inventory inventory, PropertyDelegate propertyDelegate) {
         super(type, syncId);
         this.recipeType = recipeType;
         checkSize(inventory, 5);

@@ -10,15 +10,14 @@ import idv.ironnoobseventhree.tofurtherworld.block.forging.ForgingTableL1ScreenH
 import idv.ironnoobseventhree.tofurtherworld.block.furniture.Chair;
 import idv.ironnoobseventhree.tofurtherworld.block.furniture.LongTable;
 import idv.ironnoobseventhree.tofurtherworld.block.furniture.TableCS;
-import idv.ironnoobseventhree.tofurtherworld.block.machine.Grinder;
-import idv.ironnoobseventhree.tofurtherworld.block.machine.GrinderScreenHandler;
-import idv.ironnoobseventhree.tofurtherworld.block.machine.Refiner;
-import idv.ironnoobseventhree.tofurtherworld.block.machine.RefinerSH;
+import idv.ironnoobseventhree.tofurtherworld.block.machine.*;
 import idv.ironnoobseventhree.tofurtherworld.block.sapling.FrozenBushBlock;
 import idv.ironnoobseventhree.tofurtherworld.block.sapling.IceBirch;
 import idv.ironnoobseventhree.tofurtherworld.block.sapling.SaplingMain;
 import idv.ironnoobseventhree.tofurtherworld.recipe.ForgingL1Recipe;
+import idv.ironnoobseventhree.tofurtherworld.recipe.MachineRecipeSerializer;
 import idv.ironnoobseventhree.tofurtherworld.recipe.RefinerR;
+import idv.ironnoobseventhree.tofurtherworld.recipe.RefinerRB;
 import idv.ironnoobseventhree.tofurtherworld.tool.*;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.biomes.v1.OverworldBiomes;
@@ -321,6 +320,7 @@ public class Core implements ModInitializer {
     private static RecipeType<RefinerR> refiner_type(Identifier id) {return Registry.register(Registry.RECIPE_TYPE, id, new RecipeType<RefinerR>() {public String toString() { return id.toString(); }});}
     //private static RefinerR.Serializer refiner_serializer(Identifier id, RefinerR.Serializer serializer) { return Registry.register(Registry.RECIPE_SERIALIZER, id, serializer); }
     //public static final RecipeSerializer<RefinerR> RefinerSerializer = refiner_serializer(new Identifier(MODID, "refiner"), new RefinerR.Serializer());
+    public static final MachineRecipeSerializer RefinerR = RecipeSerializer.register("refiner", new MachineRecipeSerializer(RefinerR::new, 200));
     public static final RecipeType<RefinerR> RefinerType = refiner_type(new Identifier(MODID, "refiner"));
 
     @Override
@@ -808,6 +808,7 @@ public class Core implements ModInitializer {
                 stacks.add(new ItemStack(RuinBookshelf));
                 stacks.add(new ItemStack(ForgingTableL1));
                 stacks.add(new ItemStack(Grinder));
+                stacks.add(new ItemStack(Refiner));
                 stacks.add(new ItemStack(AppleBlock));
                 stacks.add(new ItemStack(IceBirchSapling));
                 stacks.add(new ItemStack(IceBirchLog));

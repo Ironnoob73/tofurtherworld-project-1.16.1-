@@ -1,8 +1,6 @@
 package idv.ironnoobseventhree.tofurtherworld.block.machine;
 
 import com.mojang.blaze3d.systems.RenderSystem;
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.player.PlayerInventory;
@@ -13,11 +11,10 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.collection.DefaultedList;
 
-@Environment(EnvType.CLIENT)
-public class GrinderScreen<T extends GrinderB> extends HandledScreen<T> implements ScreenHandlerListener {
+public class RefinerS<T extends RefinerSHB> extends HandledScreen<T> implements ScreenHandlerListener {
     private Identifier texture;
 
-    public GrinderScreen(T handler, PlayerInventory playerInventory, Text title, Identifier texture) {
+    public RefinerS(T handler, PlayerInventory playerInventory, Text title, Identifier texture) {
         super(handler, playerInventory, title);
         this.texture = texture;
     }
@@ -28,12 +25,12 @@ public class GrinderScreen<T extends GrinderB> extends HandledScreen<T> implemen
     protected void init() {
         super.init();
         this.setup();
-        ((GrinderB)this.handler).addListener(this);
+        ((RefinerSH)this.handler).addListener(this);
     }
 
     public void removed() {
         super.removed();
-        ((GrinderB)this.handler).removeListener(this);
+        ((RefinerSH)this.handler).removeListener(this);
     }
 
     public void render(MatrixStack matrices, int mouseX, int mouseY, float delta) {
@@ -53,9 +50,9 @@ public class GrinderScreen<T extends GrinderB> extends HandledScreen<T> implemen
         int i = (this.width - this.backgroundWidth) / 2;
         int j = (this.height - this.backgroundHeight) / 2;
         this.drawTexture(matrices, i, j, 0, 0, this.backgroundWidth, this.backgroundHeight);
-        /*this.drawTexture(matrices, i + 59, j + 20, 0, this.backgroundHeight + (((GrinderB)this.handler).getSlot(0).hasStack() ? 0 : 16), 110, 16);
-        if ((((GrinderB)this.handler).getSlot(0).hasStack() || ((GrinderB)this.handler).getSlot(1).hasStack()) && !((GrinderB)this.handler).getSlot(2).hasStack()) {
-            this.drawTexture(matrices, i + 99, j + 45, this.backgroundWidth, 0, 28, 21);
+        this.drawTexture(matrices, i + 59, j + 20, 0, this.backgroundHeight + (((RefinerSH)this.handler).getSlot(0).hasStack() ? 0 : 16), 110, 16);
+        /*if ((((HighLevelFuelAbleSH)this.handler).getSlot(0).hasStack() || ((HighLevelFuelAbleSH)this.handler).getSlot(1).hasStack() || ((HighLevelFuelAbleSH)this.handler).getSlot(2).hasStack() || ((HighLevelFuelAbleSH)this.handler).getSlot(3).hasStack()|| ((ForgingTableL1B)this.handler).getSlot(4).hasStack()|| ((ForgingTableL1B)this.handler).getSlot(5).hasStack()|| ((ForgingTableL1B)this.handler).getSlot(6).hasStack()|| ((ForgingTableL1B)this.handler).getSlot(7).hasStack()|| ((ForgingTableL1B)this.handler).getSlot(8).hasStack()) && !((ForgingTableL1B)this.handler).getSlot(9).hasStack()) {
+            this.drawTexture(matrices, i + 92, j + 36, this.backgroundWidth, 0, 28, 21);
         }*/
 
     }

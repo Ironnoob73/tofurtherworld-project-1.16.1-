@@ -206,7 +206,9 @@
     "block.tofurtherworld.forging_table_l1":"\u00A7fForging table§7 - §2§oLEVEL1",
     "block.tofurtherworld.forging_table_l1_t":"\u00A70Forging table§7 - §2§oLEVEL1",
     "block.tofurtherworld.grinder":"\u00A7fGrinder",
-    "block.tofurtherworld.grinder_t":"\u00A0fGrinder",
+    "block.tofurtherworld.grinder_t":"\u00A70Grinder",
+    "block.tofurtherworld.refiner":"\u00A7fRefiner",
+    "block.tofurtherworld.refiner_t":"\u00A70Refiner",
 
     "block.tofurtherworld.wooden_chair":"\u00A7fWooden chair",
     "block.tofurtherworld.wooden_longtable":"\u00A7fWooden long table",

@@ -44,12 +44,7 @@ public class TableCSE extends LootableContainerBlockEntity {
     @Override
         protected ScreenHandler createScreenHandler(int syncId, PlayerInventory playerInventory) {
         return new HopperScreenHandler(syncId, playerInventory, this);
-        //return new GenericContainerScreenHandler(ScreenHandlerType.GENERIC_9X1,syncId, playerInventory, 1);
-        //return GenericContainerScreenHandler.createGeneric9x1(syncId, playerInventory);
     }
-    /*protected ScreenHandler createScreenHandler(int syncId, PlayerInventory playerInventory) {
-        return GenericContainerScreenHandler.createGeneric9x3(syncId, playerInventory, this);
-    }*/
     @Override
     public int size() {
         return 5;

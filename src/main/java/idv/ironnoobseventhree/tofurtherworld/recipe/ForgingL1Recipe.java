@@ -41,8 +41,7 @@ public class ForgingL1Recipe implements Recipe<Inventory> {
         this.id = id;
     }
 
-    //@Override
-    public boolean matches(/*@Nonnull*/ Inventory inv, World world) {
+    public boolean matches( Inventory inv, World world) {
         return this.s1.test(inv.getStack(0))
                 &&this.s2.test(inv.getStack(1))
                 &&this.s3.test(inv.getStack(2))
@@ -60,12 +59,11 @@ public class ForgingL1Recipe implements Recipe<Inventory> {
         return itemStack;
     }
 
-    @Environment(EnvType.CLIENT)//@Override
+    @Environment(EnvType.CLIENT)
     public boolean fits(int width, int height) {
         return width * height >= 9;
     }
 
-    //@Override
     public ItemStack getOutput() {
         return this.result;
     }
@@ -75,28 +73,20 @@ public class ForgingL1Recipe implements Recipe<Inventory> {
         return new ItemStack(Core.SteelIngot);
     }
 
-    //@Override
     public Identifier getId() {
         return this.id;
     }
 
-    //@Override
     public RecipeSerializer<?> getSerializer() {
         return Core.ForgingL1Serializer;
     }
 
-    //@Override
     public RecipeType<?> getType() {
         return Core.ForgingL1Type;
     }
 
-    /*public boolean method_30029(ItemStack itemStack) {
-        return this.s1.test(itemStack);
-    }*/
-
     public static class Serializer implements RecipeSerializer<ForgingL1Recipe> {
 
-        //@Override
         public ForgingL1Recipe read(Identifier identifier, JsonObject jsonObject) {
             Ingredient ingredient1 = Ingredient.fromJson(JsonHelper.getObject(jsonObject, "s1"));
             Ingredient ingredient2 = Ingredient.fromJson(JsonHelper.getObject(jsonObject, "s2"));
@@ -111,7 +101,6 @@ public class ForgingL1Recipe implements Recipe<Inventory> {
             return new ForgingL1Recipe(identifier, ingredient1, ingredient2, ingredient3, ingredient4, ingredient5, ingredient6, ingredient7, ingredient8, ingredient9, itemStack);
         }
 
-        //@Override
         public ForgingL1Recipe read(Identifier identifier, PacketByteBuf packetByteBuf) {
             Ingredient ingredient1 = Ingredient.fromPacket(packetByteBuf);
             Ingredient ingredient2 = Ingredient.fromPacket(packetByteBuf);
@@ -126,8 +115,7 @@ public class ForgingL1Recipe implements Recipe<Inventory> {
             return new ForgingL1Recipe(identifier, ingredient1, ingredient2,ingredient3,ingredient4,ingredient5,ingredient6,ingredient7,ingredient8,ingredient9, itemStack);
         }
 
-        //@Override
-        public void write(PacketByteBuf buf, /*@Nonnull*/ ForgingL1Recipe recipe) {
+        public void write(PacketByteBuf buf, ForgingL1Recipe recipe) {
             recipe.s1.write(buf);
             recipe.s2.write(buf);
             recipe.s3.write(buf);

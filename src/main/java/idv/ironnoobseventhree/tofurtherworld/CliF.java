@@ -3,6 +3,8 @@ package idv.ironnoobseventhree.tofurtherworld;
 import idv.ironnoobseventhree.tofurtherworld.block.forging.ForgingTableL1Inventory;
 import idv.ironnoobseventhree.tofurtherworld.block.machine.GrinderInventory;
 import idv.ironnoobseventhree.tofurtherworld.block.machine.GrinderScreenHandler;
+import idv.ironnoobseventhree.tofurtherworld.block.machine.Refiner;
+import idv.ironnoobseventhree.tofurtherworld.block.machine.RefinerI;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
@@ -54,5 +56,6 @@ public class CliF implements net.fabricmc.api.ClientModInitializer{
         //Gui
         ScreenRegistry.register(Core.ForgingTableL1Screen, ForgingTableL1Inventory::new);
         ScreenRegistry.register(Core.GrinderScreen, GrinderInventory::new);
+        ScreenRegistry.register(Core.RefinerScreen, RefinerI::new);
     }
 }

@@ -1,0 +1,19 @@
+{
+"parent": "block/cube",
+"display": {
+    "firstperson_righthand": {
+        "rotation": [ 0, 135, 0 ],
+        "translation": [ 0, 0, 0 ],
+        "scale": [ 0.40, 0.40, 0.40 ]
+    }
+},
+"textures": {
+    "particle": "minecraft:block/blast_furnace_top",
+    "down": "minecraft:block/blast_furnace_top",
+    "up": "tofurtherworld:block/refiner_top",
+    "north": "tofurtherworld:block/refiner_front_lit",
+    "east": "minecraft:block/blast_furnace_side",
+    "south": "minecraft:block/blast_furnace_side",
+    "west": "tofurtherworld:block/refiner_side"
+  }
+}

@@ -1,7 +1,7 @@
 package idv.ironnoobseventhree.tofurtherworld;
 
 import idv.ironnoobseventhree.tofurtherworld.biome.BiomeMain;
-import idv.ironnoobseventhree.tofurtherworld.block.ChiseledIronBlock;
+import idv.ironnoobseventhree.tofurtherworld.block.ChiseledIronBox;
 import idv.ironnoobseventhree.tofurtherworld.block.DrawerBlock;
 import idv.ironnoobseventhree.tofurtherworld.block.Facing;
 import idv.ironnoobseventhree.tofurtherworld.block.GlassLike;
@@ -12,10 +12,13 @@ import idv.ironnoobseventhree.tofurtherworld.block.furniture.LongTable;
 import idv.ironnoobseventhree.tofurtherworld.block.furniture.TableCS;
 import idv.ironnoobseventhree.tofurtherworld.block.machine.Grinder;
 import idv.ironnoobseventhree.tofurtherworld.block.machine.GrinderScreenHandler;
+import idv.ironnoobseventhree.tofurtherworld.block.machine.Refiner;
+import idv.ironnoobseventhree.tofurtherworld.block.machine.RefinerSH;
 import idv.ironnoobseventhree.tofurtherworld.block.sapling.FrozenBushBlock;
 import idv.ironnoobseventhree.tofurtherworld.block.sapling.IceBirch;
 import idv.ironnoobseventhree.tofurtherworld.block.sapling.SaplingMain;
 import idv.ironnoobseventhree.tofurtherworld.recipe.ForgingL1Recipe;
+import idv.ironnoobseventhree.tofurtherworld.recipe.RefinerR;
 import idv.ironnoobseventhree.tofurtherworld.tool.*;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.biomes.v1.OverworldBiomes;
@@ -30,6 +33,7 @@ import net.minecraft.recipe.RecipeSerializer;
 import net.minecraft.recipe.RecipeType;
 import net.minecraft.screen.ScreenHandlerType;
 import net.minecraft.sound.BlockSoundGroup;
+import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.registry.Registry;
@@ -40,6 +44,8 @@ import net.minecraft.world.gen.decorator.Decorator;
 import net.minecraft.world.gen.decorator.RangeDecoratorConfig;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.OreFeatureConfig;
+
+import java.util.function.ToIntFunction;
 
 public class Core implements ModInitializer {
     public static final String MODID = "tofurtherworld";
@@ -269,9 +275,10 @@ public class Core implements ModInitializer {
     //Entity Block
     public static final DrawerBlock Drawer1 = new DrawerBlock(AbstractBlock.Settings.of(Material.STONE).requiresTool().strength(6.0F, 6.0F));
     public static final DrawerBlock Drawer2 = new DrawerBlock(AbstractBlock.Settings.of(Material.STONE).requiresTool().strength(6.0F, 6.0F));
-    public static final Block ChiseledIronBox = new ChiseledIronBlock(AbstractBlock.Settings.of(Material.METAL, MaterialColor.IRON).requiresTool().strength(10.0F, 6.0F).sounds(BlockSoundGroup.NETHERITE));
+    public static final Block ChiseledIronBox = new ChiseledIronBox(AbstractBlock.Settings.of(Material.METAL, MaterialColor.IRON).requiresTool().strength(10.0F, 6.0F).sounds(BlockSoundGroup.NETHERITE));
     public static final Block ForgingTableL1 = new ForgingTableL1(AbstractBlock.Settings.of(Material.STONE).requiresTool().strength(6.0F, 6.0F).sounds(BlockSoundGroup.METAL));
     public static final Block Grinder = new Grinder(AbstractBlock.Settings.of(Material.STONE).requiresTool().strength(6.0F, 6.0F).sounds(BlockSoundGroup.STONE));
+    public static final Block Refiner = new Refiner(AbstractBlock.Settings.of(Material.STONE).requiresTool().strength(5.0F).lightLevel(createLightLevelFromBlockState(8)));
     //Furniture
     public static final Block WoodenChair = new Chair(AbstractBlock.Settings.of(Material.WOOD, MaterialColor.BROWN).strength(2.0F).sounds(BlockSoundGroup.WOOD).nonOpaque());
     public static final Block WoodenLongTable = new LongTable(AbstractBlock.Settings.of(Material.WOOD, MaterialColor.BROWN).strength(2.0F).sounds(BlockSoundGroup.WOOD).nonOpaque());
@@ -287,6 +294,11 @@ public class Core implements ModInitializer {
     private static LeavesBlock createLeavesBlock() {
         return new LeavesBlock(AbstractBlock.Settings.of(Material.LEAVES).strength(0.2F).ticksRandomly().sounds(BlockSoundGroup.GRASS).nonOpaque());
     }
+    private static ToIntFunction<BlockState> createLightLevelFromBlockState(int litLevel) {
+        return (blockState) -> {
+            return (Boolean)blockState.get(Properties.LIT) ? litLevel : 0;
+        };
+    }
     //Nature Block
     public static final Block AppleBlock = new Facing(AbstractBlock.Settings.of(Material.GOURD, MaterialColor.RED).strength(1.0F).sounds(BlockSoundGroup.WART_BLOCK));
     public static final Block IceBirchSapling = new SaplingMain(new IceBirch(), AbstractBlock.Settings.of(Material.PLANT).noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.GRASS));
@@ -298,12 +310,18 @@ public class Core implements ModInitializer {
     //Gui
     public static final ScreenHandlerType<ForgingTableL1ScreenHandler> ForgingTableL1Screen = ScreenHandlerRegistry.registerSimple(new Identifier(MODID, "forging_table_l1_screen"), ForgingTableL1ScreenHandler::new);
     public static final ScreenHandlerType<GrinderScreenHandler> GrinderScreen = ScreenHandlerRegistry.registerSimple(new Identifier(MODID, "grinder_screen"), GrinderScreenHandler::new);
+    public static final ScreenHandlerType<RefinerSH> RefinerScreen = ScreenHandlerRegistry.registerSimple(new Identifier(MODID, "refiner_screen"), RefinerSH::new);
     //Recipe
     //#1
     private static RecipeType<ForgingL1Recipe> forging_l1_type(Identifier id) {return Registry.register(Registry.RECIPE_TYPE, id, new RecipeType<ForgingL1Recipe>() {public String toString() { return id.toString(); }}); }
     private static ForgingL1Recipe.Serializer forging_l1_serializer(Identifier id, ForgingL1Recipe.Serializer serializer) { return Registry.register(Registry.RECIPE_SERIALIZER, id, serializer); }
     public static final RecipeSerializer<ForgingL1Recipe> ForgingL1Serializer = forging_l1_serializer(new Identifier(MODID, "forging_l1"), new ForgingL1Recipe.Serializer());
     public static final RecipeType<ForgingL1Recipe> ForgingL1Type = forging_l1_type(new Identifier(MODID, "forging_l1"));
+    //R
+    private static RecipeType<RefinerR> refiner_type(Identifier id) {return Registry.register(Registry.RECIPE_TYPE, id, new RecipeType<RefinerR>() {public String toString() { return id.toString(); }});}
+    //private static RefinerR.Serializer refiner_serializer(Identifier id, RefinerR.Serializer serializer) { return Registry.register(Registry.RECIPE_SERIALIZER, id, serializer); }
+    //public static final RecipeSerializer<RefinerR> RefinerSerializer = refiner_serializer(new Identifier(MODID, "refiner"), new RefinerR.Serializer());
+    public static final RecipeType<RefinerR> RefinerType = refiner_type(new Identifier(MODID, "refiner"));
 
     @Override
     public void onInitialize() {
@@ -600,6 +618,8 @@ public class Core implements ModInitializer {
         Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "forging_table_l1"), new BlockItem(ForgingTableL1, new Item.Settings()));
         Registry.register(Registry.BLOCK, new Identifier("tofurtherworld", "grinder"), Grinder);
         Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "grinder"), new BlockItem(Grinder, new Item.Settings()));
+        Registry.register(Registry.BLOCK, new Identifier("tofurtherworld", "refiner"), Refiner);
+        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "refiner"), new BlockItem(Refiner, new Item.Settings()));
         //Furniture
         Registry.register(Registry.BLOCK, new Identifier("tofurtherworld", "wooden_chair"), WoodenChair);
         Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "wooden_chair"), new BlockItem(WoodenChair, new Item.Settings()));

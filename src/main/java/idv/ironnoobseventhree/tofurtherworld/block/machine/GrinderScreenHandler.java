@@ -1,7 +1,6 @@
 package idv.ironnoobseventhree.tofurtherworld.block.machine;
 
 import idv.ironnoobseventhree.tofurtherworld.Core;
-import idv.ironnoobseventhree.tofurtherworld.block.forging.ForgingTableL1B;
 import idv.ironnoobseventhree.tofurtherworld.recipe.ForgingL1Recipe;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;

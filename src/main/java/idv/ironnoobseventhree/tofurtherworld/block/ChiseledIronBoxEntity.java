@@ -15,14 +15,15 @@ import net.minecraft.text.TranslatableText;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.registry.Registry;
 
-public class ChiseledIronBlockEntity extends LootableContainerBlockEntity {
+public class ChiseledIronBoxEntity extends LootableContainerBlockEntity {
     public  DefaultedList<ItemStack> inv;
-    public static BlockEntityType<ChiseledIronBlockEntity> CIBE=
-            Registry.register(Registry.BLOCK_ENTITY_TYPE,"tofurtherworld:cib_entity",BlockEntityType.Builder.create(ChiseledIronBlockEntity::new, Core.ChiseledIronBox).build(null));
-    public ChiseledIronBlockEntity(){
+    public static BlockEntityType<ChiseledIronBoxEntity> CIBE=
+            Registry.register(Registry.BLOCK_ENTITY_TYPE,"tofurtherworld:cib_entity",
+                    BlockEntityType.Builder.create(ChiseledIronBoxEntity::new, Core.ChiseledIronBox).build(null));
+    public ChiseledIronBoxEntity(){
         this(CIBE);
     }
-    protected ChiseledIronBlockEntity(BlockEntityType<?> blockEntityType){
+    protected ChiseledIronBoxEntity(BlockEntityType<?> blockEntityType){
         super(blockEntityType);
         inv=DefaultedList.ofSize(54,ItemStack.EMPTY);
     }

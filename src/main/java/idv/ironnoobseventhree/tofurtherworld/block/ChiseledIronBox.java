@@ -20,9 +20,9 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 
 
-public class ChiseledIronBlock extends BlockWithEntity {
+public class ChiseledIronBox extends BlockWithEntity {
     public static final DirectionProperty FACING;
-    public ChiseledIronBlock(Settings settings) {
+    public ChiseledIronBox(Settings settings) {
         super(settings);
         setDefaultState(this.stateManager.getDefaultState().with(Properties.HORIZONTAL_FACING, Direction.NORTH));
     }
@@ -34,8 +34,8 @@ public class ChiseledIronBlock extends BlockWithEntity {
             return ActionResult.SUCCESS;
         } else {
             BlockEntity blockEntity = world.getBlockEntity(pos);
-            if (blockEntity instanceof ChiseledIronBlockEntity) {
-                player.openHandledScreen((ChiseledIronBlockEntity)blockEntity);
+            if (blockEntity instanceof ChiseledIronBoxEntity) {
+                player.openHandledScreen((ChiseledIronBoxEntity)blockEntity);
                 }
             }
             return ActionResult.CONSUME;
@@ -43,8 +43,8 @@ public class ChiseledIronBlock extends BlockWithEntity {
     public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
         if (!state.isOf(newState.getBlock())) {
             BlockEntity blockEntity = world.getBlockEntity(pos);
-            if (blockEntity instanceof ChiseledIronBlockEntity) {
-                ItemScatterer.spawn(world, pos, (ChiseledIronBlockEntity)blockEntity);
+            if (blockEntity instanceof ChiseledIronBoxEntity) {
+                ItemScatterer.spawn(world, pos, (ChiseledIronBoxEntity)blockEntity);
                 world.updateComparators(pos, this);
             }
 
@@ -56,7 +56,7 @@ public class ChiseledIronBlock extends BlockWithEntity {
     }
     @Override
     public BlockEntity createBlockEntity(BlockView blockView) {
-        return new ChiseledIronBlockEntity();
+        return new ChiseledIronBoxEntity();
     }
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> stateManager) {

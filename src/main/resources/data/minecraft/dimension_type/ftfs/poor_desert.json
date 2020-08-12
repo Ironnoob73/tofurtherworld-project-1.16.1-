@@ -1,0 +1,15 @@
+{
+    "bed_works":true,
+    "has_ceiling":true,
+    "has_skylight":true,
+    "has_raids":true,
+    "natural":true,
+    "piglin_safe":true,
+    "respawn_anchor_works":true,
+    "shrunk":false,
+    "ultrawarm":false,
+    "logical_height":256,
+    "ambient_light": 0.1,
+    "biome_zoomer":"FuzzyOffsetBiomeZoomer",
+    "infiniburn":"minecraft:infiniburn_overworld"
+}

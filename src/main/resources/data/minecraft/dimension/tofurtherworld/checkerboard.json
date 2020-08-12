@@ -1,0 +1,15 @@
+{
+    "type":"ftfs:checkboard",
+    "generator":{
+        "type":"minecraft:noise",
+        "seed":1854,
+        "settings":"minecraft:overworld",
+        "biome_source":{
+            "type":"minecraft:checkerboard",
+            "biomes":[
+                "tall_birch_forest",
+                "dark_forest"
+            ]
+        }
+    }
+}

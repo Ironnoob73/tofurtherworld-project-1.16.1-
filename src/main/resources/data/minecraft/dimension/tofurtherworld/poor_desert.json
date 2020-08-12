@@ -1,0 +1,15 @@
+{
+    "type":"ftfs:poor_desert",
+    "generator":{
+        "type":"minecraft:noise",
+        "seed":1854,
+        "settings":"minecraft:overworld",
+        "biome_source":{
+            "type":"minecraft:checkerboard",
+            "biomes":[
+                "tofurtherworld:poor_desert",
+                "desert"
+            ]
+        }
+    }
+}

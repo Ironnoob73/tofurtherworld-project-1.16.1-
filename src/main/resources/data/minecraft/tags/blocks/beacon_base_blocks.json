@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    "tofurtherworld:chiseled_iron_block",
+    "tofurtherworld:silver_block",
+    "tofurtherworld:old_command_block",
+    "tofurtherworld:ruby_block",
+    "tofurtherworld:sapphire_block",
+    "tofurtherworld:topaz_block",
+    "tofurtherworld:steel_block",
+    "tofurtherworld:pure_obsidian_block"
+  ]
+}

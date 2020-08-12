@@ -1,0 +1,11 @@
+{
+    "generator": {
+      "type": "tofurtherworld:old_age",
+      "custom_bool": true,
+      "biome_source": {
+        "type": "minecraft:fixed",
+        "biome": "minecraft:plains"
+      }
+    },
+    "type": "ftfs:old_age"
+  }

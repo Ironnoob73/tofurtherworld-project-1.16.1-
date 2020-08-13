@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/door_top_rh",
+  "textures": {
+    "top": "tofurtherworld:block/wooden_door_top",
+    "bottom": "tofurtherworld:block/wooden_door_bottom"
+  }
+}

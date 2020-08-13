@@ -2,8 +2,6 @@ package idv.ironnoobseventhree.tofurtherworld;
 
 import idv.ironnoobseventhree.tofurtherworld.block.forging.ForgingTableL1Inventory;
 import idv.ironnoobseventhree.tofurtherworld.block.machine.GrinderInventory;
-import idv.ironnoobseventhree.tofurtherworld.block.machine.GrinderScreenHandler;
-import idv.ironnoobseventhree.tofurtherworld.block.machine.Refiner;
 import idv.ironnoobseventhree.tofurtherworld.block.machine.RefinerI;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -50,9 +48,12 @@ public class CliF implements net.fabricmc.api.ClientModInitializer{
         BlockRenderLayerMap.INSTANCE.putBlock(Core.GreenGlowingGlass, RenderLayer.getTranslucent());
         BlockRenderLayerMap.INSTANCE.putBlock(Core.RedGlowingGlass, RenderLayer.getTranslucent());
         BlockRenderLayerMap.INSTANCE.putBlock(Core.BlackGlowingGlass, RenderLayer.getTranslucent());
-        //Transparent with alpha
+        //Transparent without alpha
         BlockRenderLayerMap.INSTANCE.putBlock(Core.IceBirchSapling, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(Core.FrozenBush, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(Core.WoodenDoor, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(Core.AluminumDoor, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(Core.CopperDoor, RenderLayer.getCutout());
         //Gui
         ScreenRegistry.register(Core.ForgingTableL1Screen, ForgingTableL1Inventory::new);
         ScreenRegistry.register(Core.GrinderScreen, GrinderInventory::new);

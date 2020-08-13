@@ -10,6 +10,7 @@
     "item.tofurtherworld.iron_powder":"\u00A7f铁粉",
     "item.tofurtherworld.iron_plate":"\u00A7f铁板",
     "item.tofurtherworld.iron_cube":"\u00A7f铁块",
+    "item.tofurtherworld.iron_stick":"\u00A7f铁棍",
     "item.tofurtherworld.gold_powder":"\u00A7f金粉",
     "item.tofurtherworld.gold_cube":"\u00A7f金块",
     "item.tofurtherworld.carbon_fibre":"\u00A7f碳纤维",
@@ -100,6 +101,7 @@
     "item.tofurtherworld.rattan":"\u00A7f藤条",
     "item.tofurtherworld.soil_heaps":"\u00A7f土壤堆",
     "item.tofurtherworld.wooden_staff":"\u00A7f木杖",
+    "item.tofurtherworld.wooden_board":"\u00A7f木板",
     "item.tofurtherworld.turbid_fragment_of_obsidian":"\u00A7f浑浊的黑曜石碎片",
     "item.tofurtherworld.pure_fragment_of_obsidian":"\u00A7f纯净的黑曜石碎片",
     "item.tofurtherworld.turbid_obsidian":"\u00A7f浑浊的黑曜石",
@@ -148,6 +150,7 @@
     "block.tofurtherworld.cast_iron_block":"\u00A7f铸铁块",
     "block.tofurtherworld.alchemical_silver_block":"\u00A7f炼银块",
     "block.tofurtherworld.hard_aluminum_block":"\u00A7f坚铝块",
+    "block.tofurtherworld.wooden_planks":"\u00A7f木板块",
 
     "block.tofurtherworld.white_lego":"\u00A7f白色\u00A7m乐高\u00A7r块",
     "block.tofurtherworld.orange_lego":"\u00A7f橙色\u00A7m乐高\u00A7r块",
@@ -212,8 +215,11 @@
 
     "block.tofurtherworld.wooden_chair":"\u00A7f木制椅子",
     "block.tofurtherworld.wooden_longtable":"\u00A7f木制长桌",
+    "block.tofurtherworld.wooden_door":"\u00A7f木制门",
     "block.tofurtherworld.aluminum_chair":"\u00A7f铝制椅子",
     "block.tofurtherworld.aluminum_table":"\u00A7f铝制桌子",
+    "block.tofurtherworld.aluminum_door":"\u00A7f铝制门",
+    "block.tofurtherworld.copper_door":"\u00A7f铜制门",
     "block.tofurtherworld.table":"\u00A70桌子",
     "block.tofurtherworld.ruin_bookshelf":"\u00A7f遗迹书架",
 

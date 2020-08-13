@@ -10,6 +10,7 @@
     "item.tofurtherworld.iron_powder":"\u00A7fIron powder",
     "item.tofurtherworld.iron_plate":"\u00A7fIron plate",
     "item.tofurtherworld.iron_cube":"\u00A7fIron cube",
+    "item.tofurtherworld.iron_stick":"\u00A7fIron stick",
     "item.tofurtherworld.gold_powder":"\u00A7fGold powder",
     "item.tofurtherworld.gold_cube":"\u00A7fGold cube",
     "item.tofurtherworld.carbon_fibre":"\u00A7fCarbon fibre",
@@ -100,6 +101,7 @@
     "item.tofurtherworld.bone_fragments":"\u00A7fBone fragments",
     "item.tofurtherworld.rattan":"\u00A7fRattan",
     "item.tofurtherworld.wooden_staff":"\u00A7fWooden staff",
+    "item.tofurtherworld.wooden_board":"\u00A7fWooden board",
     "item.tofurtherworld.turbid_fragment_of_obsidian":"\u00A7fTurbid fragment of obsidian",
     "item.tofurtherworld.pure_fragment_of_obsidian":"\u00A7fPure fragment of obsidian",
     "item.tofurtherworld.turbid_obsidian":"\u00A7fTurbid obsidian",
@@ -148,6 +150,7 @@
     "block.tofurtherworld.cast_iron_block":"\u00A7Cast iron block",
     "block.tofurtherworld.alchemical_silver_block":"\u00A7fAlchemical silver block",
     "block.tofurtherworld.hard_aluminum_block":"\u00A7fHard aluminum block",
+    "block.tofurtherworld.wooden_planks":"\u00A7fWooden planks",
 
     "block.tofurtherworld.white_lego":"\u00A7fWhite \u00A7mlego \u00A7rblock",
     "block.tofurtherworld.orange_lego":"\u00A7fOrange \u00A7mlego \u00A7rblock",
@@ -212,8 +215,11 @@
 
     "block.tofurtherworld.wooden_chair":"\u00A7fWooden chair",
     "block.tofurtherworld.wooden_longtable":"\u00A7fWooden long table",
+    "block.tofurtherworld.wooden_door":"\u00A7fWooden door",
     "block.tofurtherworld.aluminum_chair":"\u00A7fAluminum chair",
     "block.tofurtherworld.aluminum_table":"\u00A7fAluminum table",
+    "block.tofurtherworld.aluminum_door":"\u00A7fAluminum Door",
+    "block.tofurtherworld.copper_door":"\u00A7fCopper Door",
     "block.tofurtherworld.table":"\u00A70Table",
     "block.tofurtherworld.ruin_bookshelf":"\u00A7fRuin bookshelf",
 
@@ -224,6 +230,8 @@
     "block.tofurtherworld.icebirch_planks":"\u00A7fIce birch planks",
     "block.tofurtherworld.stripped_icebirch_log":"\u00A7fStripped ice birch log",
     "block.tofurtherworld.frozen_bush":"\u00A7fFrozen bush",
+
+    "block.tofurtherworld.error_stone":"\u00A7fError stone",
 
     "itemGroup.tofurtherworld.material":"TFW-Material",
     "itemGroup.tofurtherworld.block":"TFW-Block",

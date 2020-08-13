@@ -8,16 +8,19 @@ import idv.ironnoobseventhree.tofurtherworld.block.GlassLike;
 import idv.ironnoobseventhree.tofurtherworld.block.forging.ForgingTableL1;
 import idv.ironnoobseventhree.tofurtherworld.block.forging.ForgingTableL1ScreenHandler;
 import idv.ironnoobseventhree.tofurtherworld.block.furniture.Chair;
+import idv.ironnoobseventhree.tofurtherworld.block.furniture.Door;
 import idv.ironnoobseventhree.tofurtherworld.block.furniture.LongTable;
 import idv.ironnoobseventhree.tofurtherworld.block.furniture.TableCS;
-import idv.ironnoobseventhree.tofurtherworld.block.machine.*;
+import idv.ironnoobseventhree.tofurtherworld.block.machine.Grinder;
+import idv.ironnoobseventhree.tofurtherworld.block.machine.GrinderScreenHandler;
+import idv.ironnoobseventhree.tofurtherworld.block.machine.Refiner;
+import idv.ironnoobseventhree.tofurtherworld.block.machine.RefinerSH;
 import idv.ironnoobseventhree.tofurtherworld.block.sapling.FrozenBushBlock;
 import idv.ironnoobseventhree.tofurtherworld.block.sapling.IceBirch;
 import idv.ironnoobseventhree.tofurtherworld.block.sapling.SaplingMain;
 import idv.ironnoobseventhree.tofurtherworld.recipe.ForgingL1Recipe;
 import idv.ironnoobseventhree.tofurtherworld.recipe.MachineRecipeSerializer;
 import idv.ironnoobseventhree.tofurtherworld.recipe.RefinerR;
-import idv.ironnoobseventhree.tofurtherworld.recipe.RefinerRB;
 import idv.ironnoobseventhree.tofurtherworld.tool.*;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.biomes.v1.OverworldBiomes;
@@ -60,6 +63,7 @@ public class Core implements ModInitializer {
     public static final Item IronPowder = new Item(new Item.Settings());
     public static final Item IronPlate = new Item(new Item.Settings());
     public static final Item IronCube = new Item(new Item.Settings());
+    public static final Item IronStick = new Item(new Item.Settings());
     public static final Item GoldPowder = new Item(new Item.Settings());
     public static final Item GoldCube = new Item(new Item.Settings());
     public static final Item CarbonFibre = new Item(new Item.Settings());
@@ -94,6 +98,7 @@ public class Core implements ModInitializer {
     public static final Item Rattan = new Item(new Item.Settings());
     public static final Item SoilHeaps = new Item(new Item.Settings());
     public static final Item WoodenStaff = new Item(new Item.Settings());
+    public static final Item WoodenBoard = new Item(new Item.Settings());
     public static final Item TurbidFragmentOfObsidian = new Item(new Item.Settings());
     public static final Item PureFragmentOfObsidian = new Item(new Item.Settings());
     public static final Item TurbidObsidian = new Item(new Item.Settings());
@@ -194,6 +199,7 @@ public class Core implements ModInitializer {
     public static final Block CastIronBlock = new Block(AbstractBlock.Settings.of(Material.METAL, MaterialColor.IRON).requiresTool().strength(15F, 10F).sounds(BlockSoundGroup.NETHERITE).lightLevel((state)-> 2));
     public static final Block AlchemicalSilverBlock = new Block(AbstractBlock.Settings.of(Material.METAL, MaterialColor.LIGHT_GRAY).requiresTool().strength(15F, 10F).nonOpaque().sounds(BlockSoundGroup.NETHERITE).lightLevel((state)-> 2));
     public static final Block HardAluminumBlock = new Block(AbstractBlock.Settings.of(Material.METAL, MaterialColor.BLUE).requiresTool().strength(15F, 10F).nonOpaque().sounds(BlockSoundGroup.NETHERITE).lightLevel((state)-> 2));
+    public static final Block WoodenPlanks = new Block(AbstractBlock.Settings.of(Material.WOOD, MaterialColor.WOOD).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD));
     //Colour Block
     public static final Block WhiteLego = new Block(FabricBlockSettings.of(Material.STONE).hardness(6.0f).breakByTool(FabricToolTags.PICKAXES, 0));
     public static final Block OrangeLego = new Block(FabricBlockSettings.of(Material.STONE).hardness(6.0f).breakByTool(FabricToolTags.PICKAXES, 0));
@@ -281,8 +287,11 @@ public class Core implements ModInitializer {
     //Furniture
     public static final Block WoodenChair = new Chair(AbstractBlock.Settings.of(Material.WOOD, MaterialColor.BROWN).strength(2.0F).sounds(BlockSoundGroup.WOOD).nonOpaque());
     public static final Block WoodenLongTable = new LongTable(AbstractBlock.Settings.of(Material.WOOD, MaterialColor.BROWN).strength(2.0F).sounds(BlockSoundGroup.WOOD).nonOpaque());
+    public static final Block WoodenDoor = new Door(AbstractBlock.Settings.of(Material.WOOD, WoodenPlanks.getDefaultMaterialColor()).strength(3.0F).sounds(BlockSoundGroup.WOOD).nonOpaque());
     public static final Block AluminumChair = new Chair(AbstractBlock.Settings.of(Material.METAL, MaterialColor.IRON).strength(5.0F, 6.0F).sounds(BlockSoundGroup.METAL).nonOpaque());
     public static final Block AluminumTable = new TableCS(AbstractBlock.Settings.of(Material.METAL, MaterialColor.IRON).strength(5.0F, 6.0F).sounds(BlockSoundGroup.METAL).nonOpaque());
+    public static final Block AluminumDoor = new Door(AbstractBlock.Settings.of(Material.STONE, AluminumBlock.getDefaultMaterialColor()).strength(5.0F,6.0F).sounds(BlockSoundGroup.METAL).nonOpaque());
+    public static final Block CopperDoor = new Door(AbstractBlock.Settings.of(Material.STONE, CopperBlock.getDefaultMaterialColor()).strength(5.0F,6.0F).sounds(BlockSoundGroup.METAL).nonOpaque());
     public static final Block RuinBookshelf = new Block(AbstractBlock.Settings.of(Material.WOOD, MaterialColor.BROWN).strength(1.5F).sounds(BlockSoundGroup.WOOD));
     //Block Setting
     private static PillarBlock createLogBlock(MaterialColor topMaterialColor, MaterialColor sideMaterialColor) {
@@ -294,9 +303,7 @@ public class Core implements ModInitializer {
         return new LeavesBlock(AbstractBlock.Settings.of(Material.LEAVES).strength(0.2F).ticksRandomly().sounds(BlockSoundGroup.GRASS).nonOpaque());
     }
     private static ToIntFunction<BlockState> createLightLevelFromBlockState(int litLevel) {
-        return (blockState) -> {
-            return (Boolean)blockState.get(Properties.LIT) ? litLevel : 0;
-        };
+        return (blockState) -> (Boolean)blockState.get(Properties.LIT) ? litLevel : 0;
     }
     //Nature Block
     public static final Block AppleBlock = new Facing(AbstractBlock.Settings.of(Material.GOURD, MaterialColor.RED).strength(1.0F).sounds(BlockSoundGroup.WART_BLOCK));
@@ -306,6 +313,8 @@ public class Core implements ModInitializer {
     public static final Block IceBirchPlanks = new Block(AbstractBlock.Settings.of(Material.WOOD, MaterialColor.ICE).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD));
     public static final Block StrippedIceBirchLog = new PillarBlock(AbstractBlock.Settings.of(Material.WOOD, MaterialColor.WOOD).strength(2.0F).sounds(BlockSoundGroup.WOOD));
     public static final FrozenBushBlock FrozenBush =new FrozenBushBlock(AbstractBlock.Settings.of(Material.REPLACEABLE_PLANT, MaterialColor.WOOD).noCollision().breakInstantly().sounds(BlockSoundGroup.GRASS));
+    //Joke
+    public static final Block ErrorStone = new Block(FabricBlockSettings.of(Material.STONE).hardness(6.0f).breakByTool(FabricToolTags.PICKAXES, 0));
     //Gui
     public static final ScreenHandlerType<ForgingTableL1ScreenHandler> ForgingTableL1Screen = ScreenHandlerRegistry.registerSimple(new Identifier(MODID, "forging_table_l1_screen"), ForgingTableL1ScreenHandler::new);
     public static final ScreenHandlerType<GrinderScreenHandler> GrinderScreen = ScreenHandlerRegistry.registerSimple(new Identifier(MODID, "grinder_screen"), GrinderScreenHandler::new);
@@ -337,6 +346,7 @@ public class Core implements ModInitializer {
         Registry.register(Registry.ITEM, new Identifier(MODID, "iron_powder"), IronPowder);
         Registry.register(Registry.ITEM, new Identifier(MODID, "iron_plate"), IronPlate);
         Registry.register(Registry.ITEM, new Identifier(MODID, "iron_cube"), IronCube);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "iron_stick"), IronStick);
         Registry.register(Registry.ITEM, new Identifier(MODID, "gold_powder"), GoldPowder);
         Registry.register(Registry.ITEM, new Identifier(MODID, "gold_cube"), GoldCube);
         Registry.register(Registry.ITEM, new Identifier(MODID, "carbon_fibre"), CarbonFibre);
@@ -371,6 +381,7 @@ public class Core implements ModInitializer {
         Registry.register(Registry.ITEM, new Identifier(MODID, "rattan"), Rattan);
         Registry.register(Registry.ITEM, new Identifier(MODID, "soil_heaps"), SoilHeaps);
         Registry.register(Registry.ITEM, new Identifier(MODID, "wooden_staff"), WoodenStaff);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "wooden_board"), WoodenBoard);
         Registry.register(Registry.ITEM, new Identifier(MODID, "turbid_fragment_of_obsidian"), TurbidFragmentOfObsidian);
         Registry.register(Registry.ITEM, new Identifier(MODID, "pure_fragment_of_obsidian"), PureFragmentOfObsidian);
         Registry.register(Registry.ITEM, new Identifier(MODID, "turbid_obsidian"), TurbidObsidian);
@@ -500,6 +511,8 @@ public class Core implements ModInitializer {
         Registry.register(Registry.ITEM, new Identifier(MODID, "alchemical_silver_block"), new BlockItem(AlchemicalSilverBlock, new Item.Settings()));
         Registry.register(Registry.BLOCK, new Identifier(MODID, "hard_aluminum_block"), HardAluminumBlock);
         Registry.register(Registry.ITEM, new Identifier(MODID, "hard_aluminum_block"), new BlockItem(HardAluminumBlock, new Item.Settings()));
+        Registry.register(Registry.BLOCK, new Identifier(MODID, "wooden_planks"), WoodenPlanks);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "wooden_planks"), new BlockItem(WoodenPlanks, new Item.Settings()));
         //Colour Block
         Registry.register(Registry.BLOCK, new Identifier("tofurtherworld", "white_lego"),WhiteLego);
         Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "white_lego"), new BlockItem(WhiteLego, new Item.Settings()));
@@ -625,10 +638,16 @@ public class Core implements ModInitializer {
         Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "wooden_chair"), new BlockItem(WoodenChair, new Item.Settings()));
         Registry.register(Registry.BLOCK, new Identifier("tofurtherworld", "wooden_longtable"), WoodenLongTable);
         Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "wooden_longtable"), new BlockItem(WoodenLongTable, new Item.Settings()));
+        Registry.register(Registry.BLOCK, new Identifier("tofurtherworld", "wooden_door"), WoodenDoor);
+        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "wooden_door"), new BlockItem(WoodenDoor, new Item.Settings()));
         Registry.register(Registry.BLOCK, new Identifier("tofurtherworld", "aluminum_chair"), AluminumChair);
         Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "aluminum_chair"), new BlockItem(AluminumChair, new Item.Settings()));
         Registry.register(Registry.BLOCK, new Identifier("tofurtherworld", "aluminum_table"), AluminumTable);
         Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "aluminum_table"), new BlockItem(AluminumTable, new Item.Settings()));
+        Registry.register(Registry.BLOCK, new Identifier("tofurtherworld", "aluminum_door"), AluminumDoor);
+        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "aluminum_door"), new BlockItem(AluminumDoor, new Item.Settings()));
+        Registry.register(Registry.BLOCK, new Identifier("tofurtherworld", "copper_door"), CopperDoor);
+        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "copper_door"), new BlockItem(CopperDoor, new Item.Settings()));
         Registry.register(Registry.BLOCK, new Identifier("tofurtherworld", "ruin_bookshelf"), RuinBookshelf);
         Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "ruin_bookshelf"), new BlockItem(RuinBookshelf, new Item.Settings()));
         //Nature block
@@ -646,6 +665,9 @@ public class Core implements ModInitializer {
         Registry.register(Registry.ITEM, new Identifier(MODID, "stripped_icebirch_log"), new BlockItem(StrippedIceBirchLog, new Item.Settings()));
         Registry.register(Registry.BLOCK, new Identifier(MODID, "frozen_bush"), FrozenBush);
         Registry.register(Registry.ITEM, new Identifier(MODID, "frozen_bush"), new BlockItem(FrozenBush, new Item.Settings()));
+        //Joke
+        Registry.register(Registry.BLOCK, new Identifier(MODID, "error_stone"), ErrorStone);
+        Registry.register(Registry.ITEM, new Identifier(MODID, "error_stone"), new BlockItem(ErrorStone, new Item.Settings()));
         //Biome
         OverworldBiomes.addBiomeVariant(Biomes.DESERT,BiomeMain.PoorDesert,0.1);
     }
@@ -664,6 +686,7 @@ public class Core implements ModInitializer {
                 stacks.add(new ItemStack(IronPowder));
                 stacks.add(new ItemStack(IronPlate));
                 stacks.add(new ItemStack(IronCube));
+                stacks.add(new ItemStack(IronStick));
                 stacks.add(new ItemStack(GoldPowder));
                 stacks.add(new ItemStack(GoldCube));
                 stacks.add(new ItemStack(CarbonFibre));
@@ -697,6 +720,7 @@ public class Core implements ModInitializer {
                 stacks.add(new ItemStack(Rattan));
                 stacks.add(new ItemStack(SoilHeaps));
                 stacks.add(new ItemStack(WoodenStaff));
+                stacks.add(new ItemStack(WoodenBoard));
                 stacks.add(new ItemStack(TurbidFragmentOfObsidian));
                 stacks.add(new ItemStack(PureFragmentOfObsidian));
                 stacks.add(new ItemStack(TurbidObsidian));
@@ -747,6 +771,7 @@ public class Core implements ModInitializer {
                 stacks.add(new ItemStack(PatternGoldBlock));
                 stacks.add(new ItemStack(CastIronBlock));
                 stacks.add(new ItemStack(AlchemicalSilverBlock));
+                stacks.add(new ItemStack(WoodenPlanks));
                 stacks.add(new ItemStack(OldCommandBlock));
                 stacks.add(new ItemStack(OldReactor));
                 stacks.add(new ItemStack(PrismarineBricksSmooth));
@@ -803,8 +828,11 @@ public class Core implements ModInitializer {
                 stacks.add(new ItemStack(ChiseledIronBox));
                 stacks.add(new ItemStack(WoodenChair));
                 stacks.add(new ItemStack(WoodenLongTable));
+                stacks.add(new ItemStack(WoodenDoor));
                 stacks.add(new ItemStack(AluminumChair));
                 stacks.add(new ItemStack(AluminumTable));
+                stacks.add(new ItemStack(AluminumDoor));
+                stacks.add(new ItemStack(CopperDoor));
                 stacks.add(new ItemStack(RuinBookshelf));
                 stacks.add(new ItemStack(ForgingTableL1));
                 stacks.add(new ItemStack(Grinder));

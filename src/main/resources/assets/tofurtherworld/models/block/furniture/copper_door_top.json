@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/door_top",
+  "textures": {
+    "top": "tofurtherworld:block/copper_door_top",
+    "bottom": "tofurtherworld:block/copper_door_bottom"
+  }
+}

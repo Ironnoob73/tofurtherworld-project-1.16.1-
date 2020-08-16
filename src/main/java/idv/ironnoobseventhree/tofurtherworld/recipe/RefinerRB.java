@@ -14,24 +14,32 @@ import net.minecraft.world.World;
 public abstract class RefinerRB implements Recipe<Inventory> {
     protected final RecipeType<?> type;
     protected final Identifier id;
-    public final String group;
-    public final Ingredient input;
-    public final ItemStack output;
-    public final float experience;
-    public final int cookTime;
+    protected final String group;
+    protected final Ingredient input1;
+    protected final Ingredient input2;
+    protected final ItemStack output;
+    protected final float experience;
+    protected final int cookTime;
 
-    public RefinerRB(RecipeType<?> type, Identifier id, String group, Ingredient input, ItemStack output, float experience, int cookTime) {
+    public RefinerRB(RecipeType<?> type, Identifier id, String group, Ingredient input1, Ingredient input2, ItemStack output, float experience, int cookTime) {
         this.type = type;
         this.id = id;
         this.group = group;
-        this.input = input;
+        this.input1 = input1;
+        this.input2 = input2;
         this.output = output;
         this.experience = experience;
         this.cookTime = cookTime;
     }
 
     public boolean matches(Inventory inv, World world) {
-        return this.input.test(inv.getStack(0));
+        return this.input1.test(inv.getStack(0));
+    }
+    public boolean matches1(Inventory inv, World world) {
+        return this.input1.test(inv.getStack(0));
+    }
+    public boolean matches2(Inventory inv, World world) {
+        return this.input2.test(inv.getStack(3));
     }
 
     public ItemStack craft(Inventory inv) {
@@ -45,7 +53,7 @@ public abstract class RefinerRB implements Recipe<Inventory> {
 
     public DefaultedList<Ingredient> getPreviewInputs() {
         DefaultedList<Ingredient> defaultedList = DefaultedList.of();
-        defaultedList.add(this.input);
+        defaultedList.add(this.input1);
         return defaultedList;
     }
 
@@ -74,3 +82,4 @@ public abstract class RefinerRB implements Recipe<Inventory> {
         return this.type;
     }
 }
+

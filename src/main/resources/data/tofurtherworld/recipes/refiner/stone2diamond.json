@@ -3,6 +3,9 @@
     "ingredient":{
       "item": "minecraft:stone"
     },
+    "accessories":{
+      "item": "minecraft:lapis_lazuli"
+    },
     "result": "minecraft:diamond",
     "experience": 0.2
 }

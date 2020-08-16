@@ -1,45 +1,59 @@
 package idv.ironnoobseventhree.tofurtherworld.block.machine;
 
+import com.google.common.collect.Lists;
 import idv.ironnoobseventhree.tofurtherworld.Core;
-import idv.ironnoobseventhree.tofurtherworld.recipe.RefinerRB;
+import idv.ironnoobseventhree.tofurtherworld.recipe.RefinerR;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
+import it.unimi.dsi.fastutil.ints.IntListIterator;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.entity.AbstractFurnaceBlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.inventory.CraftingInventory;
+import net.minecraft.inventory.CraftingResultInventory;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.ItemStack;
+import net.minecraft.network.packet.s2c.play.CraftFailedResponseS2CPacket;
+import net.minecraft.network.packet.s2c.play.ScreenHandlerSlotUpdateS2CPacket;
 import net.minecraft.recipe.*;
-import net.minecraft.screen.AbstractRecipeScreenHandler;
-import net.minecraft.screen.ArrayPropertyDelegate;
-import net.minecraft.screen.PropertyDelegate;
-import net.minecraft.screen.ScreenHandlerType;
+import net.minecraft.screen.*;
+import net.minecraft.screen.slot.CraftingResultSlot;
 import net.minecraft.screen.slot.FurnaceOutputSlot;
 import net.minecraft.screen.slot.Slot;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.world.World;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
+import java.util.Iterator;
+import java.util.List;
+import java.util.Optional;
+
+//我的天哪为什么加个额外输入栏那么麻烦
 public class RefinerSH extends RefinerSHB {
     public RefinerSH(int syncId, PlayerInventory playerInventory) {
-        super(Core.RefinerScreen, Core.RefinerType, syncId, playerInventory);
+        super(Core.RefinerScreen, Core.RefinerR, syncId, playerInventory);
     }
 
     public RefinerSH(int syncId, PlayerInventory playerInventory, Inventory inventory, PropertyDelegate propertyDelegate) {
-        super(Core.RefinerScreen, Core.RefinerType, syncId, playerInventory, inventory, propertyDelegate);
+        super(Core.RefinerScreen, Core.RefinerR, syncId, playerInventory, inventory, propertyDelegate);
     }
 }
-abstract class RefinerSHB extends AbstractRecipeScreenHandler<Inventory> {
+abstract class RefinerSHB extends RefinerSHA<Inventory> {
     private final Inventory inventory;
     private final PropertyDelegate propertyDelegate;
     protected final World world;
-    private final RecipeType<? extends RefinerRB> recipeType;
+    private final RecipeType<? extends RefinerR> recipeType;
 
-    protected RefinerSHB(ScreenHandlerType<?> type, RecipeType<? extends RefinerRB> recipeType, int syncId, PlayerInventory playerInventory) {
+    protected RefinerSHB(ScreenHandlerType<?> type, RecipeType<? extends RefinerR> recipeType, int syncId, PlayerInventory playerInventory) {
         this(type, recipeType, syncId, playerInventory, new SimpleInventory(5), new ArrayPropertyDelegate(4));
     }
 
-    protected RefinerSHB(ScreenHandlerType<?> type, RecipeType<? extends RefinerRB> recipeType, int syncId, PlayerInventory playerInventory, Inventory inventory, PropertyDelegate propertyDelegate) {
+    protected RefinerSHB(ScreenHandlerType<?> type, RecipeType<? extends RefinerR> recipeType, int syncId, PlayerInventory playerInventory, Inventory inventory, PropertyDelegate propertyDelegate) {
         super(type, syncId);
         this.recipeType = recipeType;
         checkSize(inventory, 5);
@@ -79,10 +93,10 @@ abstract class RefinerSHB extends AbstractRecipeScreenHandler<Inventory> {
     }
 
     public void fillInputSlots(boolean craftAll, Recipe<?> recipe, ServerPlayerEntity player) {
-        (new FurnaceInputSlotFiller(this)).fillInputSlots(player, recipe, craftAll);
+        (new RefinerISF<>(this)).fillInputSlots(player, (Recipe<Inventory>) recipe, craftAll);
     }
 
-    public boolean matches(Recipe<? super Inventory> recipe) {
+    public boolean matches1(Recipe<? super Inventory> recipe) {
         return recipe.matches(this.inventory, this.world);
     }
 
@@ -185,4 +199,465 @@ abstract class RefinerSHB extends AbstractRecipeScreenHandler<Inventory> {
         return this.propertyDelegate.get(0) > 0;
     }
 }
+class RefinerISFB<C extends Inventory> implements RecipeGridAligner<Integer> {
+    protected static final Logger LOGGER = LogManager.getLogger();
+    protected final RecipeFinder recipeFinder = new RecipeFinder();
+    protected PlayerInventory inventory;
+    protected RefinerSHA<C> craftingScreenHandler;
 
+    public RefinerISFB(RefinerSHA<C> rsha) {
+        this.craftingScreenHandler = rsha;
+    }
+
+    public void fillInputSlots(ServerPlayerEntity entity, Recipe<C> recipe, boolean craftAll) {
+        if (recipe != null && entity.getRecipeBook().contains(recipe)) {
+            this.inventory = entity.inventory;
+            if (this.canReturnInputs() || entity.isCreative()) {
+                this.recipeFinder.clear();
+                entity.inventory.populateRecipeFinder(this.recipeFinder);
+                this.craftingScreenHandler.populateRecipeFinder(this.recipeFinder);
+                if (this.recipeFinder.findRecipe(recipe, (IntList)null)) {
+                    this.fillInputSlots(recipe, craftAll);
+                } else {
+                    this.returnInputs();
+                    entity.networkHandler.sendPacket(new CraftFailedResponseS2CPacket(entity.currentScreenHandler.syncId, recipe));
+                }
+
+                entity.inventory.markDirty();
+            }
+        }
+    }
+
+    protected void returnInputs() {
+        for(int i = 0; i < this.craftingScreenHandler.getCraftingWidth() * this.craftingScreenHandler.getCraftingHeight() + 1; ++i) {
+            if (i != this.craftingScreenHandler.getCraftingResultSlotIndex() || !(this.craftingScreenHandler instanceof RefinjerCraftingSH) /*&& !(this.craftingScreenHandler instanceof RefinerPlayerSH)*/) {
+                this.returnSlot(i);
+            }
+        }
+
+        this.craftingScreenHandler.clearCraftingSlots();
+    }
+    protected void returnAdd() {
+        for(int k = 3; k < this.craftingScreenHandler.getCraftingWidth() * this.craftingScreenHandler.getCraftingHeight() + 1; ++k) {
+            if (k != this.craftingScreenHandler.getCraftingResultSlotIndex() || !(this.craftingScreenHandler instanceof RefinjerCraftingSH) /*&& !(this.craftingScreenHandler instanceof RefinerPlayerSH)*/) {
+                this.returnSlot(k);
+            }
+        }
+
+        this.craftingScreenHandler.clearCraftingSlots();
+    }
+
+    protected void returnSlot(int i) {
+        ItemStack itemStack = this.craftingScreenHandler.getSlot(i).getStack();
+        if (!itemStack.isEmpty()) {
+            for(; itemStack.getCount() > 0; this.craftingScreenHandler.getSlot(i).takeStack(1)) {
+                int j = this.inventory.getOccupiedSlotWithRoomForStack(itemStack);
+                if (j == -1) {
+                    j = this.inventory.getEmptySlot();
+                }
+
+                ItemStack itemStack2 = itemStack.copy();
+                itemStack2.setCount(1);
+                if (!this.inventory.insertStack(j, itemStack2)) {
+                    LOGGER.error("Can't find any space for item in the inventory");
+                }
+            }
+
+        }
+    }
+    protected void returnSlot2(int k) {
+        ItemStack itemStack = this.craftingScreenHandler.getSlot(k).getStack();
+        if (!itemStack.isEmpty()) {
+            for(; itemStack.getCount() > 0; this.craftingScreenHandler.getSlot(k).takeStack(1)) {
+                int j = this.inventory.getOccupiedSlotWithRoomForStack(itemStack);
+                if (j == -1) {
+                    j = this.inventory.getEmptySlot();
+                }
+
+                ItemStack itemStack2 = itemStack.copy();
+                itemStack2.setCount(1);
+                if (!this.inventory.insertStack(j, itemStack2)) {
+                    LOGGER.error("Can't find any space for item in the inventory");
+                }
+            }
+
+        }
+    }
+
+    protected void fillInputSlots(Recipe<C> recipe, boolean craftAll) {
+        boolean bl = this.craftingScreenHandler.matches1(recipe);
+        int i = this.recipeFinder.countRecipeCrafts(recipe, (IntList)null);
+        int j;
+        if (bl) {
+            for(j = 0; j < this.craftingScreenHandler.getCraftingHeight() * this.craftingScreenHandler.getCraftingWidth() + 1; ++j) {
+                if (j != this.craftingScreenHandler.getCraftingResultSlotIndex()) {
+                    ItemStack itemStack = this.craftingScreenHandler.getSlot(j).getStack();
+                    if (!itemStack.isEmpty() && Math.min(i, itemStack.getMaxCount()) < itemStack.getCount() + 1) {
+                        return;
+                    }
+                }
+            }
+        }
+
+        j = this.getAmountToFill(craftAll, i, bl);
+        IntList intList = new IntArrayList();
+        if (this.recipeFinder.findRecipe(recipe, intList, j)) {
+            int l = j;
+            IntListIterator var8 = intList.iterator();
+
+            while(var8.hasNext()) {
+                int m = (Integer)var8.next();
+                int n = RecipeFinder.getStackFromId(m).getMaxCount();
+                if (n < l) {
+                    l = n;
+                }
+            }
+
+            if (this.recipeFinder.findRecipe(recipe, intList, l)) {
+                this.returnInputs();
+                this.alignRecipeToGrid(this.craftingScreenHandler.getCraftingWidth(), this.craftingScreenHandler.getCraftingHeight(), this.craftingScreenHandler.getCraftingResultSlotIndex(), recipe, intList.iterator(), l);
+            }
+        }
+
+    }
+
+    public void acceptAlignedInput(Iterator<Integer> inputs, int slot, int amount, int gridX, int gridY) {
+        Slot slot2 = this.craftingScreenHandler.getSlot(slot);
+        ItemStack itemStack = RecipeFinder.getStackFromId((Integer)inputs.next());
+        if (!itemStack.isEmpty()) {
+            for(int i = 0; i < amount; ++i) {
+                this.fillInputSlot(slot2, itemStack);
+            }
+        }
+
+    }
+
+    protected int getAmountToFill(boolean craftAll, int limit, boolean recipeInCraftingSlots) {
+        int i = 1;
+        if (craftAll) {
+            i = limit;
+        } else if (recipeInCraftingSlots) {
+            i = 64;
+
+            for(int j = 0; j < this.craftingScreenHandler.getCraftingWidth() * this.craftingScreenHandler.getCraftingHeight() + 1; ++j) {
+                if (j != this.craftingScreenHandler.getCraftingResultSlotIndex()) {
+                    ItemStack itemStack = this.craftingScreenHandler.getSlot(j).getStack();
+                    if (!itemStack.isEmpty() && i > itemStack.getCount()) {
+                        i = itemStack.getCount();
+                    }
+                }
+            }
+
+            if (i < 64) {
+                ++i;
+            }
+        }
+
+        return i;
+    }
+
+    protected void fillInputSlot(Slot slot, ItemStack itemStack) {
+        int i = this.inventory.method_7371(itemStack);
+        if (i != -1) {
+            ItemStack itemStack2 = this.inventory.getStack(i).copy();
+            if (!itemStack2.isEmpty()) {
+                if (itemStack2.getCount() > 1) {
+                    this.inventory.removeStack(i, 1);
+                } else {
+                    this.inventory.removeStack(i);
+                }
+
+                itemStack2.setCount(1);
+                if (slot.getStack().isEmpty()) {
+                    slot.setStack(itemStack2);
+                } else {
+                    slot.getStack().increment(1);
+                }
+
+            }
+        }
+    }
+
+    private boolean canReturnInputs() {
+        List<ItemStack> list = Lists.newArrayList();
+        int i = this.getFreeInventorySlots();
+
+        for(int j = 0; j < this.craftingScreenHandler.getCraftingWidth() * this.craftingScreenHandler.getCraftingHeight() + 1; ++j) {
+            if (j != this.craftingScreenHandler.getCraftingResultSlotIndex()) {
+                ItemStack itemStack = this.craftingScreenHandler.getSlot(j).getStack().copy();
+                if (!itemStack.isEmpty()) {
+                    int k = this.inventory.getOccupiedSlotWithRoomForStack(itemStack);
+                    if (k == -1 && list.size() <= i) {
+                        Iterator var6 = list.iterator();
+
+                        while(var6.hasNext()) {
+                            ItemStack itemStack2 = (ItemStack)var6.next();
+                            if (itemStack2.isItemEqualIgnoreDamage(itemStack) && itemStack2.getCount() != itemStack2.getMaxCount() && itemStack2.getCount() + itemStack.getCount() <= itemStack2.getMaxCount()) {
+                                itemStack2.increment(itemStack.getCount());
+                                itemStack.setCount(0);
+                                break;
+                            }
+                        }
+
+                        if (!itemStack.isEmpty()) {
+                            if (list.size() >= i) {
+                                return false;
+                            }
+
+                            list.add(itemStack);
+                        }
+                    } else if (k == -1) {
+                        return false;
+                    }
+                }
+            }
+        }
+
+        return true;
+    }
+
+    private int getFreeInventorySlots() {
+        int i = 0;
+        Iterator var2 = this.inventory.main.iterator();
+
+        while(var2.hasNext()) {
+            ItemStack itemStack = (ItemStack)var2.next();
+            if (itemStack.isEmpty()) {
+                ++i;
+            }
+        }
+
+        return i;
+    }
+}
+abstract class RefinerSHA<C extends Inventory> extends ScreenHandler {
+    public RefinerSHA(ScreenHandlerType<?> screenHandlerType, int i) {
+        super(screenHandlerType, i);
+    }
+
+    public void fillInputSlots(boolean craftAll, Recipe<?> recipe, ServerPlayerEntity player) {
+        (new RefinerISFB(this)).fillInputSlots(player, recipe, craftAll);
+    }
+
+    public abstract void populateRecipeFinder(RecipeFinder finder);
+
+    public abstract void clearCraftingSlots();
+
+    public abstract boolean matches1(Recipe<? super C> recipe);
+
+    public abstract int getCraftingResultSlotIndex();
+
+    public abstract int getCraftingWidth();
+
+    public abstract int getCraftingHeight();
+
+    @Environment(EnvType.CLIENT)
+    public abstract int getCraftingSlotCount();
+}
+
+class RefinerISF<C extends Inventory> extends RefinerISFB<C> {
+    private boolean slotMatchesRecipe;
+
+    public RefinerISF(RefinerSHA<C> rsha) {
+        super(rsha);
+    }
+
+    protected void fillInputSlots(Recipe<C> recipe, boolean craftAll) {
+        this.slotMatchesRecipe = this.craftingScreenHandler.matches1(recipe);
+        int i = this.recipeFinder.countRecipeCrafts(recipe, (IntList)null);
+        if (this.slotMatchesRecipe) {
+            ItemStack itemStack = this.craftingScreenHandler.getSlot(0).getStack();
+            if (itemStack.isEmpty() || i <= itemStack.getCount()) {
+                return;
+            }
+        }
+
+        int j = this.getAmountToFill(craftAll, i, this.slotMatchesRecipe);
+        IntList intList = new IntArrayList();
+        if (this.recipeFinder.findRecipe(recipe, intList, j)) {
+            if (!this.slotMatchesRecipe) {
+                this.returnSlot(this.craftingScreenHandler.getCraftingResultSlotIndex());
+                this.returnSlot(0);
+            }
+
+            this.fillInputSlot(j, intList);
+        }
+    }
+
+    protected void returnInputs() {
+        this.returnSlot(this.craftingScreenHandler.getCraftingResultSlotIndex());
+        super.returnInputs();
+    }
+
+    protected void fillInputSlot(int limit, IntList inputs) {
+        Iterator<Integer> iterator = inputs.iterator();
+        Slot slot = this.craftingScreenHandler.getSlot(0);
+        ItemStack itemStack = RecipeFinder.getStackFromId((Integer)iterator.next());
+        if (!itemStack.isEmpty()) {
+            int i = Math.min(itemStack.getMaxCount(), limit);
+            if (this.slotMatchesRecipe) {
+                i -= slot.getStack().getCount();
+            }
+
+            for(int j = 0; j < i; ++j) {
+                this.fillInputSlot(slot, itemStack);
+            }
+
+        }
+    }
+}
+
+class RefinjerCraftingSH extends RefinerSHA<CraftingInventory> {
+    private final CraftingInventory input;
+    private final CraftingResultInventory result;
+    private final ScreenHandlerContext context;
+    private final PlayerEntity player;
+
+    public RefinjerCraftingSH(int syncId, PlayerInventory playerInventory) {
+        this(syncId, playerInventory, ScreenHandlerContext.EMPTY);
+    }
+
+    public RefinjerCraftingSH(int syncId, PlayerInventory playerInventory, ScreenHandlerContext context) {
+        super(ScreenHandlerType.CRAFTING, syncId);
+        this.input = new CraftingInventory(this, 3, 3);
+        this.result = new CraftingResultInventory();
+        this.context = context;
+        this.player = playerInventory.player;
+        this.addSlot(new CraftingResultSlot(playerInventory.player, this.input, this.result, 0, 124, 35));
+
+        int m;
+        int l;
+        for(m = 0; m < 3; ++m) {
+            for(l = 0; l < 3; ++l) {
+                this.addSlot(new Slot(this.input, l + m * 3, 30 + l * 18, 17 + m * 18));
+            }
+        }
+
+        for(m = 0; m < 3; ++m) {
+            for(l = 0; l < 9; ++l) {
+                this.addSlot(new Slot(playerInventory, l + m * 9 + 9, 8 + l * 18, 84 + m * 18));
+            }
+        }
+
+        for(m = 0; m < 9; ++m) {
+            this.addSlot(new Slot(playerInventory, m, 8 + m * 18, 142));
+        }
+
+    }
+
+    protected static void updateResult(int syncId, World world, PlayerEntity player, CraftingInventory craftingInventory, CraftingResultInventory resultInventory) {
+        if (!world.isClient) {
+            ServerPlayerEntity serverPlayerEntity = (ServerPlayerEntity)player;
+            ItemStack itemStack = ItemStack.EMPTY;
+            Optional<CraftingRecipe> optional = world.getServer().getRecipeManager().getFirstMatch(RecipeType.CRAFTING, craftingInventory, world);
+            if (optional.isPresent()) {
+                CraftingRecipe craftingRecipe = (CraftingRecipe)optional.get();
+                if (resultInventory.shouldCraftRecipe(world, serverPlayerEntity, craftingRecipe)) {
+                    itemStack = craftingRecipe.craft(craftingInventory);
+                }
+            }
+
+            resultInventory.setStack(0, itemStack);
+            serverPlayerEntity.networkHandler.sendPacket(new ScreenHandlerSlotUpdateS2CPacket(syncId, 0, itemStack));
+        }
+    }
+
+    public void onContentChanged(Inventory inventory) {
+        this.context.run((world, blockPos) -> {
+            updateResult(this.syncId, world, this.player, this.input, this.result);
+        });
+    }
+
+    public void populateRecipeFinder(RecipeFinder finder) {
+        this.input.provideRecipeInputs(finder);
+    }
+
+    public void clearCraftingSlots() {
+        this.input.clear();
+        this.result.clear();
+    }
+
+    public boolean matches1(Recipe<? super CraftingInventory> recipe) {
+        return recipe.matches(this.input, this.player.world);
+    }
+
+    public void close(PlayerEntity player) {
+        super.close(player);
+        this.context.run((world, blockPos) -> {
+            this.dropInventory(player, world, this.input);
+        });
+    }
+
+    public boolean canUse(PlayerEntity player) {
+        return canUse(this.context, player, Blocks.CRAFTING_TABLE);
+    }
+
+    public ItemStack transferSlot(PlayerEntity player, int index) {
+        ItemStack itemStack = ItemStack.EMPTY;
+        Slot slot = (Slot)this.slots.get(index);
+        if (slot != null && slot.hasStack()) {
+            ItemStack itemStack2 = slot.getStack();
+            itemStack = itemStack2.copy();
+            if (index == 0) {
+                this.context.run((world, blockPos) -> {
+                    itemStack2.getItem().onCraft(itemStack2, world, player);
+                });
+                if (!this.insertItem(itemStack2, 10, 46, true)) {
+                    return ItemStack.EMPTY;
+                }
+
+                slot.onStackChanged(itemStack2, itemStack);
+            } else if (index >= 10 && index < 46) {
+                if (!this.insertItem(itemStack2, 1, 10, false)) {
+                    if (index < 37) {
+                        if (!this.insertItem(itemStack2, 37, 46, false)) {
+                            return ItemStack.EMPTY;
+                        }
+                    } else if (!this.insertItem(itemStack2, 10, 37, false)) {
+                        return ItemStack.EMPTY;
+                    }
+                }
+            } else if (!this.insertItem(itemStack2, 10, 46, false)) {
+                return ItemStack.EMPTY;
+            }
+
+            if (itemStack2.isEmpty()) {
+                slot.setStack(ItemStack.EMPTY);
+            } else {
+                slot.markDirty();
+            }
+
+            if (itemStack2.getCount() == itemStack.getCount()) {
+                return ItemStack.EMPTY;
+            }
+
+            ItemStack itemStack3 = slot.onTakeItem(player, itemStack2);
+            if (index == 0) {
+                player.dropItem(itemStack3, false);
+            }
+        }
+
+        return itemStack;
+    }
+
+    public boolean canInsertIntoSlot(ItemStack stack, Slot slot) {
+        return slot.inventory != this.result && super.canInsertIntoSlot(stack, slot);
+    }
+
+    public int getCraftingResultSlotIndex() {
+        return 0;
+    }
+
+    public int getCraftingWidth() {
+        return this.input.getWidth();
+    }
+
+    public int getCraftingHeight() {
+        return this.input.getHeight();
+    }
+
+    @Environment(EnvType.CLIENT)
+    public int getCraftingSlotCount() {
+        return 10;
+    }
+}

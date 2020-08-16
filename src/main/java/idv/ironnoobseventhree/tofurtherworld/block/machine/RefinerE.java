@@ -3,7 +3,7 @@ package idv.ironnoobseventhree.tofurtherworld.block.machine;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import idv.ironnoobseventhree.tofurtherworld.Core;
-import idv.ironnoobseventhree.tofurtherworld.recipe.RefinerRB;
+import idv.ironnoobseventhree.tofurtherworld.recipe.RefinerR;
 import it.unimi.dsi.fastutil.objects.Object2IntMap;
 import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import it.unimi.dsi.fastutil.objects.ObjectIterator;
@@ -50,7 +50,7 @@ public class RefinerE extends RefinerEB {
             Registry.register(Registry.BLOCK_ENTITY_TYPE,"tofurtherworld:refiner_entity",BlockEntityType.Builder.create(RefinerE::new, Core.Refiner).build(null));
 
     public RefinerE() {
-        super(RefinerE, Core.RefinerType);
+        super(RefinerE, Core.RefinerR);
     }
 
     protected Text getContainerName() {
@@ -72,9 +72,9 @@ abstract class RefinerEB extends LockableContainerBlockEntity implements SidedIn
     private int cookTimeTotal;
     protected final PropertyDelegate propertyDelegate;
     private final Object2IntOpenHashMap<Identifier> recipesUsed;
-    protected final RecipeType<? extends RefinerRB> recipeType;
+    protected final RecipeType<? extends RefinerR> recipeType;
 
-    protected RefinerEB(BlockEntityType<?> blockEntityType, RecipeType<? extends RefinerRB> recipeType) {
+    protected RefinerEB(BlockEntityType<?> blockEntityType, RecipeType<? extends RefinerR> recipeType) {
         super(blockEntityType);
         this.inventory = DefaultedList.ofSize(5, ItemStack.EMPTY);
         this.propertyDelegate = new PropertyDelegate() {
@@ -357,7 +357,7 @@ abstract class RefinerEB extends LockableContainerBlockEntity implements SidedIn
     }
 
     protected int getCookTime() {
-        return (Integer)this.world.getRecipeManager().getFirstMatch(this.recipeType, this, this.world).map(RefinerRB::getCookTime).orElse(200);
+        return (Integer)this.world.getRecipeManager().getFirstMatch(this.recipeType, this, this.world).map(RefinerR::getCookTime).orElse(200);
     }
 
     public static boolean canUseAsFuel(ItemStack stack) {

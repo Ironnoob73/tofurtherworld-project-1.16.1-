@@ -19,8 +19,8 @@ import idv.ironnoobseventhree.tofurtherworld.block.sapling.FrozenBushBlock;
 import idv.ironnoobseventhree.tofurtherworld.block.sapling.IceBirch;
 import idv.ironnoobseventhree.tofurtherworld.block.sapling.SaplingMain;
 import idv.ironnoobseventhree.tofurtherworld.recipe.ForgingL1Recipe;
-import idv.ironnoobseventhree.tofurtherworld.recipe.MachineRecipeSerializer;
 import idv.ironnoobseventhree.tofurtherworld.recipe.RefinerR;
+import idv.ironnoobseventhree.tofurtherworld.recipe.RefinerRS;
 import idv.ironnoobseventhree.tofurtherworld.tool.*;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.biomes.v1.OverworldBiomes;
@@ -326,11 +326,8 @@ public class Core implements ModInitializer {
     public static final RecipeSerializer<ForgingL1Recipe> ForgingL1Serializer = forging_l1_serializer(new Identifier(MODID, "forging_l1"), new ForgingL1Recipe.Serializer());
     public static final RecipeType<ForgingL1Recipe> ForgingL1Type = forging_l1_type(new Identifier(MODID, "forging_l1"));
     //R
-    private static RecipeType<RefinerR> refiner_type(Identifier id) {return Registry.register(Registry.RECIPE_TYPE, id, new RecipeType<RefinerR>() {public String toString() { return id.toString(); }});}
-    //private static RefinerR.Serializer refiner_serializer(Identifier id, RefinerR.Serializer serializer) { return Registry.register(Registry.RECIPE_SERIALIZER, id, serializer); }
-    //public static final RecipeSerializer<RefinerR> RefinerSerializer = refiner_serializer(new Identifier(MODID, "refiner"), new RefinerR.Serializer());
-    public static final MachineRecipeSerializer RefinerR = RecipeSerializer.register("refiner", new MachineRecipeSerializer(RefinerR::new, 200));
-    public static final RecipeType<RefinerR> RefinerType = refiner_type(new Identifier(MODID, "refiner"));
+    public static RecipeType<RefinerR> RefinerR = Registry.register(Registry.RECIPE_TYPE, new Identifier(MODID, "refiner"), new RecipeType<RefinerR>() {public String toString() { return new Identifier(MODID, "refiner").toString(); }});
+    public static final RecipeSerializer<RefinerR> refiner_type = Registry.register(Registry.RECIPE_SERIALIZER, new Identifier(MODID, "refiner"), new RefinerRS(RefinerR::new, 200));
 
     @Override
     public void onInitialize() {

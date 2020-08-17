@@ -13,15 +13,11 @@ import net.minecraft.screen.ScreenHandler;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
 import net.minecraft.util.collection.DefaultedList;
-import net.minecraft.util.registry.Registry;
 
 public class ChiseledIronBoxEntity extends LootableContainerBlockEntity {
     public  DefaultedList<ItemStack> inv;
-    public static BlockEntityType<ChiseledIronBoxEntity> CIBE=
-            Registry.register(Registry.BLOCK_ENTITY_TYPE,"tofurtherworld:cib_entity",
-                    BlockEntityType.Builder.create(ChiseledIronBoxEntity::new, Core.ChiseledIronBox).build(null));
     public ChiseledIronBoxEntity(){
-        this(CIBE);
+        this(   Core.CIBE);
     }
     protected ChiseledIronBoxEntity(BlockEntityType<?> blockEntityType){
         super(blockEntityType);

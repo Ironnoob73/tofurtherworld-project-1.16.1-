@@ -13,14 +13,11 @@ import net.minecraft.screen.ScreenHandler;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
 import net.minecraft.util.collection.DefaultedList;
-import net.minecraft.util.registry.Registry;
 
 public class DrawerEntity extends LootableContainerBlockEntity {
     public  DefaultedList<ItemStack> inv;
-    public static BlockEntityType<DrawerEntity> Drawere=
-            Registry.register(Registry.BLOCK_ENTITY_TYPE,"tofurtherworld:drawer_entity",BlockEntityType.Builder.create(DrawerEntity::new, Core.Drawer1).build(null));
     public DrawerEntity(){
-        this(Drawere);
+        this(Core.Drawere);
     }
     protected DrawerEntity(BlockEntityType<?> blockEntityType){
         super(blockEntityType);

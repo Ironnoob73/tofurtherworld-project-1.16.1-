@@ -37,7 +37,6 @@ import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
-import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
 
 import java.util.Collection;
@@ -46,11 +45,8 @@ import java.util.List;
 import java.util.Map;
 
 public class RefinerE extends RefinerEB {
-    public static BlockEntityType<RefinerE> RefinerE=
-            Registry.register(Registry.BLOCK_ENTITY_TYPE,"tofurtherworld:refiner_entity",BlockEntityType.Builder.create(RefinerE::new, Core.Refiner).build(null));
-
     public RefinerE() {
-        super(RefinerE, Core.RefinerR);
+        super(Core.RefinerE, Core.RefinerR);
     }
 
     protected Text getContainerName() {

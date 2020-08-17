@@ -1,20 +1,11 @@
 package idv.ironnoobseventhree.tofurtherworld;
 
 import idv.ironnoobseventhree.tofurtherworld.biome.BiomeMain;
-import idv.ironnoobseventhree.tofurtherworld.block.ChiseledIronBox;
-import idv.ironnoobseventhree.tofurtherworld.block.DrawerBlock;
-import idv.ironnoobseventhree.tofurtherworld.block.Facing;
-import idv.ironnoobseventhree.tofurtherworld.block.GlassLike;
+import idv.ironnoobseventhree.tofurtherworld.block.*;
 import idv.ironnoobseventhree.tofurtherworld.block.forging.ForgingTableL1;
 import idv.ironnoobseventhree.tofurtherworld.block.forging.ForgingTableL1ScreenHandler;
-import idv.ironnoobseventhree.tofurtherworld.block.furniture.Chair;
-import idv.ironnoobseventhree.tofurtherworld.block.furniture.Door;
-import idv.ironnoobseventhree.tofurtherworld.block.furniture.LongTable;
-import idv.ironnoobseventhree.tofurtherworld.block.furniture.TableCS;
-import idv.ironnoobseventhree.tofurtherworld.block.machine.Grinder;
-import idv.ironnoobseventhree.tofurtherworld.block.machine.GrinderScreenHandler;
-import idv.ironnoobseventhree.tofurtherworld.block.machine.Refiner;
-import idv.ironnoobseventhree.tofurtherworld.block.machine.RefinerSH;
+import idv.ironnoobseventhree.tofurtherworld.block.furniture.*;
+import idv.ironnoobseventhree.tofurtherworld.block.machine.*;
 import idv.ironnoobseventhree.tofurtherworld.block.sapling.FrozenBushBlock;
 import idv.ironnoobseventhree.tofurtherworld.block.sapling.IceBirch;
 import idv.ironnoobseventhree.tofurtherworld.block.sapling.SaplingMain;
@@ -30,6 +21,7 @@ import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.screenhandler.v1.ScreenHandlerRegistry;
 import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
 import net.minecraft.block.*;
+import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.item.*;
 import net.minecraft.recipe.RecipeSerializer;
 import net.minecraft.recipe.RecipeType;
@@ -280,16 +272,20 @@ public class Core implements ModInitializer {
     //Entity Block
     public static final DrawerBlock Drawer1 = new DrawerBlock(AbstractBlock.Settings.of(Material.STONE).requiresTool().strength(6.0F, 6.0F));
     public static final DrawerBlock Drawer2 = new DrawerBlock(AbstractBlock.Settings.of(Material.STONE).requiresTool().strength(6.0F, 6.0F));
+    public static BlockEntityType<DrawerEntity> Drawere = Registry.register(Registry.BLOCK_ENTITY_TYPE,new Identifier(MODID, "drawer_entity"),BlockEntityType.Builder.create(DrawerEntity::new, Core.Drawer1).build(null));
     public static final Block ChiseledIronBox = new ChiseledIronBox(AbstractBlock.Settings.of(Material.METAL, MaterialColor.IRON).requiresTool().strength(10.0F, 6.0F).sounds(BlockSoundGroup.NETHERITE));
+    public static BlockEntityType<ChiseledIronBoxEntity> CIBE = Registry.register(Registry.BLOCK_ENTITY_TYPE,new Identifier(MODID, "cib_entity"), BlockEntityType.Builder.create(ChiseledIronBoxEntity::new, Core.ChiseledIronBox).build(null));
     public static final Block ForgingTableL1 = new ForgingTableL1(AbstractBlock.Settings.of(Material.STONE).requiresTool().strength(6.0F, 6.0F).sounds(BlockSoundGroup.METAL));
     public static final Block Grinder = new Grinder(AbstractBlock.Settings.of(Material.STONE).requiresTool().strength(6.0F, 6.0F).sounds(BlockSoundGroup.STONE));
     public static final Block Refiner = new Refiner(AbstractBlock.Settings.of(Material.STONE).requiresTool().strength(5.0F).lightLevel(createLightLevelFromBlockState(8)));
+    public static BlockEntityType<idv.ironnoobseventhree.tofurtherworld.block.machine.RefinerE> RefinerE = Registry.register(Registry.BLOCK_ENTITY_TYPE,new Identifier(MODID, "refiner_entity"),BlockEntityType.Builder.create(RefinerE::new, Core.Refiner).build(null));
     //Furniture
     public static final Block WoodenChair = new Chair(AbstractBlock.Settings.of(Material.WOOD, MaterialColor.BROWN).strength(2.0F).sounds(BlockSoundGroup.WOOD).nonOpaque());
     public static final Block WoodenLongTable = new LongTable(AbstractBlock.Settings.of(Material.WOOD, MaterialColor.BROWN).strength(2.0F).sounds(BlockSoundGroup.WOOD).nonOpaque());
     public static final Block WoodenDoor = new Door(AbstractBlock.Settings.of(Material.WOOD, WoodenPlanks.getDefaultMaterialColor()).strength(3.0F).sounds(BlockSoundGroup.WOOD).nonOpaque());
     public static final Block AluminumChair = new Chair(AbstractBlock.Settings.of(Material.METAL, MaterialColor.IRON).strength(5.0F, 6.0F).sounds(BlockSoundGroup.METAL).nonOpaque());
     public static final Block AluminumTable = new TableCS(AbstractBlock.Settings.of(Material.METAL, MaterialColor.IRON).strength(5.0F, 6.0F).sounds(BlockSoundGroup.METAL).nonOpaque());
+    public static BlockEntityType<TableCSE> TableE = Registry.register(Registry.BLOCK_ENTITY_TYPE,new Identifier(MODID, "table_entity"),BlockEntityType.Builder.create(TableCSE::new, Core.AluminumTable).build(null));
     public static final Block AluminumDoor = new Door(AbstractBlock.Settings.of(Material.STONE, AluminumBlock.getDefaultMaterialColor()).strength(5.0F,6.0F).sounds(BlockSoundGroup.METAL).nonOpaque());
     public static final Block CopperDoor = new Door(AbstractBlock.Settings.of(Material.STONE, CopperBlock.getDefaultMaterialColor()).strength(5.0F,6.0F).sounds(BlockSoundGroup.METAL).nonOpaque());
     public static final Block RuinBookshelf = new Block(AbstractBlock.Settings.of(Material.WOOD, MaterialColor.BROWN).strength(1.5F).sounds(BlockSoundGroup.WOOD));

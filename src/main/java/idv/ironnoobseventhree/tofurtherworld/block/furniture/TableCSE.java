@@ -13,14 +13,11 @@ import net.minecraft.screen.ScreenHandler;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
 import net.minecraft.util.collection.DefaultedList;
-import net.minecraft.util.registry.Registry;
 
 public class TableCSE extends LootableContainerBlockEntity {
     public  DefaultedList<ItemStack> inv;
-    public static BlockEntityType<TableCSE> TableE=
-            Registry.register(Registry.BLOCK_ENTITY_TYPE,"tofurtherworld:table_entity",BlockEntityType.Builder.create(TableCSE::new, Core.AluminumTable).build(null));
     public TableCSE(){
-        this(TableE);
+        this(Core.TableE);
     }
     protected TableCSE(BlockEntityType<?> blockEntityType){
         super(blockEntityType);

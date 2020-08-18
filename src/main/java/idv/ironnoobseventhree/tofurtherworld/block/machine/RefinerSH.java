@@ -17,6 +17,7 @@ import net.minecraft.inventory.CraftingResultInventory;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.network.packet.s2c.play.CraftFailedResponseS2CPacket;
 import net.minecraft.network.packet.s2c.play.ScreenHandlerSlotUpdateS2CPacket;
 import net.minecraft.recipe.*;
@@ -63,7 +64,7 @@ abstract class RefinerSHB extends RefinerSHA<Inventory> {
         this.world = playerInventory.player.world;
         this.addSlot(new Slot(inventory, 0, 45, 22));
         this.addSlot(new Slot(inventory, 3, 65, 22));
-        this.addSlot(new HighLevelFuelSlot (this, inventory, 1, 55, 54));
+        this.addSlot(new RefinerHighLevelFuelSlot (this, inventory, 1, 55, 54));
         this.addSlot(new FurnaceOutputSlot(playerInventory.player, inventory, 2, 114, 27));
         this.addSlot(new FurnaceOutputSlot(playerInventory.player, inventory, 4, 114, 47));
 
@@ -230,7 +231,7 @@ class RefinerISFB<C extends Inventory> implements RecipeGridAligner<Integer> {
 
     protected void returnInputs() {
         for(int i = 0; i < this.craftingScreenHandler.getCraftingWidth() * this.craftingScreenHandler.getCraftingHeight() + 1; ++i) {
-            if (i != this.craftingScreenHandler.getCraftingResultSlotIndex() || !(this.craftingScreenHandler instanceof RefinjerCraftingSH) /*&& !(this.craftingScreenHandler instanceof RefinerPlayerSH)*/) {
+            if (i != this.craftingScreenHandler.getCraftingResultSlotIndex() || !(this.craftingScreenHandler instanceof RefinerCraftingSH) /*&& !(this.craftingScreenHandler instanceof RefinerPlayerSH)*/) {
                 this.returnSlot(i);
             }
         }
@@ -239,7 +240,7 @@ class RefinerISFB<C extends Inventory> implements RecipeGridAligner<Integer> {
     }
     protected void returnAdd() {
         for(int k = 3; k < this.craftingScreenHandler.getCraftingWidth() * this.craftingScreenHandler.getCraftingHeight() + 1; ++k) {
-            if (k != this.craftingScreenHandler.getCraftingResultSlotIndex() || !(this.craftingScreenHandler instanceof RefinjerCraftingSH) /*&& !(this.craftingScreenHandler instanceof RefinerPlayerSH)*/) {
+            if (k != this.craftingScreenHandler.getCraftingResultSlotIndex() || !(this.craftingScreenHandler instanceof RefinerCraftingSH) /*&& !(this.craftingScreenHandler instanceof RefinerPlayerSH)*/) {
                 this.returnSlot(k);
             }
         }
@@ -507,17 +508,17 @@ class RefinerISF<C extends Inventory> extends RefinerISFB<C> {
     }
 }
 
-class RefinjerCraftingSH extends RefinerSHA<CraftingInventory> {
+class RefinerCraftingSH extends RefinerSHA<CraftingInventory> {
     private final CraftingInventory input;
     private final CraftingResultInventory result;
     private final ScreenHandlerContext context;
     private final PlayerEntity player;
 
-    public RefinjerCraftingSH(int syncId, PlayerInventory playerInventory) {
+    public RefinerCraftingSH(int syncId, PlayerInventory playerInventory) {
         this(syncId, playerInventory, ScreenHandlerContext.EMPTY);
     }
 
-    public RefinjerCraftingSH(int syncId, PlayerInventory playerInventory, ScreenHandlerContext context) {
+    public RefinerCraftingSH(int syncId, PlayerInventory playerInventory, ScreenHandlerContext context) {
         super(ScreenHandlerType.CRAFTING, syncId);
         this.input = new CraftingInventory(this, 3, 3);
         this.result = new CraftingResultInventory();
@@ -659,5 +660,25 @@ class RefinjerCraftingSH extends RefinerSHA<CraftingInventory> {
     @Environment(EnvType.CLIENT)
     public int getCraftingSlotCount() {
         return 10;
+    }
+}
+class RefinerHighLevelFuelSlot extends Slot {
+    private final RefinerSHB handler;
+
+    public RefinerHighLevelFuelSlot(RefinerSHB handler, Inventory inventory, int index, int x, int y) {
+        super(inventory, index, x, y);
+        this.handler = handler;
+    }
+
+    public boolean canInsert(ItemStack stack) {
+        return this.handler.isFuel(stack) || isBucket(stack);
+    }
+
+    public int getMaxStackAmount(ItemStack stack) {
+        return isBucket(stack) ? 1 : super.getMaxStackAmount(stack);
+    }
+
+    public static boolean isBucket(ItemStack stack) {
+        return stack.getItem() == Items.BUCKET;
     }
 }

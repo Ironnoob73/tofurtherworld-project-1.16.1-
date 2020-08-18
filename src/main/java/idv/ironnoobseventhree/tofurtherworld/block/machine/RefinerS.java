@@ -52,9 +52,6 @@ public class RefinerS<T extends RefinerSHB> extends HandledScreen<T> implements 
         int l;
         this.drawTexture(matrices, i, j, 0, 0, this.backgroundWidth, this.backgroundHeight);
         this.drawTexture(matrices, i + 59, j + 20, 0, this.backgroundHeight + (((RefinerSH)this.handler).getSlot(0).hasStack() ? 0 : 16), 110, 16);
-        /*if ((((HighLevelFuelAbleSH)this.handler).getSlot(0).hasStack() || ((HighLevelFuelAbleSH)this.handler).getSlot(1).hasStack() || ((HighLevelFuelAbleSH)this.handler).getSlot(2).hasStack() || ((HighLevelFuelAbleSH)this.handler).getSlot(3).hasStack()|| ((ForgingTableL1B)this.handler).getSlot(4).hasStack()|| ((ForgingTableL1B)this.handler).getSlot(5).hasStack()|| ((ForgingTableL1B)this.handler).getSlot(6).hasStack()|| ((ForgingTableL1B)this.handler).getSlot(7).hasStack()|| ((ForgingTableL1B)this.handler).getSlot(8).hasStack()) && !((ForgingTableL1B)this.handler).getSlot(9).hasStack()) {
-            this.drawTexture(matrices, i + 92, j + 36, this.backgroundWidth, 0, 28, 21);
-        }*/
         if (((RefinerSHB)this.handler).isBurning()) {
             l = ((RefinerSHB)this.handler).getFuelProgress();
             this.drawTexture(matrices, i + 56, j + 39 + 12 - l, 176, 12 - l, 14, l + 1);

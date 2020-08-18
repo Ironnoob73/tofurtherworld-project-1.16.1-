@@ -9,9 +9,7 @@ import idv.ironnoobseventhree.tofurtherworld.block.machine.*;
 import idv.ironnoobseventhree.tofurtherworld.block.sapling.FrozenBushBlock;
 import idv.ironnoobseventhree.tofurtherworld.block.sapling.IceBirch;
 import idv.ironnoobseventhree.tofurtherworld.block.sapling.SaplingMain;
-import idv.ironnoobseventhree.tofurtherworld.recipe.ForgingL1Recipe;
-import idv.ironnoobseventhree.tofurtherworld.recipe.RefinerR;
-import idv.ironnoobseventhree.tofurtherworld.recipe.RefinerRS;
+import idv.ironnoobseventhree.tofurtherworld.recipe.*;
 import idv.ironnoobseventhree.tofurtherworld.tool.*;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.biomes.v1.OverworldBiomes;
@@ -277,8 +275,11 @@ public class Core implements ModInitializer {
     public static BlockEntityType<ChiseledIronBoxEntity> CIBE = Registry.register(Registry.BLOCK_ENTITY_TYPE,new Identifier(MODID, "cib_entity"), BlockEntityType.Builder.create(ChiseledIronBoxEntity::new, Core.ChiseledIronBox).build(null));
     public static final Block ForgingTableL1 = new ForgingTableL1(AbstractBlock.Settings.of(Material.STONE).requiresTool().strength(6.0F, 6.0F).sounds(BlockSoundGroup.METAL));
     public static final Block Grinder = new Grinder(AbstractBlock.Settings.of(Material.STONE).requiresTool().strength(6.0F, 6.0F).sounds(BlockSoundGroup.STONE));
+    public static BlockEntityType<idv.ironnoobseventhree.tofurtherworld.block.machine.GrinderE> GrinderE = Registry.register(Registry.BLOCK_ENTITY_TYPE,new Identifier(MODID, "grinder_entity"),BlockEntityType.Builder.create(GrinderE::new, Core.Grinder).build(null));
     public static final Block Refiner = new Refiner(AbstractBlock.Settings.of(Material.STONE).requiresTool().strength(5.0F).lightLevel(createLightLevelFromBlockState(8)));
     public static BlockEntityType<idv.ironnoobseventhree.tofurtherworld.block.machine.RefinerE> RefinerE = Registry.register(Registry.BLOCK_ENTITY_TYPE,new Identifier(MODID, "refiner_entity"),BlockEntityType.Builder.create(RefinerE::new, Core.Refiner).build(null));
+    public static final Block Pulverizer = new Pulverizer(AbstractBlock.Settings.of(Material.STONE).requiresTool().strength(6.0F, 6.0F).sounds(BlockSoundGroup.STONE));
+    public static BlockEntityType<idv.ironnoobseventhree.tofurtherworld.block.machine.PulverizerE> PulverizerE = Registry.register(Registry.BLOCK_ENTITY_TYPE,new Identifier(MODID, "pulverizer_entity"),BlockEntityType.Builder.create(PulverizerE::new, Core.Pulverizer).build(null));
     //Furniture
     public static final Block WoodenChair = new Chair(AbstractBlock.Settings.of(Material.WOOD, MaterialColor.BROWN).strength(2.0F).sounds(BlockSoundGroup.WOOD).nonOpaque());
     public static final Block WoodenLongTable = new LongTable(AbstractBlock.Settings.of(Material.WOOD, MaterialColor.BROWN).strength(2.0F).sounds(BlockSoundGroup.WOOD).nonOpaque());
@@ -324,6 +325,9 @@ public class Core implements ModInitializer {
     //R
     public static RecipeType<RefinerR> RefinerR = Registry.register(Registry.RECIPE_TYPE, new Identifier(MODID, "refiner"), new RecipeType<RefinerR>() {public String toString() { return new Identifier(MODID, "refiner").toString(); }});
     public static final RecipeSerializer<RefinerR> refiner_type = Registry.register(Registry.RECIPE_SERIALIZER, new Identifier(MODID, "refiner"), new RefinerRS(RefinerR::new, 200));
+    //G
+    public static RecipeType<idv.ironnoobseventhree.tofurtherworld.recipe.GrinderR> GrinderR = Registry.register(Registry.RECIPE_TYPE, new Identifier(MODID, "grinder"), new RecipeType<GrinderR>() {public String toString() { return new Identifier(MODID, "grinder").toString(); }});
+    public static final RecipeSerializer<GrinderR> grinder_type = Registry.register(Registry.RECIPE_SERIALIZER, new Identifier(MODID, "grinder"), new GrinderRS(GrinderR::new, 200));
 
     @Override
     public void onInitialize() {
@@ -626,6 +630,8 @@ public class Core implements ModInitializer {
         Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "grinder"), new BlockItem(Grinder, new Item.Settings()));
         Registry.register(Registry.BLOCK, new Identifier("tofurtherworld", "refiner"), Refiner);
         Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "refiner"), new BlockItem(Refiner, new Item.Settings()));
+        Registry.register(Registry.BLOCK, new Identifier("tofurtherworld", "pulverizer"), Pulverizer);
+        Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "pulverizer"), new BlockItem(Pulverizer, new Item.Settings()));
         //Furniture
         Registry.register(Registry.BLOCK, new Identifier("tofurtherworld", "wooden_chair"), WoodenChair);
         Registry.register(Registry.ITEM, new Identifier("tofurtherworld", "wooden_chair"), new BlockItem(WoodenChair, new Item.Settings()));

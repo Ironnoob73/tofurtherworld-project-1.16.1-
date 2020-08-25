@@ -33,11 +33,4 @@ public class Pulverizer extends BlockWithEntity {
     public PulverizerE createBlockEntity(BlockView blockView) {
         return new PulverizerE();
     }
-    /*@Override
-    protected void appendProperties(StateManager.Builder<Block, BlockState> stateManager) { stateManager.add(Properties.HORIZONTAL_FACING); }
-    //public BlockState getPlacementState(ItemPlacementContext ctx) { return (BlockState)this.getDefaultState().with(FACING, ctx.getPlayerFacing()); }
-    @Override
-    public VoxelShape getOutlineShape(BlockState state, BlockView view, BlockPos pos, ShapeContext context) {
-        return VoxelShapes.cuboid(0f, 0.5f, 0f, 1f, 1f, 1);
-    }*/
 }

@@ -1,6 +1,6 @@
 {
     "parent": "minecraft:item/generated",
     "textures": {
-      "layer0": "tofurtherworld:item/blueprint"
+      "layer0": "tofurtherworld:item/plastic_wood_board"
     }
   }

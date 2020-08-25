@@ -1,4 +1,4 @@
-package idv.ironnoobseventhree.tofurtherworld.tool;
+package idv.ironnoobseventhree.tofurtherworld.item;
 
 import net.minecraft.item.PickaxeItem;
 import net.minecraft.item.ToolMaterial;

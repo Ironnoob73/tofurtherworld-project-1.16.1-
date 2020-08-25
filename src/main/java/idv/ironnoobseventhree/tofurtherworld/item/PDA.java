@@ -1,4 +1,4 @@
-package idv.ironnoobseventhree.tofurtherworld.tool;
+package idv.ironnoobseventhree.tofurtherworld.item;
 
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.player.PlayerEntity;

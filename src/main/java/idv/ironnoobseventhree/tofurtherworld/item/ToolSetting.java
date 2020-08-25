@@ -1,4 +1,4 @@
-package idv.ironnoobseventhree.tofurtherworld.tool;
+package idv.ironnoobseventhree.tofurtherworld.item;
 
 import idv.ironnoobseventhree.tofurtherworld.Core;
 import net.minecraft.item.ItemConvertible;

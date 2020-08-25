@@ -1,4 +1,4 @@
-package idv.ironnoobseventhree.tofurtherworld.tool;
+package idv.ironnoobseventhree.tofurtherworld.item;
 
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -6,7 +6,11 @@ import net.minecraft.entity.projectile.thrown.SnowballEntity;
 import net.minecraft.item.*;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.stat.Stats;
 import net.minecraft.tag.ItemTags;
+import net.minecraft.text.TranslatableText;
+import net.minecraft.util.Hand;
+import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
 
 import java.util.function.Predicate;
@@ -67,7 +71,7 @@ public class MelonGun extends RangedWeaponItem {
         }
     }
 
-   /*public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
+   public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         if(user.inventory.contains(new ItemStack(Items.MELON_SEEDS))){
             ItemStack itemStack = new ItemStack(Items.MELON_SEEDS);
             world.playSound((PlayerEntity)null, user.getX(), user.getY(), user.getZ(), SoundEvents.ENTITY_SNOWBALL_THROW, SoundCategory.NEUTRAL, 0.5F, 0.4F / (RANDOM.nextFloat() * 0.4F + 0.8F));
@@ -91,7 +95,7 @@ public class MelonGun extends RangedWeaponItem {
         }
 
         return TypedActionResult.fail(user.getStackInHand(hand));
-    }*/
+    }
 }
 
 /*public class MelonGun extends Item {

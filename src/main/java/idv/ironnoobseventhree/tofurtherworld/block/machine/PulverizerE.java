@@ -1,18 +1,21 @@
 package idv.ironnoobseventhree.tofurtherworld.block.machine;
 
 import idv.ironnoobseventhree.tofurtherworld.Core;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.block.entity.LootableContainerBlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventories;
-import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.screen.ScreenHandler;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
 import net.minecraft.util.ItemScatterer;
 import net.minecraft.util.Tickable;
@@ -78,15 +81,16 @@ public class PulverizerE extends LootableContainerBlockEntity implements Tickabl
         return tag;
     }
 
-    @Override
     public void tick() {
         if(!inv.get(0).isEmpty()){
             if(inv.get(0).isItemEqual(new ItemStack(Items.POTATO))){
                 t++;
-                world.addParticle(ParticleTypes.SMOKE, (double)pos.getX(), (double)pos.getY() + 1.0D, (double)pos.getX(), 0.0D, 0.0D, 0.0D);
+                world.addParticle(ParticleTypes.SMOKE, pos.getX(), (double)pos.getY() + 1.0D, pos.getZ(), 0.0D, 0.0D, 0.0D);
+                world.playSound(pos.getX(), pos.getY(), pos.getZ(), SoundEvents.BLOCK_FURNACE_FIRE_CRACKLE, SoundCategory.BLOCKS, 1.0F, 1.0F, false);
                 if(t>50){
                     t=0;
                     inv.set(0, new ItemStack(Items.BAKED_POTATO));
+                    world.playSound(pos.getX(), pos.getY(), pos.getZ(), SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, SoundCategory.BLOCKS, 1.0F, 1.0F, false);
                 }
             }else{
                 ItemScatterer.spawn(this.getWorld(),getPos().up(1),inv);
